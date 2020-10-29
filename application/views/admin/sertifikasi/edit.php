@@ -224,44 +224,42 @@
           </div>
           <div class="col-md-4">           
             <div class="form-group">
-              <label>Asal Alamat Benih</label>
+              <label>Asal Benih</label>
               <input type="text" name="asal_benih" class="form-control" value="<?php echo $sertifikasi['asal_benih'] ?>" required>
             </div>
           </div>
           <div class="col-md-4">           
             <div class="form-group">
+              <label>Sumber Benih</label>
+              <input type="text" name="nomor_sumber" class="form-control" value="<?php echo $sertifikasi['nomor_sumber'] ?>" required>
+            </div>
+           </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-4">           
+            <div class="form-group">
               <label>Kelas Benih</label>
               <select name="id_kelas_benih2" class="form-control select2">
-              <option selected value="<?php echo $sertifikasi['id_kelas_benih2'] ?>"><?php echo $kelas_benih['singkatan'] ?></option>
+              <option selected value="<?php echo $sertifikasi['id_kelas_benih2'] ?>"><?php echo $kelas_benih2['singkatan'] ?></option>
               <?php foreach($kelas_benihs as $kelas_benih): ?>            
                 <option value="<?php echo $kelas_benih['id_kelas_benih'] ?>"><?php echo $kelas_benih['singkatan'] ?></option>
                 <?php endforeach; ?>
               </select>
             </div>
           </div>
-        </div>
-
-        <div class="row">
+          <div class="col-md-4">           
+            <div class="form-group">
+              <label>No. Kelompok Benih</label>
+              <input type="text" name="no_kelompok_benih" class="form-control" value="<?php echo $sertifikasi['no_kelompok_benih'] ?>" required>
+            </div>
+           </div>
           <div class="col-md-4">           
             <div class="form-group">
               <label>Jumlah Benih (Kg)</label>
               <input type="text" name="jumlah_benih" class="form-control"  value="<?php echo $sertifikasi['jumlah_benih'] ?>" required>
             </div>
           </div>
-
-          <div class="col-md-4">           
-            <div class="form-group">
-              <label>No. Sumber</label>
-              <input type="text" name="nomor_sumber" class="form-control" value="<?php echo $sertifikasi['nomor_sumber'] ?>" required>
-            </div>
-           </div>
-
-           <div class="col-md-4">           
-            <div class="form-group">
-              <label>No. Kelompok Benih</label>
-              <input type="text" name="no_kelompok_benih" class="form-control" value="<?php echo $sertifikasi['no_kelompok_benih'] ?>" required>
-            </div>
-           </div>
         </div>
 
         <h4 style="font-weight: bold;"></h4>

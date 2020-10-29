@@ -231,7 +231,7 @@
           </div>
           <div class="col-md-4">           
             <div class="form-group">
-              <label>No. Sumber Benih</label>
+              <label>Sumber Benih</label>
               <input type="text" name="nomor_sumber" class="form-control" required>
             </div>
            </div>

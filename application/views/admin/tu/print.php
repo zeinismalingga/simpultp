@@ -107,7 +107,7 @@
 	</div>
 
 	<div style="float: right;">
-		<p>Samarinda, <?php echo tgl_indo($tu['tgl_pengiriman_contoh_benih']) ?></p>
+		<p>Samarinda, <?php echo tgl_indo($tu['tgl_tu']) ?></p>
 		<p>Pengirim Contoh Benih</p>
 		<p style="margin-top: 90px">..............................................</p>
 	</div>
@@ -115,7 +115,7 @@
 	</div>
 
 	<script>
-		// window.print();
+		window.print();
 	</script>
 </body>
 </html>

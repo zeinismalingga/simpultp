@@ -184,7 +184,7 @@
 		<div style="float: right;">
 			<table border="1 solid black">
 				<td style="line-height: 1">No : <?php echo $sertifikasi['no_induk'] ?> <br>
-				MT : 2019/2020</td>
+				MT : <?php echo $sertifikasi['tahun_mt'] ?></td>
 			</table>
 		</div>
 

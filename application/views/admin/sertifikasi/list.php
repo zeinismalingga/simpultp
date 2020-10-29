@@ -27,7 +27,7 @@
           
           <a href="<?php echo base_url("$class/add") ?>" class="btn btn-success pull-right">Tambah</a>
           
-          <a style="margin-right: 10px" href="<?php echo base_url("$class/add") ?>" class="btn btn-default pull-right">Export Excel</a><br><br>
+          <a style="margin-right: 10px" href="<?php echo base_url("$class/export_excel/") ?>" class="btn btn-default pull-right">Export ke Excel</a><br><br>
 
           
           <div class="row">
@@ -36,7 +36,7 @@
                 <thead>
                   <th>No</th>
                   <th>No. Induk</th>
-                  <th>No. Sumber</th>
+                  <th>No. Kelompok Benih</th>
                   <th>Komoditas</th>
                   <th>Varietas</th>
                   <th>Pemohon</th>
@@ -50,7 +50,7 @@
                     <tr>
                       <td><?php echo $no; ?></td>
                       <td><?php echo $sertifikasi_item['no_induk']; ?></td>
-                      <td><?php echo $sertifikasi_item['nomor_sumber']; ?></td>
+                      <td><?php echo $sertifikasi_item['no_kelompok_benih']; ?></td>
                       <td><?php echo ucwords($sertifikasi_item['nama_jenis']); ?></td>
                       <td><?php echo $sertifikasi_item['nama_varietas']; ?></td>
                       <td><?php echo $sertifikasi_item['pemohon']; ?></td>

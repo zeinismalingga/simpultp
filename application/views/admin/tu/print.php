@@ -73,7 +73,7 @@
 
 	<div class="row">
 		<div class="col-md-4 offset-md-8">
-			<table class="table table-bordered">
+			<table class="table table-borderless">
 				<tr>
 					<td width="1%"><div class='box red'><?php echo ($tu['kadar_air'] == 1) ? $check : '' ?></div></td>
 					<td><span style="font-weight: bold;">Kadar Air</span></td>

@@ -115,7 +115,21 @@ $config = array(
                         'rules' => 'required'
                 ),
         ),
+        'tu_apbn/edit' => array(
+            array(
+                        'field' => 'no_tu',
+                        'label' => 'No TU',
+                        'rules' => 'required'
+                ),
+        ),
         'tu_apbd/add' => array(
+            array(
+                        'field' => 'no_tu',
+                        'label' => 'No TU',
+                        'rules' => 'required'
+                ),
+        ),
+        'tu_apbd/edit' => array(
             array(
                         'field' => 'no_tu',
                         'label' => 'No TU',

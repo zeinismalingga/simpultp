@@ -40,6 +40,23 @@ class Tu_apbd extends MY_Controller {
 		}			
 	}
 
+	public function edit($id){
+		$data['tu'] = $this->tu_apbd_model->get_all($id);
+
+		$data['id_tu'] = $id;
+
+		if($this->form_validation->run() === FALSE){	
+			$data['class'] = $this->class;
+
+			$this->template->load('admin/template/template', 'admin/tu/edit', $data);
+		}else{			
+
+			$this->tu_apbn_model->edit($id);
+			redirect('tu_apbd/list_tu');		
+		}
+			
+	}
+
 	public function add_asal($id_tu){
 		$cek_no = $this->tu_apbd_model->cek_asal($id_tu);
 

@@ -67,13 +67,33 @@
 		<p>Pengujian yang diperlukan : </p>
 	</div>
 
+	<?php 
+	$check = '<span style="padding-left: 30px;font-size: 20px">&#10004;</span>';	
+	?>
 
-	<div style="float: right;">
-		<div class='box red'></div>
-		<div class='box red'></div>
-		<div class='box red'></div>
-		<div class='box red'></div>
+	<div class="row">
+		<div class="col-md-4 offset-md-8">
+			<table class="table table-bordered">
+				<tr>
+					<td width="1%"><div class='box red'><?php echo ($tu['kadar_air'] == 1) ? $check : '' ?></div></td>
+					<td><span style="font-weight: bold;">Kadar Air</span></td>
+				</tr>
+				<tr>
+					<td width="1%"><div class='box red'><?php echo ($tu['kemurnian'] == 1) ? $check : '' ?></div></td>
+					<td><span style="font-weight: bold;">Kemurnian</span></td>
+				</tr>
+				<tr>
+					<td width="1%"><div class='box red'><?php echo ($tu['daya_berkecambah'] == 1) ? $check : '' ?></div></td>
+					<td><span style="font-weight: bold;">Daya Berkecambah</span></td>
+				</tr>
+				<tr>
+					<td width="1%"><div class='box red'></div></td>
+					<td><span style="font-weight: bold;">.........................</span></td>
+				</tr>
+			</table>
+		</div>
 	</div>
+	
 
 	<div style="clear: both;"></div>
 

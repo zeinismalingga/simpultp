@@ -16,21 +16,59 @@
       </div>
       <div class="box-body">
 
-        <a href='<?php echo base_url("$class/list_sertifikasi") ?>' class="btn btn-danger pull-right">Kembali</a><br><br>
+        <a href='<?php echo base_url("$class/list_tu") ?>' class="btn btn-danger pull-right">Kembali</a><br><br>
 
         <p><?php echo validation_errors() ?></p>
 
         <?php echo form_open("$class/add/$id_sertifikasi") ?>
 
         <div class="row">
-
-          <div class="col-md-4">           
+          <div class="col-md-3">           
             <div class="form-group">
               <label>Nomor TU</label>
               <input type="text" name="no_tu" class="form-control" required>
             </div>
-           </div> 
+          </div>
 
+          <div class="col-md-3">           
+            <div class="form-group">
+              <label>Kadar Air</label>
+              <select class="form-control" name="kadar_air">
+                <option selected disabled>Pilih</option>
+                <option value="1">Ya</option>
+                <option value="0">Tidak</option>
+              </select>
+            </div>
+          </div>
+          <div class="col-md-3">           
+            <div class="form-group">
+              <label>Kemurnian</label>
+              <select class="form-control" name="kemurnian">
+                <option selected disabled>Pilih</option>
+                <option value="1">Ya</option>
+                <option value="0">Tidak</option>
+              </select>
+            </div>
+          </div>
+          <div class="col-md-3">           
+            <div class="form-group">
+              <label>Daya Berkecambah</label>
+              <select class="form-control" name="daya_berkecambah">
+                <option selected disabled>Pilih</option>
+                <option value="1">Ya</option>
+                <option value="0">Tidak</option>
+              </select>
+            </div>
+          </div> 
+        </div>
+
+        <div class="row">
+          <div class="col-md-3">           
+            <div class="form-group">
+              <label>Tanggal TU</label>
+              <input type="text" name="tgl_tu" class="form-control datepicker" required>
+            </div>
+          </div> 
         </div>
 
         </div>

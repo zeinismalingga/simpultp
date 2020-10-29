@@ -27,7 +27,7 @@
           
           <a href="<?php echo base_url("$class/add") ?>" class="btn btn-success pull-right">Tambah</a>
           
-          <a href="<?php echo base_url("$class/add") ?>" class="btn btn-default pull-right">Export Excel</a><br><br>
+          <a style="margin-right: 10px" href="<?php echo base_url("$class/add") ?>" class="btn btn-default pull-right">Export Excel</a><br><br>
 
           
           <div class="row">

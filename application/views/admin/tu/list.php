@@ -34,8 +34,7 @@
                   <th>No. TU</th>
                   <th>Produsen</th>
                   <th>Alamat</th>
-                  <th>Varietas</th>
-                  <th>Tanggal Panen</th>                  
+                  <th>Varietas</th>                 
                   <th>Aksi</th>
                 </thead>
                 <tbody>
@@ -48,10 +47,11 @@
                       <td><?php echo $sertifikasi_item['produsen_benih']; ?></td>
                       <td><?php echo $sertifikasi_item['alamat']; ?></td>
                       <td><?php echo $sertifikasi_item['nama_varietas']; ?></td>
-                      <td><?php echo $sertifikasi_item['tgl_panen']; ?></td>
                       <td>
-                        <a href="<?php echo base_url("$class/add_asal/". $sertifikasi_item["$id_tu"]) ?>" class="btn btn-xs btn-default">BERI NOMOR ASAL</a>
+                        <a href="<?php echo base_url("$class/edit/". $sertifikasi_item["$id_tu"]) ?>" class="btn btn-xs btn-primary">EDIT</a>
                         <a target="_blank" href="<?php echo base_url("$class/print/". $sertifikasi_item["$id_tu"]) ?>" class="btn btn-xs btn-success">PRINT</a>
+                        <a href="<?php echo base_url("$class/add_asal/". $sertifikasi_item["$id_tu"]) ?>" class="btn btn-xs btn-default">BERI NOMOR ASAL</a>
+                        
                       </td>
                     </tr>
                     <?php $no++ ?>

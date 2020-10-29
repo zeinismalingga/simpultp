@@ -5,8 +5,24 @@ class Tu_apbn_model extends CI_Model {
 		$data = array(
 			'id_sertifikasi' => $id_sertifikasi,
 			'no_tu' => $this->input->post('no_tu'),
+			'kadar_air' => $this->input->post('kadar_air'),
+			'kemurnian' => $this->input->post('kemurnian'),
+			'daya_berkecambah' => $this->input->post('daya_berkecambah'),
+			'tgl_tu' => $this->input->post('tgl_tu'),
 		);		
 		return $this->db->insert('tu_apbn', $data);
+	}
+
+	public function edit($id){
+		$data = array(
+			'no_tu' => $this->input->post('no_tu'),
+			'kadar_air' => $this->input->post('kadar_air'),
+			'kemurnian' => $this->input->post('kemurnian'),
+			'daya_berkecambah' => $this->input->post('daya_berkecambah'),
+			'tgl_tu' => $this->input->post('tgl_tu'),
+		);		
+		$this->db->where('id_tu_apbn', $id);
+		return $this->db->update('tu_apbn', $data);
 	}
 
 	

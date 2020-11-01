@@ -57,17 +57,17 @@
                       <td><?php echo $sertifikasi_item['alamat']; ?></td>
                       <td><?php echo $sertifikasi_item['luas']; ?> Ha</td>
                       <td>
-                        <a target="_blank" href="<?php echo base_url("$class/print/". $sertifikasi_item['id_sertifikasi']) ?>" class="btn btn-xs btn-success">PRINT REKOMENDASI</a><br>
+                        <a target="_blank" href="<?php echo base_url("sertifikasi_apbn/print/". $sertifikasi_item['id_sertifikasi']) ?>" class="btn btn-xs btn-success">PRINT REKOMENDASI</a><br>
 
-                        <a target="_blank" href="<?php echo base_url("$class/print_pemlab1/". $sertifikasi_item['id_sertifikasi']) ?>" class="btn btn-xs btn-success">PRINT PEMLAP 1</a><br>
+                        <a target="_blank" href="<?php echo base_url("sertifikasi_apbn/print_pemlab1/". $sertifikasi_item['id_sertifikasi']) ?>" class="btn btn-xs btn-success">PRINT PEMLAP 1</a><br>
 
-                        <a target="_blank" href="<?php echo base_url("$class/print_pemlab2/". $sertifikasi_item['id_sertifikasi']) ?>" class="btn btn-xs btn-success">PRINT PEMLAP 2</a><br>
+                        <a target="_blank" href="<?php echo base_url("sertifikasi_apbn/print_pemlab2/". $sertifikasi_item['id_sertifikasi']) ?>" class="btn btn-xs btn-success">PRINT PEMLAP 2</a><br>
 
-                        <a target="_blank" href="<?php echo base_url("$class/print_pemlab3/". $sertifikasi_item['id_sertifikasi']) ?>" class="btn btn-xs btn-success">PRINT PEMLAP 3</a><br>
+                        <a target="_blank" href="<?php echo base_url("sertifikasi_apbn/print_pemlab3/". $sertifikasi_item['id_sertifikasi']) ?>" class="btn btn-xs btn-success">PRINT PEMLAP 3</a><br>
 
-                        <a target="_blank" href="<?php echo base_url("$class/print_llhp/". $sertifikasi_item['id_sertifikasi']) ?>" class="btn btn-xs btn-success">PRINT LLHP</a><br>
+                        <a target="_blank" href="<?php echo base_url("sertifikasi_apbn/print_llhp/". $sertifikasi_item['id_sertifikasi']) ?>" class="btn btn-xs btn-success">PRINT LLHP</a><br>
 
-                        <a target="_blank" href="<?php echo base_url("$class/print_sertifikat/". $sertifikasi_item['id_sertifikasi']) ?>" class="btn btn-xs btn-success">PRINT SERTIFIKAT</a><br>
+                        <a target="_blank" href="<?php echo base_url("sertifikasi_apbn/print_sertifikat/". $sertifikasi_item['id_sertifikasi']) ?>" class="btn btn-xs btn-success">PRINT SERTIFIKAT</a><br>
 
                         <a target="_blank" href="<?php echo base_url("pelabelan_benih/list/". $sertifikasi_item['id_sertifikasi']) ?>" class="btn btn-xs btn-primary">PELABELAN BENIH</a><br>
 

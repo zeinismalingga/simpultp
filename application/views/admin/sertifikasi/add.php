@@ -168,7 +168,7 @@
            <div class="col-md-4">           
             <div class="form-group">
               <label>Kampung</label>
-              <input type="text" name="kampung" class="form-control">
+              <input type="text" name="kampung" class="form-control" required>
             </div>
            </div>
 
@@ -184,7 +184,7 @@
           <div class="col-md-6">           
             <div class="form-group">
               <label>Kota/Kabupaten</label>
-              <select name="id_kabupaten" id="pilih_kota" class="form-control select2">
+              <select name="id_kabupaten" id="pilih_kota" class="form-control select2" required>
               <option disabled selected value>Pilih Kota/Kabupaten</option>
               <?php foreach($kotas as $kota): ?>            
                 <option value="<?php echo $kota['id_kota'] ?>"><?php echo strtoupper($kota['nama_kota']) ?></option>
@@ -196,7 +196,7 @@
           <div class="col-md-6">           
             <div class="form-group">
               <label>Kecamatan</label>
-              <select name="id_kecamatan" id="pilih_kecamatan" class="form-control select2">
+              <select name="id_kecamatan" id="pilih_kecamatan" class="form-control select2" required>
               <option disabled selected value>Pilih Kecamatan</option>
               </select>
             </div>

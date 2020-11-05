@@ -39,7 +39,7 @@ class Tu_apbn_model extends CI_Model {
         return $query->row_array();
     }
 
-    public function get_all($id){ 
+    public function get_all($id = null){ 
     	if($id == NULL){
     		$query = $this->db->query("SELECT * FROM sertifikasi, tu_apbn, varietas WHERE sertifikasi.id_sertifikasi = tu_apbn.id_sertifikasi AND varietas.id_varietas = sertifikasi.id_varietas");		
 			return $query->result_array();

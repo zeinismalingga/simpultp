@@ -12,7 +12,7 @@ class Tu_apbd extends MY_Controller {
 	}
 	
 	public function list_tu(){
-		$data['sertifikasi'] = $this->tu_apbd_model->get_all(NULL, $this->anggaran);
+		$data['sertifikasi'] = $this->tu_apbd_model->get_all();
 		$data['class'] = $this->class;
 		$data['anggaran'] = "APBD";
 		$data['id_tu'] = "id_tu_apbd";

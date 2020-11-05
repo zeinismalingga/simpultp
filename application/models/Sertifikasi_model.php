@@ -132,9 +132,15 @@ class Sertifikasi_model extends CI_Model {
 	}
 
 	public function get_llhp($id, $anggaran){
-		$query = $this->db->query("SELECT * FROM sertifikasi, varietas, jenis_varietas, kota, kecamatan, kelas_benih, kelas_benih2, sertifikasi_apbn, tu_apbn, lab, lab_apbn, musim_tanam WHERE sertifikasi.id_sertifikasi = $id AND sertifikasi.id_jenis_varietas = jenis_varietas.id_jenis_varietas AND sertifikasi.id_varietas = varietas.id_varietas AND sertifikasi.id_kelas_benih = kelas_benih.id_kelas_benih AND sertifikasi.id_kabupaten = kota.id_kota AND sertifikasi.id_kecamatan = kecamatan.id_kecamatan AND sertifikasi.id_kelas_benih2 = kelas_benih2.id_kelas_benih2 AND sertifikasi.id_sertifikasi = sertifikasi_apbn.id_sertifikasi AND sertifikasi_apbn.id_sertifikasi = tu_apbn.id_sertifikasi AND tu_apbn.id_tu_apbn = lab_apbn.id_tu_apbn AND lab_apbn.id_lab_apbn = lab.id_lab_anggaran AND sertifikasi.id_musim_tanam = musim_tanam.id_musim_tanam");
-
+		if($anggaran == 1){
+			$query = $this->db->query("SELECT * FROM sertifikasi, varietas, jenis_varietas, kota, kecamatan, kelas_benih, kelas_benih2, tu_apbn, lab, lab_apbn, musim_tanam WHERE sertifikasi.id_sertifikasi = $id AND sertifikasi.id_jenis_varietas = jenis_varietas.id_jenis_varietas AND sertifikasi.id_varietas = varietas.id_varietas AND sertifikasi.id_kelas_benih = kelas_benih.id_kelas_benih AND sertifikasi.id_kabupaten = kota.id_kota AND sertifikasi.id_kecamatan = kecamatan.id_kecamatan AND sertifikasi.id_kelas_benih2 = kelas_benih2.id_kelas_benih2 AND sertifikasi.id_sertifikasi = tu_apbn.id_sertifikasi AND tu_apbn.id_tu_apbn = lab_apbn.id_tu_apbn AND lab_apbn.id_lab_apbn = lab.id_lab_anggaran AND sertifikasi.id_musim_tanam = musim_tanam.id_musim_tanam");
+		
 			return $query->row_array();
+		}else{
+			$query = $this->db->query("SELECT * FROM sertifikasi, varietas, jenis_varietas, kota, kecamatan, kelas_benih, kelas_benih2, tu_apbd, lab, lab_apbd, musim_tanam WHERE sertifikasi.id_sertifikasi = $id AND sertifikasi.id_jenis_varietas = jenis_varietas.id_jenis_varietas AND sertifikasi.id_varietas = varietas.id_varietas AND sertifikasi.id_kelas_benih = kelas_benih.id_kelas_benih AND sertifikasi.id_kabupaten = kota.id_kota AND sertifikasi.id_kecamatan = kecamatan.id_kecamatan AND sertifikasi.id_kelas_benih2 = kelas_benih2.id_kelas_benih2 AND sertifikasi.id_sertifikasi = tu_apbd.id_sertifikasi AND tu_apbd.id_tu_apbd = lab_apbd.id_tu_apbd AND lab_apbd.id_lab_apbd = lab.id_lab_anggaran AND sertifikasi.id_musim_tanam = musim_tanam.id_musim_tanam");
+		
+			return $query->row_array();
+		}
 	}
 
 	public function delete($id){

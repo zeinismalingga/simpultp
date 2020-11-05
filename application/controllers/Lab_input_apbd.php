@@ -52,7 +52,7 @@ class Lab_input_apbd extends MY_Controller {
 			//input lab 
 			$id_lab_anggaran = $this->lab_input_apbd_model->get_max_id();
 
-			$id_lab_anggaran = $id_lab_anggaran['id_lab_apbn'];	
+			$id_lab_anggaran = $id_lab_anggaran['id_lab_apbd'];	
 
 			// die($id_lab_anggaran);	
 

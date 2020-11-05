@@ -24,6 +24,8 @@
             <?php echo $this->session->flashdata('notif'); ?>
           </div>
           <?php endif ?>
+
+          <a href="<?php echo base_url("$class/export_excel/") ?>" class="btn btn-default pull-right">Export ke Excel</a><br><br>
           
           <div class="row">
             <div class="col-md-12">

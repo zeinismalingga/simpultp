@@ -28,7 +28,7 @@ class Lab_input_apbd extends MY_Controller {
 
 		if($cek_id){
 			$this->session->set_flashdata('notif', 'Data telah di input.');
-			redirect('lab_input_apbn/list_lab');
+			redirect('lab_input_apbd/list_lab');
 		}
 
 		$data['id_tu'] = $id_tu;
@@ -57,7 +57,7 @@ class Lab_input_apbd extends MY_Controller {
 			// die($id_lab_anggaran);	
 
 			$this->lab_model->add($id_lab_anggaran, 2);			
-			redirect('lab_input_apbn/list_lab');			
+			redirect('lab_input_apbd/list_lab');			
 		}
 	}
 	

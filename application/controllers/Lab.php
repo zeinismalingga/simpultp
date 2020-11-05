@@ -50,7 +50,12 @@ class Lab extends MY_Controller {
 	}
 
 	public function print($id_lab){
-		$data['lab'] = $this->lab_model->get_all($id_lab);
+
+		$lab = $this->lab_model->get_all($id_lab);
+
+		$anggaran = $lab['anggaran'];
+
+		$data['lab'] = $this->lab_model->print($id_lab, $anggaran);
 	
 		$this->load->view('admin/lab/print', $data);
 	}

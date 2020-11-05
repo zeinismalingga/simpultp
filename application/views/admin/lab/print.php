@@ -133,7 +133,7 @@
 						<th>No. Lab</th>
 					</tr>
 					<tr>
-						<td>TKS. 01</td>
+						<td><?php echo $lab['no_tu'] ?></td>
 						<td><?php echo $lab['no_lab'] ?></td>
 					</tr>					
 				</table>

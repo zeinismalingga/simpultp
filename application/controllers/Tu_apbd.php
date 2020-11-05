@@ -62,7 +62,7 @@ class Tu_apbd extends MY_Controller {
 
 		if($cek_no){
 			$this->session->set_flashdata('notif', 'SERTIFIKASI SUDAH DIBERI NO ASAL.');
-			redirect('tu_apbn/list_tu');
+			redirect('tu_apbd/list_tu');
 		}
 
 		// nomor

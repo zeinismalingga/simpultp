@@ -45,12 +45,12 @@
                       <td><?php echo ucwords($sertifikasi_item['nama_jenis']); ?></td>
                       <td><?php echo $sertifikasi_item['nama_varietas']; ?></td>
                       <td><?php echo $sertifikasi_item['singkatan']; ?></td>
-
-                      <?php if(!isset($sertifikasi_item["$id_lab"])): ?>
                       <td>
-                        <a href="<?php echo base_url("$class/add/". $sertifikasi_item["$id_tu"]) ?>" class="btn btn-xs btn-primary">INPUT DATA</a>
+                        <?php if(!isset($sertifikasi_item["$id_lab"])): ?>
+                          <a href="<?php echo base_url("$class/add/". $sertifikasi_item["$id_tu"]) ?>" class="btn btn-xs btn-primary">INPUT DATA</a>
+                        <?php endif ?>
                       </td>
-                    <?php endif ?>
+                    
                     </tr>
                     <?php $no++ ?>
                 <?php endforeach; ?>

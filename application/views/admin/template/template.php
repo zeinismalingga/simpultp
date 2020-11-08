@@ -327,6 +327,7 @@
       orientation: 'bottom',
       zIndexOffset: '100',
       format: 'yyyy-mm-dd',
+      todayHighlight : true,
     }).attr("autocomplete", "off");
    
    });

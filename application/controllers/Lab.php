@@ -44,7 +44,7 @@ class Lab extends MY_Controller {
 	public function delete($id_lab){
 		$lab = $this->lab_model->get_all($id_lab);
 
-		$this->lab_model->delete($id_lab, $lab['id_lab_anggaran']);
+		$this->lab_model->delete($id_lab, $lab['anggaran']);
 	
 		redirect('lab/list_lab');
 	}

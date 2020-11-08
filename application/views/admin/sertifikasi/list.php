@@ -76,7 +76,12 @@
                         <a href="<?php echo base_url("$class/delete/". $sertifikasi_item['id_sertifikasi']) ?>" class="btn btn-xs btn-danger" onclick="return confirm('Apakah anda yakin ?');">DELETE</a><br>
                         
                         <?php if($this->session->userdata('level') == "tu" OR $this->session->userdata('level') == "admin" ): ?>
-                        <a href="<?php echo base_url("$class_tu/add/". $sertifikasi_item['id_sertifikasi']) ?>" class="btn btn-xs btn-default">BERI NOMOR TU</a>
+
+                          <?php if(!isset($sertifikasi_item['no_tu'])): ?>
+                          <a href="<?php echo base_url("$class_tu/add/". $sertifikasi_item['id_sertifikasi']) ?>" class="btn btn-xs btn-default">BERI NOMOR TU</a>
+
+                          <?php endif ?>
+
                         <?php endif ?>
                         <br>
                       </td>

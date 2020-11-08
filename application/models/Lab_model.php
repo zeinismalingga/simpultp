@@ -74,7 +74,7 @@ class Lab_model extends CI_Model {
 	}
 
 	public function delete($id, $id_anggaran){
-		if($id_anggaran === 1){
+		if($id_anggaran == 1){
 			$query = $this->db->query("DELETE lab, lab_apbn FROM lab, lab_apbn WHERE lab_apbn.id_lab_apbn = lab.id_lab_anggaran AND lab.id_lab = $id");
 			return $query;
 		}else{

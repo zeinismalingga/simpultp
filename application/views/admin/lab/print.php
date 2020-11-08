@@ -8,6 +8,10 @@
 
 	<style>
 
+		tr td > p:first-of-type {
+  			display: inline;
+		}	
+
 		.baris{
 			line-height: 0.4;
 		}
@@ -186,25 +190,26 @@
 					<td><?php echo $lab['benih_mati'] ?></td>
 				</tr>
 				<tr>
-					<td rowspan="8">Metode KA :<?php echo $lab['metode_ka'] ?></td>
+					<td rowspan="8">Metode KA : <?php echo $lab['metode_ka'] ?></td>
 				</tr>
 				<tr>
-					<td colspan="3" rowspan="2">Metode Kemurnian: <?php echo $lab['metode_kemurnian'] ?></td>
-					<td colspan="8" rowspan="1">Ket : <?php echo $lab['ket'] ?></td>
+					<td colspan="4" rowspan="2">Metode Kemurnian: <?php echo $lab['metode_kemurnian'] ?></td>
+					<td colspan="1" rowspan="1">Ket</td>
+					<td colspan="5"><p><?php echo $lab['ket'] ?></p>
 				</tr>
 				<tr>
-					<td colspan="8">Suhu : <?php echo $lab['suhu'] ?>
-					</td>
+					<td colspan="1">Suhu</td>
+					<td colspan="5">: <?php echo $lab['suhu'] ?></td>
 				</tr>
 				<tr>
-					<td colspan="3" rowspan="2">Benih Gulma : <?php echo $lab['benih_gulma_gr'] ?> gram : <?php echo $lab['benih_gulma_persen'] ?> %
+					<td colspan="4" rowspan="2">Benih Gulma : <?php echo $lab['benih_gulma_gr'] ?> gram : <?php echo $lab['benih_gulma_persen'] ?> %
 					</td>
-					<td colspan="8">Media/Metode DB : <?php echo $lab['media'] ?>
-					</td>
+					<td colspan="1">Media/Metode DB</td>
+					<td colspan="5">: <?php echo $lab['media'] ?></td>
 				</tr>
 				<tr>
-					<td colspan="8">Abnormalis : <?php echo $lab['abnormalis'] ?>
-					</td>
+					<td colspan="1">Abnormalis</td>
+					<td colspan="5">: <?php echo $lab['abnormalis'] ?></td>
 				</tr>
 			</table>
 		</div>
@@ -241,7 +246,7 @@
 
 	</div>	
 	<script>
-		window.print();
+		// window.print();
 	</script>
 </body>
 </html>

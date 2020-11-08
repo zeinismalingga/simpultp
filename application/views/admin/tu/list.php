@@ -52,7 +52,10 @@
                       <td>
                         <a href="<?php echo base_url("$class/edit/". $sertifikasi_item["$id_tu"]) ?>" class="btn btn-xs btn-primary">EDIT</a>
                         <a target="_blank" href="<?php echo base_url("$class/print/". $sertifikasi_item["$id_tu"]) ?>" class="btn btn-xs btn-success">PRINT</a>
+                        
+                        <?php if(!isset($sertifikasi_item["$id_input_lab"])): ?>
                         <a href="<?php echo base_url("$class/add_asal/". $sertifikasi_item["$id_tu"]) ?>" class="btn btn-xs btn-default">BERI NOMOR ASAL</a>
+                        <?php endif ?>
                         
                       </td>
                     </tr>

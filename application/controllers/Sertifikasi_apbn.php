@@ -15,7 +15,7 @@ class Sertifikasi_apbn extends MY_Controller {
 	}
 	
 	public function list_sertifikasi(){
-		$data['sertifikasi'] = $this->sertifikasi_model->get_all(NULL, $this->anggaran);
+		$data['sertifikasi'] = $this->sertifikasi_model->get_list($this->anggaran);
 		$data['class'] = $this->class;
 		$data['class_tu'] = "tu_apbn";
 		// dd($data['sertifikasi']);		
@@ -191,7 +191,7 @@ class Sertifikasi_apbn extends MY_Controller {
 			$sheet->setCellValue('N'.$i, $kelas_benih2['singkatan']);
 			$sheet->setCellValue('O'.$i, $sertifikasi_item['nama_varietas']);
 			$sheet->setCellValue('P'.$i, $sertifikasi_item['singkatan']);
-			$sheet->setCellValue('Q'.$i, $sertifikasi_item['tgl_pemlap_pendahuluan']);
+			$sheet->setCellValue('Q'.$i, tgl_indo($sertifikasi_item['tgl_pemlap_pendahuluan']));
 			$sheet->setCellValue('R'.$i, tgl_indo($sertifikasi_item['tgl_semai']));
 			$sheet->setCellValue('S'.$i, tgl_indo($sertifikasi_item['tgl_tanam']));
 			$sheet->setCellValue('T'.$i, tgl_indo($sertifikasi_item['tgl_pemlap_1']));

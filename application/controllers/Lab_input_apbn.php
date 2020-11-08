@@ -17,7 +17,8 @@ class Lab_input_apbn extends MY_Controller {
 		$data['anggaran'] = "APBN";
 		$data['id_tu'] = "id_tu_apbn";
 
-		// dd($data['sertifikasi']);		
+		// dd($data['sertifikasi']);
+
 		$this->template->load('admin/template/template', 'admin/lab_input/list', $data);
 	}
 
@@ -55,6 +56,9 @@ class Lab_input_apbn extends MY_Controller {
 			$id_lab_anggaran = $id_lab_anggaran['id_lab_apbn'];	
 
 			// die($id_lab_anggaran);	
+
+			// notif
+			$this->session->set_flashdata('notif', 'BERHASIL MENAMBAH LAB');
 
 			$this->lab_model->add($id_lab_anggaran, 1);			
 			redirect('lab_input_apbn/list_lab');			

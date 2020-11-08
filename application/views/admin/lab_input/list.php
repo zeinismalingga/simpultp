@@ -42,12 +42,15 @@
                     <tr>
                       <td><?php echo $no; ?></td>
                       <td><?php echo $sertifikasi_item['no_tu']; ?></td>
-                      <td><?php echo $sertifikasi_item['nama_jenis_tanaman']; ?></td>
+                      <td><?php echo ucwords($sertifikasi_item['nama_jenis']); ?></td>
                       <td><?php echo $sertifikasi_item['nama_varietas']; ?></td>
                       <td><?php echo $sertifikasi_item['singkatan']; ?></td>
+
+                      <?php if(!isset($sertifikasi_item['id_lab_apbn'])): ?>
                       <td>
                         <a href="<?php echo base_url("$class/add/". $sertifikasi_item["$id_tu"]) ?>" class="btn btn-xs btn-primary">INPUT DATA</a>
                       </td>
+                    <?php endif ?>
                     </tr>
                     <?php $no++ ?>
                 <?php endforeach; ?>

@@ -12,10 +12,11 @@ class Tu_apbd extends MY_Controller {
 	}
 	
 	public function list_tu(){
-		$data['sertifikasi'] = $this->tu_apbd_model->get_all();
+		$data['sertifikasi'] = $this->tu_apbd_model->get_list();
 		$data['class'] = $this->class;
 		$data['anggaran'] = "APBD";
 		$data['id_tu'] = "id_tu_apbd";
+		$data['id_input_lab'] = "id_input_lab_apbd";
 			
 		// dd($data['sertifikasi']);		
 		$this->template->load('admin/template/template', 'admin/tu/list', $data);
@@ -36,6 +37,7 @@ class Tu_apbd extends MY_Controller {
 			$this->template->load('admin/template/template', 'admin/tu/add_tu', $data);
 		}else{			
 			$this->tu_apbd_model->add($id_sertifikasi);
+			$this->session->set_flashdata('notif', 'BERHASIL MENAMBAH NO TU.');
 			redirect('tu_apbd/list_tu');		
 		}			
 	}

@@ -16,6 +16,17 @@ class Sertifikasi_model extends CI_Model {
 		}		
 	}
 
+	public function get_list($anggaran){
+		if($anggaran == 2){
+			$query = $this->db->query("SELECT *, sertifikasi.id_sertifikasi AS id_sertifikasi FROM sertifikasi LEFT JOIN tu_apbd ON sertifikasi.id_sertifikasi = tu_apbd.id_sertifikasi LEFT JOIN jenis_varietas ON sertifikasi.id_jenis_varietas LEFT JOIN varietas ON sertifikasi.id_varietas = varietas.id_varietas WHERE sertifikasi.jenis_anggaran = $anggaran GROUP BY sertifikasi.id_sertifikasi");		
+			return $query->result_array();	
+		}elseif($anggaran == 1){
+			$query = $this->db->query("SELECT *, sertifikasi.id_sertifikasi AS id_sertifikasi FROM sertifikasi LEFT JOIN tu_apbn ON sertifikasi.id_sertifikasi = tu_apbn.id_sertifikasi LEFT JOIN jenis_varietas ON sertifikasi.id_jenis_varietas LEFT JOIN varietas ON sertifikasi.id_varietas = varietas.id_varietas WHERE sertifikasi.jenis_anggaran = $anggaran GROUP BY sertifikasi.id_sertifikasi");		
+			return $query->result_array();	
+		} 
+				
+	}
+
 	public function add($anggaran){
 		$data = array(
 			'id_varietas' => $this->input->post('id_varietas'),

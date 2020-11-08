@@ -85,6 +85,7 @@ class Tu_apbn extends MY_Controller {
 		$no_asal = "TM. ". $no_asal;
 
 		$this->tu_apbn_model->add_asal($id_tu, $no_asal);
+		$this->session->set_flashdata('notif', 'BERHASIL MENAMBAH NO ASAL.');
 		redirect('tu_apbn/list_tu');	
 	}
 

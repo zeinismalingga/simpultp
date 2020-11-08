@@ -59,7 +59,7 @@ class Lab_input_apbn extends MY_Controller {
 			// die($id_lab_anggaran);	
 
 			// notif
-			$this->session->set_flashdata('notif', 'BERHASIL MENAMBAH LAB');
+			$this->session->set_flashdata('notif', 'BERHASIL MENAMBAH DATA LAB');
 
 			$this->lab_model->add($id_lab_anggaran, 1);			
 			redirect('lab_input_apbn/list_lab');			

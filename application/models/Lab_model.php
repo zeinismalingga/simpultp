@@ -90,10 +90,10 @@ class Lab_model extends CI_Model {
 
 	public function print($id_lab, $anggaran){ 
 		if($anggaran == 1){
-			$query = $this->db->query("SELECT * FROM sertifikasi,jenis_tanaman, varietas, lab, kelas_benih , tu_apbn, input_lab_apbn WHERE sertifikasi.id_jenis_tanaman = jenis_tanaman.id_jenis_tanaman AND sertifikasi.id_varietas = varietas.id_varietas AND sertifikasi.id_kelas_benih = kelas_benih.id_kelas_benih AND sertifikasi.id_sertifikasi = tu_apbn.id_sertifikasi AND tu_apbn.id_tu_apbn = input_lab_apbn.id_tu_apbn AND lab.id_lab = $id_lab");		
+			$query = $this->db->query("SELECT * FROM sertifikasi, tu_apbn, input_lab_apbn,lab_apbn, lab, jenis_tanaman, varietas, kelas_benih WHERE sertifikasi.id_jenis_tanaman = jenis_tanaman.id_jenis_tanaman AND sertifikasi.id_varietas = varietas.id_varietas AND sertifikasi.id_kelas_benih = kelas_benih.id_kelas_benih AND sertifikasi.id_sertifikasi = tu_apbn.id_sertifikasi AND tu_apbn.id_tu_apbn = input_lab_apbn.id_tu_apbn AND input_lab_apbn.id_tu_apbn = lab_apbn.id_tu_apbn AND lab_apbn.id_lab_apbn = lab.id_lab_anggaran AND lab.id_lab = $id_lab");		
 			return $query->row_array();	
 		}else{
-			$query = $this->db->query("SELECT * FROM sertifikasi,jenis_tanaman, varietas, lab, kelas_benih , tu_apbd, input_lab_apbd WHERE sertifikasi.id_jenis_tanaman = jenis_tanaman.id_jenis_tanaman AND sertifikasi.id_varietas = varietas.id_varietas AND sertifikasi.id_kelas_benih = kelas_benih.id_kelas_benih AND sertifikasi.id_sertifikasi = tu_apbd.id_sertifikasi AND tu_apbd.id_tu_apbd = input_lab_apbd.id_tu_apbd AND lab.id_lab = $id_lab");
+			$query = $this->db->query("SELECT * FROM sertifikasi, tu_apbd, input_lab_apbd,lab_apbd, lab, jenis_tanaman, varietas, kelas_benih WHERE sertifikasi.id_jenis_tanaman = jenis_tanaman.id_jenis_tanaman AND sertifikasi.id_varietas = varietas.id_varietas AND sertifikasi.id_kelas_benih = kelas_benih.id_kelas_benih AND sertifikasi.id_sertifikasi = tu_apbd.id_sertifikasi AND tu_apbd.id_tu_apbd = input_lab_apbd.id_tu_apbd AND input_lab_apbd.id_tu_apbd = lab_apbd.id_tu_apbd AND lab_apbd.id_lab_apbd = lab.id_lab_anggaran AND lab.id_lab = $id_lab");
 			return $query->row_array();	
 		}		
 	}

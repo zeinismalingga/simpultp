@@ -147,7 +147,7 @@
            <div class="col-md-6">           
             <div class="form-group">
               <label>Keterangan</label>
-              <input type="text" name="ket" class="form-control" value="<?php echo $lab['ket'] ?>">
+              <textarea name="ket" id="ket" class="form-control"><?php echo $lab['ket'] ?></textarea>
             </div>  
            </div> 
 

@@ -147,7 +147,7 @@
            <div class="col-md-6">           
             <div class="form-group">
               <label>Keterangan</label>
-              <input type="text" name="ket" class="form-control" >
+              <textarea name="ket" id="ket" class="form-control"></textarea>
             </div>  
            </div> 
 

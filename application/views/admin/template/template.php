@@ -304,7 +304,6 @@
 <script src="<?php echo base_url() ?>assets/admin/bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
 <script src="<?php echo base_url() ?>assets/js/sertifikasi.js">
 </script>
-
 <script>
   $(function () {
     $('.sidebar-menu').tree();
@@ -331,7 +330,13 @@
     }).attr("autocomplete", "off");
    
    });
-  
+</script>
+<script src="https://cdn.ckeditor.com/4.15.0/basic/ckeditor.js"></script>
+<script>
+  CKEDITOR.replace('ket', {
+    toolbar : [],
+    height : 80,
+  });
 </script>
 
 </body>

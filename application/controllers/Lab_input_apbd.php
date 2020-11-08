@@ -16,7 +16,7 @@ class Lab_input_apbd extends MY_Controller {
 		$data['class'] = $this->class;
 		$data['anggaran'] = "APBD";
 		$data['id_tu'] = "id_tu_apbd";
-		$data['id_lab'] = "id_lab_apbd";
+		$data['id_lab'] = "id_input_lab_apbn";
 
 		// dd($data['sertifikasi']);		
 		$this->template->load('admin/template/template', 'admin/lab_input/list', $data);

@@ -46,7 +46,7 @@
                       <td><?php echo $sertifikasi_item['nama_varietas']; ?></td>
                       <td><?php echo $sertifikasi_item['singkatan']; ?></td>
 
-                      <?php if(!isset($sertifikasi_item['id_lab_apbn'])): ?>
+                      <?php if(!isset($sertifikasi_item["$id_lab"])): ?>
                       <td>
                         <a href="<?php echo base_url("$class/add/". $sertifikasi_item["$id_tu"]) ?>" class="btn btn-xs btn-primary">INPUT DATA</a>
                       </td>

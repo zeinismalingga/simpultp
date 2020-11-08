@@ -16,6 +16,7 @@ class Lab_input_apbn extends MY_Controller {
 		$data['class'] = $this->class;
 		$data['anggaran'] = "APBN";
 		$data['id_tu'] = "id_tu_apbn";
+		$data['id_lab'] = "id_lab_apbn";
 
 		// dd($data['sertifikasi']);
 

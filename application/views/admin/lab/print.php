@@ -216,7 +216,7 @@
 		 <br>
 		 <br>
 		<div class="row">
-			<div class="col-sm-4">
+			<div class="col-sm-5">
 				<table class="table table-bordered">
 					<th>DAYA BERKECAMBAH : <?php echo $lab['kecambah_normal'] ?> %</th>
 				</table>
@@ -226,10 +226,17 @@
 					<p>Diverifikasi Oleh <span style="position: absolute;left: 180px">: Syarifah Inayah A., SP</span></p>
 					<p>Tanggal <span style="position: absolute;left: 180px">: <?php echo ($lab['tgl_selesai_pengujian']) ? tgl_indo($lab['tgl_selesai_pengujian']) : '' ?></span></p>
 					<p>Paraf <span style="position: absolute;left: 180px">: </span></p>
+
+					
+					<p style="margin-top: 50px">Keterangan :</p>
+					<p>*) : Perlakuan</p>
+					<p>PA = Pemanasan dengan oven pada suhu 50 &#8451</p>
+					<p>PE = Perendaman dengan larutan KN03 3%</p>
+					<p>**) = Penaburan dilakukan setelah benih dilakukan perlakuan</p>
 				</div>
 			</div>
 			
-			<div class="col-sm-8">
+			<div class="col-sm-7">
 				<div class="text-center">
 					<p>Samarinda, <?php echo ($lab['tgl_selesai_pengujian']) ? tgl_indo($lab['tgl_selesai_pengujian']) : '' ?></p>
 					<p style="margin-bottom: 100px">Manajer Teknis,</p>

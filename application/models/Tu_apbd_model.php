@@ -40,7 +40,7 @@ class Tu_apbd_model extends CI_Model {
 
    public function get_all($id = null){ 
     	if($id == NULL){
-    		$query = $this->db->query("SELECT * FROM sertifikasi, tu_apbd, varietas WHERE sertifikasi.id_sertifikasi = tu_apbd.id_sertifikasi AND varietas.id_varietas = sertifikasi.id_varietas");		
+    		$query = $this->db->query("SELECT * FROM sertifikasi INNER JOIN tu_apbd ON sertifikasi.id_sertifikasi = tu_apbd.id_sertifikasi INNER JOIN input_lab_apbd ON tu_apbd.id_tu_apbd = input_lab_apbd.id_tu_apbd INNER JOIN lab_apbd ON input_lab_apbd.id_tu_apbd = lab_apbd.id_tu_apbd INNER JOIN lab ON lab.id_lab_anggaran = lab_apbd.id_lab_apbd INNER JOIN varietas ON sertifikasi.id_varietas = varietas.id_varietas");		
 			return $query->result_array();
     	}else{
     		$query = $this->db->query("SELECT * FROM sertifikasi, tu_apbd, varietas, jenis_tanaman, kelas_benih WHERE sertifikasi.id_sertifikasi = tu_apbd.id_sertifikasi AND varietas.id_varietas = sertifikasi.id_varietas AND sertifikasi.id_jenis_tanaman = jenis_tanaman.id_jenis_tanaman AND sertifikasi.id_kelas_benih = kelas_benih.id_kelas_benih AND tu_apbd.id_tu_apbd = $id");		

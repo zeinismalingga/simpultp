@@ -21,6 +21,7 @@ class Sertifikasi_apbd extends MY_Controller {
 
 		$data['class'] = $this->class;
 		$data['class_tu'] = "tu_apbd";	
+		$data['anggaran'] = "APBD";	
 		$this->template->load('admin/template/template', 'admin/sertifikasi/list', $data);
 	}
 

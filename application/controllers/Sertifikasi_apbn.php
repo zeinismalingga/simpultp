@@ -18,6 +18,7 @@ class Sertifikasi_apbn extends MY_Controller {
 		$data['sertifikasi'] = $this->sertifikasi_model->get_list($this->anggaran);
 		$data['class'] = $this->class;
 		$data['class_tu'] = "tu_apbn";
+		$data['anggaran'] = "APBN";
 		// dd($data['sertifikasi']);		
 		$this->template->load('admin/template/template', 'admin/sertifikasi/list', $data);
 	}

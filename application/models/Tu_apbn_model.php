@@ -41,7 +41,7 @@ class Tu_apbn_model extends CI_Model {
 
     public function get_all($id = null){ 
     	if($id == NULL){
-    		$query = $this->db->query("SELECT * FROM sertifikasi, tu_apbn, varietas WHERE sertifikasi.id_sertifikasi = tu_apbn.id_sertifikasi AND varietas.id_varietas = sertifikasi.id_varietas");		
+    		$query = $this->db->query("SELECT * FROM sertifikasi INNER JOIN tu_apbn ON sertifikasi.id_sertifikasi = tu_apbn.id_sertifikasi INNER JOIN input_lab_apbn ON tu_apbn.id_tu_apbn = input_lab_apbn.id_tu_apbn INNER JOIN lab_apbn ON input_lab_apbn.id_tu_apbn = lab_apbn.id_tu_apbn INNER JOIN lab ON lab.id_lab_anggaran = lab_apbn.id_lab_apbn INNER JOIN varietas ON sertifikasi.id_varietas = varietas.id_varietas");		
 			return $query->result_array();
     	}else{
     		$query = $this->db->query("SELECT * FROM sertifikasi, tu_apbn, varietas, jenis_tanaman, kelas_benih WHERE sertifikasi.id_sertifikasi = tu_apbn.id_sertifikasi AND varietas.id_varietas = sertifikasi.id_varietas AND sertifikasi.id_jenis_tanaman = jenis_tanaman.id_jenis_tanaman AND sertifikasi.id_kelas_benih = kelas_benih.id_kelas_benih AND tu_apbn.id_tu_apbn = $id");		

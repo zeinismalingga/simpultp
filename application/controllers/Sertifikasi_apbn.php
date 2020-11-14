@@ -53,7 +53,6 @@ class Sertifikasi_apbn extends MY_Controller {
 		$data['musim_tanam'] = $this->master_model->get_musim_tanam();
 		$data['kelas_benih2'] = $this->master_model->get_kelas_benih2($data['sertifikasi']['id_kelas_benih2']);
 
-
 		$this->form_validation->set_error_delimiters('<div class="alert alert-danger">', '</div>');
 
 		if($this->form_validation->run() === FALSE){	

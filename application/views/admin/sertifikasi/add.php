@@ -111,7 +111,7 @@
            <div class="col-md-4">           
             <div class="form-group">
               <label>Varietas</label>
-              <select name="id_varietas" id="pilih_varietas" class="form-control select2">
+              <select name="id_varietas" id="pilih_varietas" class="form-control select2" required>
               <option selected value>Pilih Varietas</option>
               </select>
             </div>

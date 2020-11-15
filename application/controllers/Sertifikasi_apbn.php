@@ -78,13 +78,16 @@ class Sertifikasi_apbn extends MY_Controller {
 	}
 
 	public function print_llhp($id){
-		$data['sertifikasi'] = $this->sertifikasi_model->get_llhp($id, $this->anggaran);	
+		$anggaran = $this->sertifikasi_model->get_all($id)['jenis_anggaran'];
+		$data['sertifikasi'] = $this->sertifikasi_model->get_llhp($id, $anggaran);
 	
 		$this->load->view('admin/sertifikasi/print_llhp', $data);
 	}
 
 	public function print_sertifikat($id){
-		$data['sertifikasi'] = $this->sertifikasi_model->get_llhp($id, $this->anggaran);	
+		$anggaran = $this->sertifikasi_model->get_all($id)['jenis_anggaran'];
+		$data['sertifikasi'] = $this->sertifikasi_model->get_llhp($id, $anggaran);
+			
 		$this->load->view('admin/sertifikasi/print_sertifikat', $data);
 	}
 

@@ -32,6 +32,10 @@
 			line-height: 1;
 		}
 
+		.pertanaman > tbody > tr > td{
+			padding-left: 0;
+		}
+
 		.detail{
 			position: absolute;
 			left: 200px;
@@ -169,80 +173,99 @@
 	<p>Sehubungan dengan Permohonan Saudara No. ……………..Tanggal <?php echo tgl_indo($sertifikasi['tgl_kesimpulan']) ?></p>
 	<p>Bersama ini kami beritahukan sebagai berikut :</p>
 
-	<table class="table table-borderless">
+	<table class="table table-borderless pertanaman">
 		<tr>
 			<td style="text-decoration: underline;padding-left: 0px;">Pertanaman</td>
 		</tr>
 		<tr>
 			<td width="20%" style="padding-left: 0px;">Musim Tanam</td>
-			<td width="20%">: <?php echo $sertifikasi['tahun_mt'] ?></td>
+			<td width="1">:</td>
+			<td width="30%"><?php echo $sertifikasi['tahun_mt'] ?></td>
 			<td width="20%">Varietas</td>
-			<td >: <?php echo $sertifikasi['nama_varietas'] ?></td>
+			<td width="1">:</td>
+			<td ><?php echo $sertifikasi['nama_varietas'] ?></td>
 		</tr>
 		<tr>
 			<td style="padding-left: 0px;">Benih Sumber</td>
-			<td>: <?php echo $sertifikasi['pemohon'] ?></td>
+			<td>:</td>
+			<td style="line-height: 1"><?php echo $sertifikasi['pemohon'] ?></td>
 			<td>Luas Pertanaman</td>
-			<td>: <?php echo $sertifikasi['luas'] ?> Ha</td>
+			<td>:</td>
+			<td><?php echo $sertifikasi['luas'] ?> Ha</td>
 		</tr>
 		<tr>
 			<td style="padding-left: 0px;">Kelas Benih</td>
-			<td>: <?php echo $kelas_benih['singkatan'] ?></td>
+			<td>:</td>
+			<td><?php echo $kelas_benih['singkatan'] ?></td>
 			<td>Tanggal Semai</td>
-			<td>: <?php echo $sertifikasi['tgl_semai'] ?></td>
+			<td>:</td>
+			<td><?php echo $sertifikasi['tgl_semai'] ?></td>
 		</tr>
 		<tr>
 			<td style="padding-left: 0px;">Jumlah Benih</td>
-			<td>: <?php echo $sertifikasi['jumlah_benih'] ?></td>
+			<td>:</td>
+			<td><?php echo $sertifikasi['jumlah_benih'] ?></td>
 			<td>Tanggal Tanam</td>
-			<td>: <?php echo $sertifikasi['tgl_tanam'] ?></td>
+			<td>:</td>
+			<td><?php echo $sertifikasi['tgl_tanam'] ?></td>
 		</tr>
 		<tr>
 			<td style="padding-left: 0px;">Jenis Tanaman</td>
-			<td>: <?php echo ucwords($sertifikasi['nama_jenis']) ?></td>
+			<td>:</td>
+			<td><?php echo ucwords($sertifikasi['nama_jenis']) ?></td>
 		</tr>
 	</table>
 
 	<br>
 
-	<table class="table table-borderless">
+	<table class="table table-borderless pertanaman">
 		<tr>
 			<td style="text-decoration: underline;padding-left: 0px;">L o k a s i :</td>
 		</tr>
 		<tr>
 			<td width="20%" style="padding-left: 0px;">B l o k</td>
-			<td width="20%">: <?php echo ucwords($sertifikasi['blok']) ?></td>
+			<td width="1">:</td>
+			<td width="30%"><?php echo ucwords($sertifikasi['blok']) ?></td>
 			<td width="20%">Desa</td>
-			<td>: <?php echo ucwords($sertifikasi['desa']) ?></td>
+			<td width="1">:</td>
+			<td><?php echo ucwords($sertifikasi['desa']) ?></td>
 		</tr>
 
 		<?php if(!in_array($kabkot, $kota)): ?>
 		<tr>
 			<td style="padding-left: 0px;">Kecamatan</td>
-			<td>: <?php echo $sertifikasi['nama_kecamatan'] ?></td>
+			<td>:</td>
+			<td><?php echo $sertifikasi['nama_kecamatan'] ?></td>
 			<td>Kabupaten</td>
-			<td>: <?php echo ucwords($sertifikasi['nama_kota']) ?></td>
+			<td>:</td>
+			<td><?php echo ucwords($sertifikasi['nama_kota']) ?></td>
 		</tr>
 		<tr>
 			<td></td>
 			<td></td>
+			<td></td>
 			<td>Kota</td>
-			<td>: -</td>
+			<td>:</td>
+			<td>-</td>
 		</tr>
  		<?php endif; ?>
 
  		<?php if(in_array($kabkot, $kota)): ?>
 		<tr>
 			<td style="padding-left: 0px;">Kecamatan</td>
-			<td>: <?php echo $sertifikasi['nama_kecamatan'] ?></td>
+			<td>:</td>
+			<td><?php echo $sertifikasi['nama_kecamatan'] ?></td>
 			<td>Kabupaten</td>
-			<td>: -</td>
+			<td>:</td>
+			<td>-</td>
 		</tr>
 		<tr>
 			<td></td>
 			<td></td>
+			<td></td>
 			<td>Kota</td>
-			<td>: <?php echo ucwords($sertifikasi['nama_kota']) ?></td>
+			<td>:</td>
+			<td><?php echo ucwords($sertifikasi['nama_kota']) ?></td>
 		</tr>
 		<?php endif; ?>
 
@@ -252,14 +275,16 @@
 
 	<p style="line-height: 1">Berdasarkan pemeriksaan lapangan pendahuluan yang dilaksanakan oleh pengawas benih pada tanggal <?php echo $sertifikasi['tgl_kesimpulan'] ?> maka per mohonan saudara diterima sebagai areal perbanyakan benih Dengan :</p>
 
-	<table class="table table-borderless">
+	<table class="table table-borderless pertanaman">
 		<tr>
 			<td width="20%" style="padding-left: 0">Nomor Induk</td>
-			<td>: <?php echo $sertifikasi['no_induk'] ?></td>
+			<td width="1">:</td>
+			<td><?php echo $sertifikasi['no_induk'] ?></td>
 		</tr>
 		<tr>
 			<td style="padding-left: 0">Kelas Benih</td>
-			<td>: <?php echo $sertifikasi['singkatan'] ?></td>
+			<td>:</td>
+			<td><?php echo $sertifikasi['singkatan'] ?></td>
 		</tr>
 	</table>
 

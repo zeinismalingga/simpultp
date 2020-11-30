@@ -11,6 +11,10 @@
 			line-height: 0.4;
 		}
 
+		.pertanaman > tbody > tr > td{
+			padding-left: 0;
+		}
+
 		@page{
 			/*size: 330mm 210mm;*/
 			size: 210mm 297mm;
@@ -57,6 +61,12 @@
 		}
 		li{
 			line-height: normal;
+		}
+
+		hr{
+			border: 1px solid black;
+			margin-bottom: 2px;
+			margin-top: 2px;
 		}
 
 		@media print {
@@ -125,10 +135,9 @@
 		</div>	
 	</div>
 	<hr>
+	<hr>
+	<br>
 	<div class="content">
-
-
-
 	<?php
 		$kabkot = $sertifikasi['id_kabupaten'];
 		$kota = ['1,3,6'];
@@ -155,8 +164,8 @@
 		<p>Nomor : 521.211 / <span style="margin-left: 40px"></span>/PSBTPH/ <?php echo date_format($tgl_pemlap, "m") ?>. <?php echo date_format($tgl_pemlap, "Y") ?></p>
 	</div>
 
-	<table class="table table-bordered">
-		<tr>
+	<table class="table table-borderless">
+		<tr style="border-top: 2px solid black;border-bottom: 2px solid black;">
 			<td width="4%">No</td>
 			<td>Uraian</td>
 			<td>Jumlah</td>
@@ -180,34 +189,51 @@
 			<td>1 Lbr</td>
 			<td>diketahui dan dipergunakan sebagai</td>
 		</tr>
-		<tr>
+		<tr">
 			<td width="4%"></td>
 			<td><?php echo $sertifikasi['no_induk'] ?> / 2</td>
 			<td></td>
 			<td>mana mestinya</td>
 		</tr>
 	</table>
-
+	<hr>
 
 	</div>
 	
+	<br><br>
 
-	<div style="margin-left: 700px;margin-top: 50px">
-		<div class="text-center">
+	<div class="row">
+		<div class="col-sm-6">
+			<p>Tembusan :</p>
+			<table class="table table-borderless pertanaman">
+				<tr>
+					<td width="1"></td>
+					<td>Kepada Yth</td>
+				</tr>
+				<tr>
+					<td>1.</td>
+					<td>Pengawas Benih <?php echo $kabkot ?> <?php echo ucwords($sertifikasi['nama_kota']) ?></td>
+				</tr>
+				<tr>
+					<td></td>
+					<td>di- Samarinda</td>
+				</tr>
+				<tr>
+					<td>2.</td>
+					<td>Arsip</td>
+				</tr>
+			</table>
+		</div>
+		<div class="col-sm-2">
+		</div>
+		<div class="col-sm-4 text-center">
 			<p>Samarinda, <?php echo tgl_indo($sertifikasi['tgl_pemlap_1']) ?></p>
 			<p style="margin-bottom: 100px">Kepala Seksi Sertifikasi Dan Kultivar,</p>
 			<p style="text-decoration: underline;">Irma Masrurah, SP M.Si</p>
 			<p>NIP. 197704302008012012</p>
 		</div>
 	</div>
-
-	<div>
-		<p>Tembusan kepada Yth.</p>
-		<p>Pengawas Benih <?php echo $kabkot ?> <?php echo ucwords($sertifikasi['nama_kota']) ?></p>
-		<p>Arsip</p>
-	</div>
 		
-
 	<script>
 		window.print();
 	</script>

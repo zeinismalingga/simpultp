@@ -196,6 +196,16 @@
             </div>
           </div>
 
+          <div class="col-md-4">           
+            <div class="form-group">
+              <label>Hasil</label>
+              <select name="hasil" class="form-control select2">
+              <option select value="1">Lulus</option>
+              <option select value="0">Tidak Lulus</option>
+              </select>
+            </div>
+          </div>
+
         </div>
 
         </div>

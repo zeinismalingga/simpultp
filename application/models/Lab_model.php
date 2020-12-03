@@ -38,6 +38,7 @@ class Lab_model extends CI_Model {
 			'tgl_pengujian' => $this->input->post('tgl_pengujian'),
 			'tgl_selesai_pengujian' => $this->input->post('tgl_selesai_pengujian'),
 			'anggaran' => $id_anggaran,
+			'hasil' => $this->input->post('hasil'),
 		);		
 		return $this->db->insert('lab', $data);
 	}

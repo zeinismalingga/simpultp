@@ -56,7 +56,7 @@ class Tu_apbd extends MY_Controller {
 			$this->template->load('admin/template/template', 'admin/tu/edit', $data);
 		}else{			
 
-			$this->tu_apbn_model->edit($id);
+			$this->tu_apbd_model->edit($id);
 			redirect('tu_apbd/list_tu');		
 		}
 			

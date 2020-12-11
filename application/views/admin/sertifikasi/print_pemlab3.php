@@ -135,6 +135,7 @@
 		</div>	
 	</div>
 	<hr>
+	<br>
 	<div class="content">
 
 	<?php

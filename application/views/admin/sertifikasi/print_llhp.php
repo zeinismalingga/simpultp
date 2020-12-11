@@ -59,6 +59,12 @@
 			line-height: normal;
 		}
 
+		hr{
+			border: 1px solid black;
+			margin-bottom: 2px;
+			margin-top: 2px;
+		}
+
 		@media print {
 
 .col-sm-1, .col-sm-2, .col-sm-3, .col-sm-4, .col-sm-5, .col-sm-6, .col-sm-7, .col-sm-8, .col-sm-9, .col-sm-10, .col-sm-11, .col-sm-12 {
@@ -125,6 +131,7 @@
 		</div>	
 	</div>
 	<hr>
+	<br>
 	<div class="content">	
 
 		<p>Kepada Yth.</p>
@@ -137,9 +144,9 @@
 			<p>Nomor : 521.211 / <span style="margin-left: 15px"></span>/PSBTPH/11. <?php echo date('Y') ?></p>
 		</div>
 
-		<table class="table">
+		<table class="table table-borderless">
 			<thead>
-				<tr>
+				<tr style="border-top: 2px solid black;border-bottom: 2px solid black;">
 					<th>No</th>
 					<th>Urain</th>
 					<th></th>
@@ -158,6 +165,7 @@
 		</table>
 
 		<hr>
+		<br><br>
 
 		<div style="float: left;">
 			<p>Tembusan :</p>
@@ -177,7 +185,8 @@
 	</div>
 
 	
-	<hr>	
+	<hr>
+	<br>	
 
 	<div style="font-weight: bold;margin-top : 10px">
 		<p style="float: left;">RHLLPHD.6</p>

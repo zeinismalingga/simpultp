@@ -59,6 +59,12 @@
 			line-height: normal;
 		}
 
+		hr{
+			border: 1px solid black;
+			margin-bottom: 2px;
+			margin-top: 2px;
+		}
+
 		@media print {
 
 .col-sm-1, .col-sm-2, .col-sm-3, .col-sm-4, .col-sm-5, .col-sm-6, .col-sm-7, .col-sm-8, .col-sm-9, .col-sm-10, .col-sm-11, .col-sm-12 {
@@ -125,6 +131,7 @@
 		</div>	
 	</div>
 	<hr>
+	<br>
 	<div class="content">	
 
 	</div>

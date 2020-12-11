@@ -8,7 +8,8 @@
 
 	<style>
 		*{
-			line-height: 0.4;
+			line-height: 0.2;
+			font-size: 18px;
 		}
 
 		@page{
@@ -63,6 +64,12 @@
 			line-height: normal;
 		}
 
+		hr{
+			border: 1px solid black;
+			margin-bottom: 2px;
+			margin-top: 2px;
+		}
+
 		@media print {
 
 .col-sm-1, .col-sm-2, .col-sm-3, .col-sm-4, .col-sm-5, .col-sm-6, .col-sm-7, .col-sm-8, .col-sm-9, .col-sm-10, .col-sm-11, .col-sm-12 {
@@ -113,7 +120,7 @@
 	<div class="header">
 		<img src="<?php echo base_url() ?>/assets/images/ruhui.png" width="100" style="float: left">
 
-		<div style="font-weight: bold;text-align: center;" >
+		<div style="font-weight: bold;text-align: center;font-size: 21px" >
 			<p>PEMERINTAH PROVINSI KALIMANTAN TIMUR</p>
 			<p>DINAS PANGAN, TANAMAN PANGAN DAN HORTIKULTURA</p>
 			<p>UNIT PELAKSANA TEKNIS DINAS</p>
@@ -128,6 +135,7 @@
 			<p style="text-align: right;">KODE POS 71119</p>	
 		</div>	
 	</div>
+	<hr>
 	<hr>
 	<div class="content">
 
@@ -294,7 +302,7 @@
 		</tr>
 		<tr>
 			<td width="1%" style="padding-right: 0px;line-height: 1;padding-left: 0px;">a.</td>
-			<td style="line-height: 1">Areal penangkaran saudara akan kami batalkan apabila saudara tidak mengikuti petunjuk / ketentuan dari UPTD Pengawasan dan Sertifikasi Benih Tanaman Pangan dan Hortikultura.</td>
+			<td style="line-height: 1; padding-bottom: 0">Areal penangkaran saudara akan kami batalkan apabila saudara tidak mengikuti petunjuk / ketentuan dari UPTD Pengawasan dan Sertifikasi Benih Tanaman Pangan dan Hortikultura.</td>
 		</tr>
 		<tr>
 			<td width="1%" style="padding-right: 0px; line-height: 1;padding-left: 0px;">b.</td>

@@ -80,8 +80,19 @@ class Sertifikasi_apbn extends MY_Controller {
 	public function print_llhp($id){
 		$anggaran = $this->sertifikasi_model->get_all($id)['jenis_anggaran'];
 		$data['sertifikasi'] = $this->sertifikasi_model->get_llhp($id, $anggaran);
-	
-		$this->load->view('admin/sertifikasi/print_llhp', $data);
+
+		if($data['sertifikasi']){
+			$this->load->view('admin/sertifikasi/print_llhp', $data);
+		}else{
+			$this->session->set_flashdata('notif', 'Data Lab atau TU Belum diinput');
+
+			if($anggaran == '1'){
+				redirect("sertifikasi_apbn/list_sertifikasi");
+			}else{
+				redirect("sertifikasi_apbd/list_sertifikasi");
+			}
+			
+		}
 	}
 
 	public function print_sertifikat($id){

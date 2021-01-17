@@ -237,7 +237,7 @@ class Sertifikasi_apbd extends MY_Controller {
 		}
 		
 		$writer = new Xlsx($spreadsheet);
-		$filename = 'laporan-simpul';
+		$filename = 'laporan-sertifikasi-apbd';
 		
 		header('Content-Type: application/vnd.ms-excel');
 		header('Content-Disposition: attachment;filename="'. $filename .'.xlsx"'); 

@@ -9,15 +9,13 @@
 	<style>
 
 		@page{
-			/*f4*/
-			/*size: 330mm 210mm;*/
 
-			/*a4*/
-			/*size: 210mm 297mm;*/
+			/*a5*/
+			/*size: 148mm 210mm;*/
 		}
 
 		*{
-			font-size: 14px;
+			font-size: 20px;
 			line-height: 1.5;
 		}
 
@@ -43,7 +41,7 @@
 </head>
 <body>
 	
-	<div style="margin-top: 100px"></div>
+	<div style="margin-top: 5px"></div>
 	<div class="container">
 		
 	
@@ -59,11 +57,11 @@
 
 	<div style="clear: both;"></div>
 
-	<div style="margin-top: 30px">
+	<div style="margin-top: 20px">
 		<h4 style="text-decoration: underline;" class="text-center">CONTOH BENIH UNTUK PENGUJIAN DI LABORATORIUM</h4>
 	</div>
 
-	<div style="margin-top: 20px">
+	<div style="margin-top: 40px">
 		<p>Pengujian yang diperlukan : </p>
 	</div>
 

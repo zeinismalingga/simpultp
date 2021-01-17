@@ -62,6 +62,11 @@ class Tu_apbd extends MY_Controller {
 			
 	}
 
+	public function delete($id){
+		$this->tu_apbd_model->delete($id);
+		redirect('tu_apbd/list_tu');			
+	}
+
 	public function add_asal($id_tu){
 		$cek_no = $this->tu_apbd_model->cek_asal($id_tu);
 

@@ -25,6 +25,11 @@ class Tu_apbd_model extends CI_Model {
 		return $this->db->update('tu_apbd', $data);
 	}
 
+	public function delete($id){
+		$data = $this->db->where('id_tu_apbd', $id);
+		return $this->db->delete('tu_apbd', $data);		
+	}
+
 	public function add_asal($id_tu, $no_asal){
 		$data = array(
 			'id_tu_apbd' => $id_tu,

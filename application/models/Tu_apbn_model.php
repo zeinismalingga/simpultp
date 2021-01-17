@@ -25,6 +25,11 @@ class Tu_apbn_model extends CI_Model {
 		return $this->db->update('tu_apbn', $data);
 	}
 
+	public function delete($id){
+		$data = $this->db->where('id_tu_apbn', $id);
+		return $this->db->delete('tu_apbn', $data);		
+	}
+
 	
 	public function add_asal($id_tu, $no_asal){
 		$data = array(
@@ -51,7 +56,7 @@ class Tu_apbn_model extends CI_Model {
 	}
 
 	public function get_list(){ 
-    	$query = $this->db->query("SELECT *, tu_apbn.id_tu_apbn as id_tu_apbn FROM sertifikasi INNER JOIN tu_apbn ON sertifikasi.id_sertifikasi = tu_apbn.id_sertifikasi INNER JOIN varietas ON sertifikasi.id_varietas = varietas.id_varietas LEFT JOIN input_lab_apbn ON tu_apbn.id_tu_apbn = input_lab_apbn.id_tu_apbn");		
+    	$query = $this->db->query("SELECT *, tu_apbn.id_tu_apbn as id_tu_apbn FROM sertifikasi INNER JOIN tu_apbn ON sertifikasi.id_sertifikasi = tu_apbn.id_sertifikasi INNER JOIN varietas ON sertifikasi.id_varietas = varietas.id_varietas LEFT JOIN input_lab_apbn ON tu_apbn.id_tu_apbn = input_lab_apbn.id_tu_apbn LEFT JOIN lab_apbn ON lab_apbn.id_tu_apbn = input_lab_apbn.id_tu_apbn LEFT JOIN lab ON lab.id_lab_anggaran = lab_apbn.id_lab_apbn");		
 		return $query->result_array();	
 	}
 

@@ -64,6 +64,11 @@ class Tu_apbn extends MY_Controller {
 			
 	}
 
+	public function delete($id){
+		$this->tu_apbn_model->delete($id);
+		redirect('tu_apbn/list_tu');			
+	}
+
 
 
 	public function add_asal($id_tu){

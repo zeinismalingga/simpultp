@@ -102,7 +102,7 @@ class Tu_apbn extends MY_Controller {
 	}
 
 	public function export_excel(){
-		$tu = $this->tu_apbn_model->get_all();
+		$tu = $this->tu_apbn_model->get_list();
 
 		// dd($tu);
 
@@ -128,65 +128,98 @@ class Tu_apbn extends MY_Controller {
 		$spreadsheet = new Spreadsheet();
 		$sheet = $spreadsheet->getActiveSheet();
 		$sheet->setCellValue('A1', 'No');
-		$sheet->setCellValue('B1', 'No Asal Sertifikasi');
-		$sheet->setCellValue('C1', 'No TU');
-		$sheet->setCellValue('D1', 'No Lab');
-		$sheet->setCellValue('E1', 'Produsen Benih');
-		$sheet->setCellValue('F1', 'Alamat');
-		$sheet->setCellValue('G1', 'Varietas');
-		$sheet->setCellValue('H1', 'KB');
-		$sheet->setCellValue('I1', 'Tgl Panen');
-		$sheet->setCellValue('J1', 'Tanggal');
-		$sheet->setCellValue('J2', 'Penerimaan');
-		$sheet->setCellValue('K2', 'Pengeluaran');
-		$sheet->setCellValue('L1', 'Wadah');
-		$sheet->setCellValue('M1', 'Ton');
-		$sheet->setCellValue('N1', 'Tgl Selesai Kontrak');
-		$sheet->setCellValue('O1', 'KA');
-		$sheet->setCellValue('P1', 'BM');
-		$sheet->setCellValue('Q1', 'BTL');
-		$sheet->setCellValue('R1', 'KB');
-		$sheet->setCellValue('S1', 'CVL');
-		$sheet->setCellValue('T1', 'DB');
-		$sheet->setCellValue('U1', 'KET');
+		$sheet->setCellValue('B1', 'Pemohon/Produsen');
+		$sheet->setCellValue('C1', 'Blok');
+		$sheet->setCellValue('D1', 'Alamat');
+		$sheet->setCellValue('E1', 'Kampung');
+		$sheet->setCellValue('F1', 'Desa');
+		$sheet->setCellValue('G1', 'Kecamatan');
+		$sheet->setCellValue('H1', 'Kabupaten');
+		$sheet->setCellValue('I1', 'No Induk');
+		$sheet->setCellValue('J1', 'Luas Ha');
+		$sheet->setCellValue('K1', 'Sumber Benih');
+		$sheet->setCellValue('L1', 'Asal Benih');
+		$sheet->setCellValue('M1', 'Sumber / Nomor');
+		$sheet->setCellValue('N1', 'Kelas Benih');
+		$sheet->setCellValue('O1', 'Varietas');
+		$sheet->setCellValue('P1', 'Kelas Benih yang Dihasilkan');
+		$sheet->setCellValue('Q1', 'Tanggal Pendahuluan');
+		$sheet->setCellValue('R1', 'Tanggal');
+		$sheet->setCellValue('R2', 'Semai');
+		$sheet->setCellValue('S2', 'Tanam');
+		$sheet->setCellValue('T1', 'Ke I (SATU)');
+		$sheet->setCellValue('T2', 'Tanggal');
+		$sheet->setCellValue('U2', 'Luas Ha');
+		$sheet->setCellValue('V2', 'CVL %');
+		$sheet->setCellValue('W1', 'Ke II (DUA)');
+		$sheet->setCellValue('W2', 'Tanggal');
+		$sheet->setCellValue('X2', 'Luas Ha');
+		$sheet->setCellValue('Y2', 'CVL %');
+		$sheet->setCellValue('Z1', 'Ke III (TIGA)');
+		$sheet->setCellValue('Z2', 'Tanggal');
+		$sheet->setCellValue('AA2', 'Luas Ha');
+		$sheet->setCellValue('AB2', 'CVL %');
+		$sheet->setCellValue('AC1', 'Tanggal Panen');
+		$sheet->setCellValue('AD1', 'No. TU');
+		$sheet->setCellValue('AE1', 'Tanggal');
+		$sheet->setCellValue('AE2', 'Penerimaan');
+		$sheet->setCellValue('AF2', 'Pengeluaran');
+		$sheet->setCellValue('AG1', 'Wadah');
+		$sheet->setCellValue('AH1', 'Ton');
+		$sheet->setCellValue('AI1', 'Tgl Selesai Kontrak');
+		$sheet->setCellValue('AJ1', 'No. Lab');
+		$sheet->setCellValue('AK1', 'Kemurnian');
+		$sheet->setCellValue('AK2', 'Kadar Air (%)');
 
 		//load data
 		$i = 3;
 		$no = 1;
 		$array = 0;
-		foreach ($tu as $tu_item) {
+		foreach($tu as $tu_item) {
+			$kelas_benih2 = $this->master_model->get_kelas_benih2($tu_item['id_kelas_benih2']);
+
 			$sheet->setCellValue('A'.$i, $no++);
-			$sheet->setCellValue('B'.$i, $tu_item['no_induk']);
-			$sheet->setCellValue('C'.$i, $tu_item['no_tu']);
-			$sheet->setCellValue('D'.$i, $tu_item['no_lab']);
-			$sheet->setCellValue('E'.$i, $tu_item['produsen_benih']);
-			$sheet->setCellValue('F'.$i, $tu_item['alamat']);
-			$sheet->setCellValue('G'.$i, $tu_item['nama_varietas']);
-			$sheet->setCellValue('H'.$i, $tu_item['kotoran_benih']);
-			$sheet->setCellValue('I'.$i, tgl_indo($tu_item['tgl_panen']));
-			$sheet->setCellValue('J'.$i, '');
-			$sheet->setCellValue('K'.$i, '');
-			$sheet->setCellValue('L'.$i, $tu_item['jml_wadah']);
-			$sheet->setCellValue('M'.$i, $tu_item['produksi']);
-			$sheet->setCellValue('N'.$i, '');
-			$sheet->setCellValue('O'.$i, $tu_item['kadar_air']);
-			$sheet->setCellValue('P'.$i, $tu_item['benih_murni']);
-			$sheet->setCellValue('Q'.$i, $tu_item['benih_tan_lain']);
-			$sheet->setCellValue('R'.$i, $tu_item['kotoran_benih']);
-			$sheet->setCellValue('S'.$i, $tu_item['cvl_pemlap_3']);
-			$sheet->setCellValue('T'.$i, $tu_item['daya_berkecambah']);
-			$sheet->setCellValue('U'.$i, '');
+			$sheet->setCellValue('B'.$i, $tu_item['pemohon']);
+			$sheet->setCellValue('C'.$i, $tu_item['blok']);
+			$sheet->setCellValue('D'.$i, $tu_item['alamat']);
+			$sheet->setCellValue('E'.$i, $tu_item['kampung']);
+			$sheet->setCellValue('F'.$i, $tu_item['desa']);
+			$sheet->setCellValue('G'.$i, $tu_item['nama_kecamatan']);
+			$sheet->setCellValue('H'.$i, ucwords($tu_item['nama_kota']));
+			$sheet->setCellValue('I'.$i, $tu_item['no_induk']);
+			$sheet->setCellValue('J'.$i, $tu_item['luas']);
+			$sheet->setCellValue('K'.$i, $tu_item['nomor_sumber']);
+
+			$sheet->setCellValue('L'.$i, $tu_item['asal_benih']);
+			$sheet->setCellValue('M'.$i, $tu_item['no_kelompok_benih']);
+			$sheet->setCellValue('N'.$i, $kelas_benih2['singkatan']);
+			$sheet->setCellValue('O'.$i, $tu_item['nama_varietas']);
+			$sheet->setCellValue('P'.$i, $tu_item['singkatan']);
+			$sheet->setCellValue('Q'.$i, tgl_indo($tu_item['tgl_pemlap_pendahuluan']));
+			$sheet->setCellValue('R'.$i, tgl_indo($tu_item['tgl_semai']));
+			$sheet->setCellValue('S'.$i, tgl_indo($tu_item['tgl_tanam']));
+			$sheet->setCellValue('T'.$i, tgl_indo($tu_item['tgl_pemlap_1']));
+			$sheet->setCellValue('U'.$i, $tu_item['luas_pemlap_1']);
+			$sheet->setCellValue('V'.$i, $tu_item['cvl_pemlap_1']);
+			$sheet->setCellValue('W'.$i, tgl_indo($tu_item['tgl_pemlap_2']));
+			$sheet->setCellValue('X'.$i, $tu_item['luas_pemlap_2']);
+			$sheet->setCellValue('Y'.$i, $tu_item['cvl_pemlap_2']);
+			$sheet->setCellValue('Z'.$i, tgl_indo($tu_item['tgl_pemlap_3']));
+			$sheet->setCellValue('AA'.$i, $tu_item['luas_pemlap_3']);
+			$sheet->setCellValue('AB'.$i, $tu_item['cvl_pemlap_3']);
+			$sheet->setCellValue('AC'.$i, tgl_indo($tu_item['tgl_panen']));
 
 			$i++;
 			$array++;
 		}
+		
 
 		// apply style colloum
-		$spreadsheet->getActiveSheet()->getStyle('A1:U2')->applyFromArray($styleCol);
+		$spreadsheet->getActiveSheet()->getStyle('A1:AC2')->applyFromArray($styleCol);
 
 		// apply style default
 		$i--;
-		$spreadsheet->getActiveSheet()->getStyle('A1:U'. $i)->applyFromArray($styleRow);
+		$spreadsheet->getActiveSheet()->getStyle('A1:AC'. $i)->applyFromArray($styleRow);
 
 		// merge cell
 		$spreadsheet->getActiveSheet()->mergeCells('A1:A2');
@@ -198,17 +231,25 @@ class Tu_apbn extends MY_Controller {
 		$spreadsheet->getActiveSheet()->mergeCells('G1:G2');
 		$spreadsheet->getActiveSheet()->mergeCells('H1:H2');
 		$spreadsheet->getActiveSheet()->mergeCells('I1:I2');
-		$spreadsheet->getActiveSheet()->mergeCells('J1:K1');
+		$spreadsheet->getActiveSheet()->mergeCells('J1:J2');
+		$spreadsheet->getActiveSheet()->mergeCells('K1:K2');
 		$spreadsheet->getActiveSheet()->mergeCells('L1:L2');
 		$spreadsheet->getActiveSheet()->mergeCells('M1:M2');
 		$spreadsheet->getActiveSheet()->mergeCells('N1:N2');
 		$spreadsheet->getActiveSheet()->mergeCells('O1:O2');
 		$spreadsheet->getActiveSheet()->mergeCells('P1:P2');
 		$spreadsheet->getActiveSheet()->mergeCells('Q1:Q2');
-		$spreadsheet->getActiveSheet()->mergeCells('R1:R2');
-		$spreadsheet->getActiveSheet()->mergeCells('S1:S2');
-		$spreadsheet->getActiveSheet()->mergeCells('T1:T2');
-		$spreadsheet->getActiveSheet()->mergeCells('U1:U2');
+		$spreadsheet->getActiveSheet()->mergeCells('R1:S1');
+		$spreadsheet->getActiveSheet()->mergeCells('T1:V1');
+		$spreadsheet->getActiveSheet()->mergeCells('W1:Y1');
+		$spreadsheet->getActiveSheet()->mergeCells('Z1:AB1');
+		$spreadsheet->getActiveSheet()->mergeCells('AC1:AC2');
+		$spreadsheet->getActiveSheet()->mergeCells('AD1:AD2');
+		$spreadsheet->getActiveSheet()->mergeCells('AE1:AF1');
+		$spreadsheet->getActiveSheet()->mergeCells('AG1:AG2');
+		$spreadsheet->getActiveSheet()->mergeCells('AH1:AH2');
+		$spreadsheet->getActiveSheet()->mergeCells('AI1:AI2');
+		$spreadsheet->getActiveSheet()->mergeCells('AJ1:AJ2');
 
 		// Auto size columns for each worksheet
 		foreach ($spreadsheet->getWorksheetIterator() as $worksheet) {

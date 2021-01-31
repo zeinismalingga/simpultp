@@ -55,7 +55,7 @@ class Tu_apbd_model extends CI_Model {
 	}
 
 	public function get_list(){ 
-    	$query = $this->db->query("SELECT *, tu_apbd.id_tu_apbd as id_tu_apbd FROM sertifikasi INNER JOIN tu_apbd ON sertifikasi.id_sertifikasi = tu_apbd.id_sertifikasi INNER JOIN varietas ON sertifikasi.id_varietas = varietas.id_varietas LEFT JOIN input_lab_apbd ON tu_apbd.id_tu_apbd = input_lab_apbd.id_tu_apbd");		
+    	$query = $this->db->query("SELECT *, tu_apbd.id_tu_apbd as id_tu_apbd FROM sertifikasi INNER JOIN tu_apbd ON sertifikasi.id_sertifikasi = tu_apbd.id_sertifikasi INNER JOIN varietas ON sertifikasi.id_varietas = varietas.id_varietas INNER JOIN kota ON sertifikasi.id_kabupaten = kota.id_kota INNER JOIN kecamatan ON sertifikasi.id_kecamatan = kecamatan.id_kecamatan INNER JOIN kelas_benih ON sertifikasi.id_kelas_benih = kelas_benih.id_kelas_benih LEFT JOIN input_lab_apbd ON tu_apbd.id_tu_apbd = input_lab_apbd.id_tu_apbd LEFT JOIN lab_apbd ON lab_apbd.id_tu_apbd = input_lab_apbd.id_tu_apbd LEFT JOIN lab ON lab.id_lab_anggaran = lab_apbd.id_lab_apbd");		
 		return $query->result_array();	
 	}
 

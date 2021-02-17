@@ -239,7 +239,7 @@ class Tu_apbn extends MY_Controller {
 			$sheet->setCellValue('Z'.$i, tgl_indo($tu_item['tgl_pemlap_3']));
 			$sheet->setCellValue('AA'.$i, $tu_item['luas_pemlap_3']);
 			$sheet->setCellValue('AB'.$i, $tu_item['cvl_pemlap_3']);
-			$sheet->setCellValue('AC'.$i, tgl_indo($tu_item['tgl_panen']));
+			$sheet->setCellValue('AC'.$i, $tu_item['tgl_panen'] ? tgl_indo($tu_item['tgl_panen']) : '');
 			$sheet->setCellValue('AD'.$i, $tu_item['no_tu']);
 			$sheet->setCellValue('AE'.$i, ''); // tgl penerimaan
 			$sheet->setCellValue('AF'.$i, ''); // tgl pengeluaran

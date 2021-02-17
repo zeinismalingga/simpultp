@@ -170,6 +170,19 @@ class Tu_apbn extends MY_Controller {
 		$sheet->setCellValue('AJ1', 'No. Lab');
 		$sheet->setCellValue('AK1', 'Kemurnian');
 		$sheet->setCellValue('AK2', 'Kadar Air (%)');
+		$sheet->setCellValue('AL2', 'Benih Murni (%)');
+		$sheet->setCellValue('AM2', 'Benih Tan. Lain (%)');
+		$sheet->setCellValue('AN2', 'Kotoran Benih (%)');
+		$sheet->setCellValue('AO2', 'Jangka Waktu Pengujian (%)');
+		$sheet->setCellValue('AP1', 'Daya Berkecambah');
+		$sheet->setCellValue('AP2', 'Kecambah Normal (%)');
+		$sheet->setCellValue('AQ2', 'Kecambah Abnormal (%)');
+		$sheet->setCellValue('AR2', 'Benih Keras (%)');
+		$sheet->setCellValue('AS2', 'Benih Segar (%)');
+		$sheet->setCellValue('AT2', 'Benih Mati (%)');
+		$sheet->setCellValue('AU1', 'Status');
+		$sheet->setCellValue('AV1', 'Suhu');
+		$sheet->setCellValue('AW1', 'Ket');
 
 		//load data
 		$i = 3;
@@ -177,6 +190,26 @@ class Tu_apbn extends MY_Controller {
 		$array = 0;
 		foreach($tu as $tu_item) {
 			$kelas_benih2 = $this->master_model->get_kelas_benih2($tu_item['id_kelas_benih2']);
+
+			if($tu_item['status'] == ''){
+	            $status = 'Belum dinilai';
+	        }
+	        if($tu_item['status'] == '1'){
+	            $status =  'Lulus';
+	        }elseif($tu_item['status'] == '2'){
+	            $status = 'Tidak Lulus';
+	        }
+
+	        $searchReplaceArray = array(
+			  '<p>' => "\r", 
+			  '</p>' => ""
+			);
+
+			$ket = str_replace(
+			  array_keys($searchReplaceArray), 
+			  array_values($searchReplaceArray), 
+			  $tu_item['ket']
+			);
 
 			$sheet->setCellValue('A'.$i, $no++);
 			$sheet->setCellValue('B'.$i, $tu_item['pemohon']);
@@ -189,7 +222,6 @@ class Tu_apbn extends MY_Controller {
 			$sheet->setCellValue('I'.$i, $tu_item['no_induk']);
 			$sheet->setCellValue('J'.$i, $tu_item['luas']);
 			$sheet->setCellValue('K'.$i, $tu_item['nomor_sumber']);
-
 			$sheet->setCellValue('L'.$i, $tu_item['asal_benih']);
 			$sheet->setCellValue('M'.$i, $tu_item['no_kelompok_benih']);
 			$sheet->setCellValue('N'.$i, $kelas_benih2['singkatan']);
@@ -208,6 +240,26 @@ class Tu_apbn extends MY_Controller {
 			$sheet->setCellValue('AA'.$i, $tu_item['luas_pemlap_3']);
 			$sheet->setCellValue('AB'.$i, $tu_item['cvl_pemlap_3']);
 			$sheet->setCellValue('AC'.$i, tgl_indo($tu_item['tgl_panen']));
+			$sheet->setCellValue('AD'.$i, $tu_item['no_tu']);
+			$sheet->setCellValue('AE'.$i, ''); // tgl penerimaan
+			$sheet->setCellValue('AF'.$i, ''); // tgl pengeluaran
+			$sheet->setCellValue('AG'.$i, $tu_item['jml_wadah']);
+			$sheet->setCellValue('AH'.$i, $tu_item['produksi']);
+			$sheet->setCellValue('AI'.$i, ''); // tgl selesai kontrak
+			$sheet->setCellValue('AJ'.$i, $tu_item['no_lab']);
+			$sheet->setCellValue('AK'.$i, $tu_item['kadar_air']);
+			$sheet->setCellValue('AL'.$i, $tu_item['benih_murni']);
+			$sheet->setCellValue('AM'.$i, $tu_item['benih_tan_lain']);
+			$sheet->setCellValue('AN'.$i, $tu_item['kotoran_benih']);
+			$sheet->setCellValue('AO'.$i, $tu_item['jangka_waktu_pengujian']);
+			$sheet->setCellValue('AP'.$i, $tu_item['kecambah_normal']);
+			$sheet->setCellValue('AQ'.$i, $tu_item['kecambah_abnormal']);
+			$sheet->setCellValue('AR'.$i, $tu_item['benih_keras']);
+			$sheet->setCellValue('AS'.$i, $tu_item['benih_segar']);
+			$sheet->setCellValue('AT'.$i, $tu_item['benih_mati']);       
+			$sheet->setCellValue('AU'.$i, $status);
+			$sheet->setCellValue('AV'.$i, $tu_item['suhu']);
+			$sheet->setCellValue('AW'.$i, $ket);
 
 			$i++;
 			$array++;
@@ -215,11 +267,13 @@ class Tu_apbn extends MY_Controller {
 		
 
 		// apply style colloum
-		$spreadsheet->getActiveSheet()->getStyle('A1:AC2')->applyFromArray($styleCol);
+		$spreadsheet->getActiveSheet()->getStyle('A1:AW2')->applyFromArray($styleCol);
 
 		// apply style default
 		$i--;
-		$spreadsheet->getActiveSheet()->getStyle('A1:AC'. $i)->applyFromArray($styleRow);
+		$spreadsheet->getActiveSheet()->getStyle('A1:AW'. $i)->applyFromArray($styleRow);
+
+		$spreadsheet->getActiveSheet()->getStyle('A1:AW'. $i)->getAlignment()->setWrapText(true);
 
 		// merge cell
 		$spreadsheet->getActiveSheet()->mergeCells('A1:A2');
@@ -250,6 +304,11 @@ class Tu_apbn extends MY_Controller {
 		$spreadsheet->getActiveSheet()->mergeCells('AH1:AH2');
 		$spreadsheet->getActiveSheet()->mergeCells('AI1:AI2');
 		$spreadsheet->getActiveSheet()->mergeCells('AJ1:AJ2');
+		$spreadsheet->getActiveSheet()->mergeCells('AK1:AO1');
+		$spreadsheet->getActiveSheet()->mergeCells('AP1:AT1');
+		$spreadsheet->getActiveSheet()->mergeCells('AU1:AU2');
+		$spreadsheet->getActiveSheet()->mergeCells('AV1:AV2');
+		$spreadsheet->getActiveSheet()->mergeCells('AW1:AW2');
 
 		// Auto size columns for each worksheet
 		foreach ($spreadsheet->getWorksheetIterator() as $worksheet) {

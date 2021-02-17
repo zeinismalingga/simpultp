@@ -201,8 +201,9 @@ class Tu_apbn extends MY_Controller {
 	        }
 
 	        $searchReplaceArray = array(
-			  '<p>' => "\r", 
+			  '<p>' => "", 
 			  '</p>' => ""
+			  '<br>' => "\r"
 			);
 
 			$ket = str_replace(

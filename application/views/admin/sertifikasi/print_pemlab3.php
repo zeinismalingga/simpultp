@@ -161,7 +161,7 @@
 
 	<div style="margin-top: 20px; text-align: center;">
 		<p style="text-decoration: underline;">SURAT PENGANTAR</p>
-		<p>Nomor : 521.211 / <span style="margin-left: 40px"></span>/PSBTPH/ <?php echo date_format($tgl_pemlap, "m") ?>. <?php echo date_format($tgl_pemlap, "Y") ?></p>
+		<p>Nomor : 521.211 / <?php echo $sertifikasi['no_pemlap3'] ?> /PSBTPH/ <?php echo date_format($tgl_pemlap, "m") ?>. <?php echo date_format($tgl_pemlap, "Y") ?></p>
 	</div>
 
 	<table class="table table-borderless">

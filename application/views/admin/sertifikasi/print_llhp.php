@@ -141,7 +141,7 @@
 
 		<div style="margin-top: 20px; text-align: center;">
 			<p style="text-decoration: underline;">SURAT PENGANTAR</p>
-			<p>Nomor : 521.211 / <span style="margin-left: 15px"></span>/PSBTPH/11. <?php echo date('Y') ?></p>
+			<p>Nomor : 521.211 / <?php echo $sertifikasi['no_llhp'] ?> /PSBTPH/11. <?php echo date('Y') ?></p>
 		</div>
 
 		<table class="table table-borderless">

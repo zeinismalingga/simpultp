@@ -103,17 +103,17 @@ class Sertifikasi_apbn extends MY_Controller {
 	}
 
 	public function print_pemlab1($id){
-		$data['sertifikasi'] = $this->sertifikasi_model->get_all($id);	
+		$data['sertifikasi'] = $this->sertifikasi_model->get_llhp($id, $this->anggaran);
 		$this->load->view('admin/sertifikasi/print_pemlab1', $data);
 	}
 
 	public function print_pemlab2($id){
-		$data['sertifikasi'] = $this->sertifikasi_model->get_all($id);	
+		$data['sertifikasi'] = $this->sertifikasi_model->get_llhp($id, $this->anggaran);	
 		$this->load->view('admin/sertifikasi/print_pemlab2', $data);
 	}
 
 	public function print_pemlab3($id){
-		$data['sertifikasi'] = $this->sertifikasi_model->get_all($id);	
+		$data['sertifikasi'] = $this->sertifikasi_model->get_llhp($id, $this->anggaran);	
 		$this->load->view('admin/sertifikasi/print_pemlab3', $data);
 	}
 

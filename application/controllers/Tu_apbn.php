@@ -49,7 +49,7 @@ class Tu_apbn extends MY_Controller {
 
 	public function edit($id){
 		$data['tu'] = $this->tu_apbn_model->get_all($id);
-
+		// dd($data['tu'] );
 		$data['id_tu'] = $id;
 
 		if($this->form_validation->run() === FALSE){	
@@ -202,7 +202,7 @@ class Tu_apbn extends MY_Controller {
 
 	        $searchReplaceArray = array(
 			  '<p>' => "", 
-			  '</p>' => ""
+			  '</p>' => "",
 			  '<br>' => "\r"
 			);
 

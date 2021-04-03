@@ -20,6 +20,10 @@ class Tu_apbn_model extends CI_Model {
 			'kemurnian' => $this->input->post('kemurnian'),
 			'daya_berkecambah' => $this->input->post('daya_berkecambah'),
 			'tgl_tu' => $this->input->post('tgl_tu'),
+			'no_pemlap1' => $this->input->post('no_pemlap1'),
+			'no_pemlap2' => $this->input->post('no_pemlap2'),
+			'no_pemlap3' => $this->input->post('no_pemlap3'),
+			'no_llhp' => $this->input->post('no_llhp'),
 		);		
 		$this->db->where('id_tu_apbn', $id);
 		return $this->db->update('tu_apbn', $data);

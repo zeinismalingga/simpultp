@@ -183,20 +183,7 @@
         <?php endif; ?>
 
         <?php if($level == "lab" or $level == "admin"): ?>
-        <li class="treeview">
-          <a href="javascript:void(0)">
-            <i class="fa fa-file"></i> <span>Input lab</span>
-            <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
-          </a>
-          <ul class="treeview-menu">
-            <li><a href="<?php echo base_url('lab_input_apbn/list_lab') ?>"><i class="fa fa-circle"></i> APBN</a></li>
-            <li><a href="<?php echo base_url('lab_input_apbd/list_lab') ?>"><i class="fa fa-circle"></i> APBD</a></li>
-          </ul>
-        </li>
 
-        
         <li class="treeview">
           <a href="javascript:void(0)">
             <i class="fa fa-file"></i> <span>Lab</span>
@@ -205,12 +192,13 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="<?php echo base_url('lab/list_lab') ?>"><i class="fa fa-circle"></i> Daftar Pengujian Lab</a></li>
+            <li><a href="<?php echo base_url('lab/list_lab') ?>"><i class="fa fa-circle"></i> Daftar Lab</a></li>
           </ul>
         </li> 
 
         <?php endif ?>
-  
+    
+        <?php if($level == "wasar"): ?>
         <li class="treeview">
           <a href="javascript:void(0)">
             <i class="fa fa-database"></i> <span>Wasar</span>
@@ -219,12 +207,17 @@
             </span>
           </a>
           <ul class="treeview-menu">
+            <li><a href="<?php echo base_url('wasar/list') ?>"><i class="fa fa-circle"></i> Daftar Wasar</a></li>
             <li><a href="<?php echo base_url('stok_bulanan_pangan/pilih') ?>"><i class="fa fa-circle"></i> Stok Bulanan Pangan</a></li>
             <li><a href="<?php echo base_url('inventaris_produsen/list') ?>"><i class="fa fa-circle"></i> Inventaris Produsen</a></li>
             <li><a href="<?php echo base_url('inventaris_pengedar/list') ?>"><i class="fa fa-circle"></i> Inventaris Pengedar</a></li>
             <li><a href="<?php echo base_url('cek_mutu_pangan/pilih') ?>"><i class="fa fa-circle"></i> Cek Mutu Pangan</a></li>
           </ul>
         </li> 
+
+        <?php endif ?>
+
+        <?php if($level == "sertifikasi" or $level == "admin" or $level== "tu"): ?>
 
         <li class="treeview">
           <a href="javascript:void(0)">
@@ -236,7 +229,10 @@
           <ul class="treeview-menu">
             <li><a href="<?php echo base_url('varietas/list_varietas') ?>"><i class="fa fa-circle"></i> Varietas</a></li>
           </ul>
-        </li> 
+        </li>
+        <?php endif ?>
+
+         
 
         <?php if($level == "admin"): ?>
           <li class="treeview ">

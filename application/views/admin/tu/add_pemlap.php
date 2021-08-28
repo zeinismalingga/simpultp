@@ -16,34 +16,39 @@
       </div>
       <div class="box-body">
 
-        <a href='<?php echo base_url("$class/list_tu") ?>' class="btn btn-danger pull-right">Kembali</a><br><br>
+        <a href='<?php echo base_url("$class/list_sertifikasi") ?>' class="btn btn-danger pull-right">Kembali</a><br><br>
 
         <p><?php echo validation_errors() ?></p>
 
-        <?php echo form_open("$class/add/") ?>
+        <?php echo form_open("$class/pemlap$urutan/$id") ?>
 
         <div class="row">
           <div class="col-md-3">           
             <div class="form-group">
-              <label>Nomor Rekomendasi</label>
-              <input type="text" name="no_rekomendasi" class="form-control" required>
+              <label>Nomor</label>
+              <input type="text" name="no_pemlap" class="form-control" value="<?php echo $pemlap['no_pemlap'. $urutan] ?>" required <?php echo ($level == 'sertifikasi') ? 'readonly' : '' ?> >
             </div>
           </div>
 
-        <div class="row">
           <div class="col-md-3">           
             <div class="form-group">
-              <label>Tanggal Rekomendasi</label>
-              <input type="text" name="tgl_rekomendasi" class="form-control datepicker" required>
+              <label>Tanggal</label>
+              <input type="date" name="tgl_pemlap" class="form-control" value="<?php echo $pemlap['tgl_pemlap'. $urutan] ?>" required <?php echo ($level == 'sertifikasi') ? 'readonly' : '' ?> >
             </div>
           </div> 
-        </div>
+
+          <div class="col-md-3">           
+            <div class="form-group">
+              <label>CVL</label>
+              <input type="text" name="cvl_pemlap" class="form-control" value="<?php echo $pemlap['cvl_pemlap'. $urutan] ?>" <?php echo ($level == 'tu') ? 'readonly' : '' ?> required>
+            </div>
+          </div>
 
         </div>
       
       </div>
       <div class="box-footer">
-        <button type="submit" class="btn btn-primary">Tambah</button>
+        <button type="submit" class="btn btn-primary">Simpan</button>
       </div>
       <?php echo form_close() ?>
       <!-- /.box-body -->

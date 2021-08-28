@@ -37,6 +37,9 @@
                       <option value="sertifikasi">Sertifikasi</option>
                       <option value="lab">Lab</option>
                       <option value="wasar">Wasar</option>
+                      <option value="kasi">Kasi</option>
+                      <option value="kepala">Kepala UPTD</option>
+                      <option value="pjlab">Penanggung Jawab Lab</option>
                     </select>
                   </div>
 

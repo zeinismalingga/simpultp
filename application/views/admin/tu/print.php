@@ -96,7 +96,7 @@
 	<div style="clear: both;"></div>
 
 	<div>
-		<p>Tanggal Pengambilan Contoh <span style="position: absolute;left: 350px">: <?php echo tgl_indo($tu['tgl_pengambilan_contoh_benih']) ?></span></p>		
+		<p>Tanggal Pengambilan Contoh <span style="position: absolute;left: 350px">: <?php echo tgl_indo($tu['tgl_tu']) ?></span></p>		
 		<p>Jenis Tanaman/Varietas <span style="position: absolute;left: 350px">: <?php echo $tu['nama_jenis_tanaman']. ' /'.$tu['nama_varietas'] ?></span></p>		
 		<p>Tanggal Panen <span style="position: absolute;left: 350px">: <?php echo tgl_indo($tu['tgl_panen']) ?></span></p>		
 		<p>Kelas Benih <span style="position: absolute;left: 350px">: <?php echo $tu['singkatan'] ?></span></p>		

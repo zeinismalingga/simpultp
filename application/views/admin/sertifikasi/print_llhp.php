@@ -134,14 +134,22 @@
 	<br>
 	<div class="content">	
 
-		<p>Kepada Yth.</p>
-		<p><?php echo ucwords($sertifikasi['produsen_benih']) ?></p>
-		<p>Di - <?php echo ucwords($sertifikasi['nama_kecamatan']) ?></p>
-		<p style="font-weight: bold;margin-left: 30px"><?php echo ucwords($sertifikasi['nama_kota']) ?></p>
+		<div style="margin-left: 700px">
+			<p>Kepada Yth.</p>
+			<p style="font-weight: bold;"><?php echo ucwords($sertifikasi['nama_produsen']) ?></p>
+			<p>Ds. <?php echo $sertifikasi['desa'] ?>, Kec.<?php echo $sertifikasi['nama_kecamatan'] ?></p>
+			<p>Di -</p>
+			<p style="margin-left: 30px"><?php echo ucwords($sertifikasi['nama_kota']) ?></p>
+		</div>
+
+		<?php 
+			$bulan = date_format(date_create($sertifikasi['tgl_llhp']), "m");
+			$tahun = date_format(date_create($sertifikasi['tgl_llhp']), "Y");
+		?>
 
 		<div style="margin-top: 20px; text-align: center;">
 			<p style="text-decoration: underline;">SURAT PENGANTAR</p>
-			<p>Nomor : 521.211 / <?php echo $sertifikasi['no_llhp'] ?> /PSBTPH/11. <?php echo date('Y') ?></p>
+			<p>Nomor : 521.211/<?php echo $sertifikasi['no_llhp'] ?>/PSBTPH/<?php echo $bulan ?>.<?php echo $tahun ?></p>
 		</div>
 
 		<table class="table table-borderless">
@@ -156,7 +164,7 @@
 			<tbody>
 				<tr >
 					<td>1</td>
-					<td style="line-height: 1">Laporan Lengkap Hasil Pengujian Benih Untuk Sertifikasi Dengan Nomor : <?php echo $sertifikasi['no_induk'] ?></td>
+					<td style="line-height: 1">Laporan Lengkap Hasil Pengujian Benih Untuk Sertifikasi Dengan Nomor : <strong><?php echo $sertifikasi['no_induk'] ?></strong></td>
 					<td style="line-height: 1" width="10%">1 Lbr</td>
 					<td style="line-height: 1">Disampaikan dengan hormat untuk diketahui dan dipertimbangkan sebagaimana mestinya</td>
 				</tr>
@@ -177,139 +185,16 @@
 		</div>
 
 		<div style="margin-left: 500px; text-align: center;">
-			<p>Samarinda, <?php echo tgl_indo(date('Y-m-d')) ?></p>
-			<p style="margin-bottom: 60px">Kepala UPTD,</p>
-			<p style="text-decoration: underline;">Ir. Erry Erriadi</p>
-			<p>NIP. 196408201998031005</p>
+			<p>Samarinda, <?php echo tgl_indo($sertifikasi['tgl_llhp']) ?></p>
+			<p style="font-weight: bold">Kepala UPTD PSBTPH,</p>
+			<p style="margin-bottom: 80px; font-weight: bold">Provinsi Kalimantan Timur</p>
+			<p style="text-decoration: underline;font-weight: bold;">Ir. Fenty Rubiah Harahap, M.Si</p>
+			<p>NIP. 19670614 198709 2 001</p>
 		</div>
 	</div>
-
-	
-	<hr>
-	<br>	
-
-	<div style="font-weight: bold;margin-top : 10px">
-		<p style="float: left;">RHLLPHD.6</p>
-		<div style="float: right;">
-			<table border="1 solid black">
-				<td style="line-height: 1">No : <?php echo $sertifikasi['no_induk'] ?> <br>
-				MT : <?php echo $sertifikasi['tahun_mt'] ?></td>
-			</table>
-		</div>
-
-		<div style="clear: both;"></div>
-		<p style="text-align: center;line-height: 1">LAPORAN LENGKAP HASIL PENGUJIAN BENIH PADI NON HIBRIDA <br>UNTUK SERTIFIKASI BENIH</p>
-	</div>
-
-	<hr>
-
-	<table class="table table-borderless">
-			<tbody>
-				<tr>
-					<td width="10%">Komoditas</td>
-					<td>: <?php echo ucwords($sertifikasi['nama_jenis']) ?></td>
-					<td>No. Kelompok Benih</td>
-					<td>: <?php echo ucwords($sertifikasi['no_kelompok_benih']) ?></td>
-				</tr>
-				<tr>
-					<td width="15%">Nama Produsen</td>
-					<td>: <?php echo ucwords($sertifikasi['produsen_benih']) ?></td>
-					<td>Kelas Benih</td>
-					<td>: <?php echo ucwords($sertifikasi['singkatan']) ?></td>
-				</tr>
-				<tr>
-					<td width="15%">Varietas</td>
-					<td>: <?php echo ucwords($sertifikasi['nama_varietas']) ?></td>
-					<td>Tanggal Panen</td>
-					<td>: <?php echo tgl_indo($sertifikasi['tgl_panen']) ?></td>
-				</tr>
-				<tr>
-					<td width="15%">Jumlah Benih</td>
-					<td>: <?php echo ucwords($sertifikasi['jml_wadah']) ?> Wadah</td>
-					<td>Tgl. Penerimaan Contoh</td>
-					<td>: <?php echo tgl_indo($sertifikasi['tgl_pengambilan_contoh_benih']) ?></td>
-				</tr>
-				<tr>
-					<td width="15%"></td>
-					<td>: <?php echo ucwords($sertifikasi['produksi']) ?> Ton</td>
-					<td>Tgl. Selesai Pengujian</td>
-					<td>: <?php echo tgl_indo($sertifikasi['tgl_selesai_pengujian']) ?></td>
-				</tr>
-				<tr>
-					<td width="20%">No. Laboratorium</td>
-					<td>: <?php echo ucwords($sertifikasi['no_lab']) ?></td>
-					<td>Tgl. Selesai Laporan</td>
-					<td>: 5 November 2019</td>
-				</tr>
-			</tbody>
-		</table>
-
-		<div>
-			<p style="text-align: center;font-weight: bold;">Hasil Pengujian Laboratorium</p>
-		</div>
-
-		<table class="table table-bordered">
-			<tr>
-				<td width="20%">Kadar Air</td>
-				<td width="30%">: <?php echo $sertifikasi['kadar_air'] ?>%</td>
-				<td width="20%">Daya Berkecambah</td>
-				<td>: <?php echo $sertifikasi['kecambah_normal'] ?>%</td>
-			</tr>
-			<tr>
-				<td width="15%">Benih Murni</td>
-				<td>: <?php echo $sertifikasi['benih_murni'] ?>%</td>
-				<td>Benih Tanaman Lain</td>
-				<td>: <?php echo $sertifikasi['benih_tan_lain'] ?>%</td>
-			</tr>
-			<tr>
-				<td width="15%">Kotoran Benih</td>
-				<td>: <?php echo $sertifikasi['kotoran_benih'] ?>%</td>
-				<td>Benih Gulma</td>
-				<td>: <?php echo $sertifikasi['benih_gulma_persen'] ?>%</td>
-			</tr>
-			<tr>
-				<td width="15%">Benih Warna Lain</td>
-				<td>: -%</td>
-				<td></td>
-				<td></td>
-			</tr>
-		</table>
-
-		<p>Memenuhi / tidak memenuhi syarat sertifikasi *)</p>
-		<p>Warna Label :</p>
-		<p>Berlaku/tidak berlaku sebagai sertifikasi sampai dengan tanggal</p>
-		<p>Catatan :</p>
-
-		<div style="margin-left: 500px; text-align: center;">
-			<p>Samarinda, <?php echo tgl_indo(date('Y-m-d')) ?></p>
-			<p>Pengawas Benih Tanaman,</p>
-			<p style="margin-bottom: 60px">Yang Berwenang,</p>
-			<p style="text-decoration: underline;">Rachmad Hidayat, SP</p>
-			<p>NIP. 196408201998031005</p>
-		</div>
-
-		<table class="table table-borderless" style="margin-bottom: 0px;">
-			<tr>
-				<td width="15%">Lembar Pertama</td>
-				<td>: UPTD BPSB</td>
-			</tr>
-			<tr>
-				<td>Lembar Kedua</td>
-				<td>: Dinas Pertanian Kabupaten</td>
-			</tr>
-			<tr>
-				<td>Lembar Ketiga</td>
-				<td>: Permohonan</td>
-			</tr>
-			<tr>
-				<td>Lembar Keempat</td>
-				<td>: Pengawas Benih Tanaman</td>
-			</tr>
-		</table>
-		
 
 	<script>
-		// window.print();
+		window.print();
 	</script>
 </body>
 </html>

@@ -11,7 +11,8 @@ class Lab extends MY_Controller {
 	}
 	
 	public function list_lab(){
-		$data['lab'] = $this->lab_apbn_model->get_all();
+		$data['lab_apbn'] = $this->lab_apbn_model->get_all();
+		$data['lab_apbd'] = $this->lab_apbd_model->get_all();
 		$data['class'] = $this->class;
 		$data['id_lab'] = "id_lab";
 
@@ -53,11 +54,22 @@ class Lab extends MY_Controller {
 
 		$lab = $this->lab_model->get_all($id_lab);
 
+		// dd($lab);
+
 		$anggaran = $lab['anggaran'];
 
 		$data['lab'] = $this->lab_model->print($id_lab, $anggaran);
 	
 		$this->load->view('admin/lab/print', $data);
+	}
+
+	public function approve($id){
+		$sertifikasi = $this->db->query("SELECT * FROM sertifikasi WHERE id_sertifikasi = $id")->row_array();
+		$posisi = $sertifikasi['posisi'] + 1;
+		// dd($posisi);
+		$this->db->query("UPDATE sertifikasi SET posisi = $posisi WHERE id_sertifikasi = $id");
+		$this->session->set_flashdata('notif', 'Lab berhasil di-approve');
+		redirect("admin");
 	}
 	
 }

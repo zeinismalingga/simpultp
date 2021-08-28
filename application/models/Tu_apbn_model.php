@@ -1,14 +1,16 @@
 <?php 
 class Tu_apbn_model extends CI_Model {
 
+	public function get_rekomendasi(){ 
+    	$query = $this->db->query("SELECT * FROM sertifikasi, tu_apbn WHERE sertifikasi.id_sertifikasi = tu_apbn.id_sertifikasi");		
+		return $query->result_array();	
+	}
+
 	public function add($id_sertifikasi){
 		$data = array(
 			'id_sertifikasi' => $id_sertifikasi,
-			'no_tu' => $this->input->post('no_tu'),
-			'kadar_air' => $this->input->post('kadar_air'),
-			'kemurnian' => $this->input->post('kemurnian'),
-			'daya_berkecambah' => $this->input->post('daya_berkecambah'),
-			'tgl_tu' => $this->input->post('tgl_tu'),
+			'no_rekomendasi' => $this->input->post('no_rekomendasi'),
+			'tgl_rekomendasi' => $this->input->post('tgl_rekomendasi'),
 		);		
 		return $this->db->insert('tu_apbn', $data);
 	}
@@ -20,10 +22,6 @@ class Tu_apbn_model extends CI_Model {
 			'kemurnian' => $this->input->post('kemurnian'),
 			'daya_berkecambah' => $this->input->post('daya_berkecambah'),
 			'tgl_tu' => $this->input->post('tgl_tu'),
-			'no_pemlap1' => $this->input->post('no_pemlap1'),
-			'no_pemlap2' => $this->input->post('no_pemlap2'),
-			'no_pemlap3' => $this->input->post('no_pemlap3'),
-			'no_llhp' => $this->input->post('no_llhp'),
 		);		
 		$this->db->where('id_tu_apbn', $id);
 		return $this->db->update('tu_apbn', $data);
@@ -43,8 +41,13 @@ class Tu_apbn_model extends CI_Model {
 		return $this->db->insert('input_lab_apbn', $data);
 	}
 
+	public function get_id(){
+        $query = $this->db->query("SELECT * FROM input_lab_apbn ORDER BY id_input_lab_apbn DESC LIMIT 1");      
+        return $query->row_array();
+    }
+
 	public function get_max_id(){
-        $query = $this->db->query("SELECT * FROM tu_apbn ORDER BY id_tu_apbn DESC LIMIT 1");      
+        $query = $this->db->query("SELECT * FROM input_lab_apbn ORDER BY id_input_lab_apbn DESC LIMIT 1");      
         return $query->row_array();
     }
 
@@ -60,7 +63,7 @@ class Tu_apbn_model extends CI_Model {
 	}
 
 	public function get_list(){ 
-    	$query = $this->db->query("SELECT *, tu_apbn.id_tu_apbn as id_tu_apbn FROM sertifikasi INNER JOIN tu_apbn ON sertifikasi.id_sertifikasi = tu_apbn.id_sertifikasi INNER JOIN varietas ON sertifikasi.id_varietas = varietas.id_varietas INNER JOIN kota ON sertifikasi.id_kabupaten = kota.id_kota INNER JOIN kecamatan ON sertifikasi.id_kecamatan = kecamatan.id_kecamatan INNER JOIN kelas_benih ON sertifikasi.id_kelas_benih = kelas_benih.id_kelas_benih LEFT JOIN input_lab_apbn ON tu_apbn.id_tu_apbn = input_lab_apbn.id_tu_apbn LEFT JOIN lab_apbn ON lab_apbn.id_tu_apbn = input_lab_apbn.id_tu_apbn LEFT JOIN lab ON lab.id_lab_anggaran = lab_apbn.id_lab_apbn");		
+    	$query = $this->db->query("SELECT *, sertifikasi.id_sertifikasi AS id_sertifikasi FROM sertifikasi LEFT JOIN tu_apbn ON sertifikasi.id_sertifikasi = tu_apbn.id_sertifikasi LEFT JOIN jenis_varietas ON sertifikasi.id_jenis_varietas LEFT JOIN varietas ON sertifikasi.id_varietas = varietas.id_varietas LEFT JOIN inventaris_produsen ON sertifikasi.id_produsen = inventaris_produsen.id_inventaris_pangan WHERE sertifikasi.jenis_anggaran = 1 AND sertifikasi.posisi >= 4 GROUP BY sertifikasi.id_sertifikasi");		
 		return $query->result_array();	
 	}
 

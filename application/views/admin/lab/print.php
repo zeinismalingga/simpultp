@@ -150,7 +150,7 @@
 			<p>Kelas Benih <span style="left: 380px; position: absolute;">: <?php echo $lab['singkatan'] ?></span></p>
 			<p>Berat Contoh Kirim <span style="left: 380px; position: absolute;">: 1000 gram</span></p>
 			<p>Tgl Panen <span style="left: 380px; position: absolute;">: <?php echo tgl_indo($lab['tgl_panen']) ?></span></p>
-			<p>Tgl Penerimaan Lab <span style="left: 380px; position: absolute;">: <?php echo tgl_indo($lab['tgl_pengiriman_contoh_benih']) ?> </span></p>
+			<p>Tgl Penerimaan Lab <span style="left: 380px; position: absolute;">: <?php echo tgl_indo($lab['tgl_tu']) ?> </span></p>
 			<p>Tgl Pengujian <span style="left: 380px; position: absolute;">: <?php echo ($lab['tgl_pengujian']) ? tgl_indo($lab['tgl_pengujian']) : '' ?> </span></p>
 			<p>Tgl Selesai Pengujian <span style="left: 380px; position: absolute;">: <?php echo ($lab['tgl_selesai_pengujian']) ? tgl_indo($lab['tgl_selesai_pengujian']) : '' ?></span></p>
 		</div>
@@ -253,7 +253,7 @@
 
 	</div>	
 	<script>
-		// window.print();
+		window.print();
 	</script>
 </body>
 </html>

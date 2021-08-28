@@ -69,36 +69,14 @@
               <input type="text" name="tgl_tu" class="form-control datepicker" value="<?php echo $tu['tgl_tu'] ?>" required>
             </div>
           </div> 
-        </div>
-
-        <hr>
-
-        <div class="row">
           <div class="col-md-3">           
             <div class="form-group">
-              <label>No. Pemlap 1</label>
-              <input type="text" name="no_pemlap1" class="form-control" value="<?php echo $tu['no_pemlap1'] ?>">
-            </div>
-          </div> 
-          <div class="col-md-3">           
-            <div class="form-group">
-              <label>No. Pemlap 2</label>
-              <input type="text" name="no_pemlap2" class="form-control" value="<?php echo $tu['no_pemlap2'] ?>">
-            </div>
-          </div> 
-          <div class="col-md-3">           
-            <div class="form-group">
-              <label>No. Pemlap 3</label>
-              <input type="text" name="no_pemlap3" class="form-control" value="<?php echo $tu['no_pemlap3'] ?>">
-            </div>
-          </div> 
-          <div class="col-md-3">           
-            <div class="form-group">
-              <label>No. LLHP</label>
-              <input type="text" name="no_llhp" class="form-control" value="<?php echo $tu['no_llhp'] ?>">
+              <label>Tanggal Panen</label>
+              <input type="text" name="tgl_panen" class="form-control datepicker" value="<?php echo $tu['tgl_panen'] ?>" required>
             </div>
           </div> 
         </div>
+
 
       </div>
       

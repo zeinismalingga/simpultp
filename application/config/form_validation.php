@@ -68,29 +68,29 @@ $config = array(
         ),
         'sertifikasi_apbd/add' => array(
             array(
-                        'field' => 'pemohon',
-                        'label' => 'pemohon',
+                        'field' => 'jenis_anggaran',
+                        'label' => 'jenis anggaran',
                         'rules' => 'required'
                 ),
         ),
         'sertifikasi_apbd/edit' => array(
             array(
-                        'field' => 'pemohon',
-                        'label' => 'pemohon',
+                        'field' => 'no_induk',
+                        'label' => 'no induk',
                         'rules' => 'required'
                 ),
         ),
         'sertifikasi_apbn/add' => array(
             array(
-                        'field' => 'pemohon',
-                        'label' => 'pemohon',
+                        'field' => 'jenis_anggaran',
+                        'label' => 'jenis anggaran',
                         'rules' => 'required'
                 ),
         ),
         'sertifikasi_apbn/edit' => array(
             array(
-                        'field' => 'pemohon',
-                        'label' => 'pemohon',
+                        'field' => 'no_induk',
+                        'label' => 'no induk',
                         'rules' => 'required'
                 ),
         ),
@@ -110,8 +110,8 @@ $config = array(
         ),
         'tu_apbn/add' => array(
             array(
-                        'field' => 'no_tu',
-                        'label' => 'No TU',
+                        'field' => 'no_rekomendasi',
+                        'label' => 'No Rekomendasi',
                         'rules' => 'required'
                 ),
         ),
@@ -124,8 +124,8 @@ $config = array(
         ),
         'tu_apbd/add' => array(
             array(
-                        'field' => 'no_tu',
-                        'label' => 'No TU',
+                        'field' => 'no_rekomendasi',
+                        'label' => 'No Rekomendasi',
                         'rules' => 'required'
                 ),
         ),
@@ -217,6 +217,69 @@ $config = array(
             array(
                         'field' => 'id_komoditi',
                         'label' => 'id komoditi',
+                        'rules' => 'required'
+                ),
+        ),
+        'tu_apbn/pemlap1' => array(
+            array(
+                        'field' => 'no_pemlap',
+                        'label' => 'no pemlap',
+                        'rules' => 'required'
+                ),
+        ),
+        'tu_apbn/pemlap2' => array(
+            array(
+                        'field' => 'no_pemlap',
+                        'label' => 'no pemlap',
+                        'rules' => 'required'
+                ),
+        ),
+        'tu_apbn/pemlap3' => array(
+            array(
+                        'field' => 'no_pemlap',
+                        'label' => 'no pemlap',
+                        'rules' => 'required'
+                ),
+        ),
+        'tu_apbd/pemlap1' => array(
+            array(
+                        'field' => 'no_pemlap',
+                        'label' => 'no pemlap',
+                        'rules' => 'required'
+                ),
+        ),
+        'tu_apbd/pemlap2' => array(
+            array(
+                        'field' => 'no_pemlap',
+                        'label' => 'no pemlap',
+                        'rules' => 'required'
+                ),
+        ),
+        'tu_apbd/pemlap3' => array(
+            array(
+                        'field' => 'no_pemlap',
+                        'label' => 'no pemlap',
+                        'rules' => 'required'
+                ),
+        ),
+        'tu_apbn/llhp' => array(
+            array(
+                        'field' => 'no_llhp',
+                        'label' => 'no llhp',
+                        'rules' => 'required'
+                ),
+        ),
+        'tu_apbd/llhp' => array(
+            array(
+                        'field' => 'no_llhp',
+                        'label' => 'no llhp',
+                        'rules' => 'required'
+                ),
+        ),
+        'wasar/edit' => array(
+            array(
+                        'field' => 'tgl_pemeriksaan_alat_panen',
+                        'label' => 'tgl pemeriksaan alat_panen',
                         'rules' => 'required'
                 ),
         ),

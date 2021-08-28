@@ -65,6 +65,14 @@
 			margin-top: 2px;
 		}
 
+		.table td, .table th {
+    	border: none;
+		}
+
+		table.table.table-condensed {
+		    border: 2px solid black;
+		}
+
 		@media print {
 
 .col-sm-1, .col-sm-2, .col-sm-3, .col-sm-4, .col-sm-5, .col-sm-6, .col-sm-7, .col-sm-8, .col-sm-9, .col-sm-10, .col-sm-11, .col-sm-12 {
@@ -135,10 +143,15 @@
 	<div class="content">	
 
 	</div>
+
+	<?php 
+			$bulan = date_format(date_create($sertifikasi['tgl_llhp']), "m");
+			$tahun = date_format(date_create($sertifikasi['tgl_llhp']), "Y");
+		?>
 	
 	<div class="text-center">
 		<p style="text-decoration: underline;font-weight: bold;font-size: 20px">SERTIFIKAT BENIH UNGGUL</p>
-		<p>Nomor : 521/  <span style="margin-left: 40px"></span>/UPTD PSBTPH/<?php echo date('m') ?>.2020</p>
+		<p>Nomor : 521/<?php echo $sertifikasi['no_sertifikat'] ?>/UPTD PSBTPH/WSL/<?php echo $bulan ?>.<?php echo $tahun ?></p>
 	</div>
 
 	<p style="line-height: 1.5">Berdasarkan hasil pemeriksaan lapangan / pertanaman dan pengujian / analisis mutu benih di laboratorium / pemeriksanaan umbi di gudang / pemeriksaan stek di lapangan / planlet di laboratorium kultur jaringan / planlet kompot atau anakan tunggal dirumah kaca *) Terhadap :</p>
@@ -177,12 +190,12 @@
 			<td>: <?php echo tgl_indo($sertifikasi['tgl_selesai_pengujian']) ?></td>
 		</tr>
 		<tr>
-			<td>/ Analisis Mutu Benih</td>
+			<td>Mutu Benih</td>
 			<td></td>
 		</tr>
 		<tr>
 			<td>Tonase</td>
-			<td>:</td>
+			<td>: <?php echo $sertifikasi['produksi'] ?> Ton</td>
 		</tr>
 	</table>
 
@@ -193,11 +206,11 @@
 	<table class="table table-borderless">
 		<tr>
 			<td width="30%">Produsen Benih</td>
-			<td>: <span style="font-weight: bold;"><?php echo ucwords($sertifikasi['produsen_benih']) ?></span></td>
+			<td>: <span style=""><?php echo ucwords($sertifikasi['nama_produsen']) ?></span></td>
 		</tr>
 		<tr>
 			<td>Alamat</td>
-			<td>: <?php echo ucwords($sertifikasi['nama_kecamatan']) ?></td>
+			<td>: Ds. <?php echo $sertifikasi['desa'] ?>, Kec.<?php echo $sertifikasi['nama_kecamatan'] ?>, <?php echo ucwords($sertifikasi['nama_kota']) ?></td>
 		</tr>
 		<tr>
 			<td>Dengan Data Mutu Benih</td>
@@ -205,7 +218,7 @@
 		</tr>
 	</table>
 	
-	<table class="table table-bordered">
+	<table class="table table-condensed">
 		<tr>
 			<td width="20%">Campuran Varietas lain</td>
 			<td width="30%">: 12,3%</td>
@@ -248,18 +261,19 @@
 
 	<div style="margin-left: 700px;">
 		<p>Dikeluarkan di <span style="margin-right: 30px"></span>: Samarinda</p>
-		<p style="margin-bottom: 50px">Tanggal  <span style="margin-right: 75px"></span>: </p>
+		<p style="margin-bottom: 50px">Tanggal  <span style="margin-right: 75px"></span>: <?php echo tgl_indo($sertifikasi['tgl_llhp']) ?></p>
 
 		<div class="text-center">
-			<p style="margin-bottom: 60px">Kepala UPTD,</p>
-			<p style="text-decoration: underline;">Ir. Erry Erriadi</p>
-			<p>NIP. 196408201998031005</p>
+			<p>Kepala UPTD PSBTPH,</p>
+			<p style="margin-bottom: 60px">Provinsi Kalimantan Timur</p>
+			<p style="text-decoration: underline;">Ir. Fenty Rubiah Harahap, M.Si</p>
+			<p>NIP. 19670614 198709 2 001</p>
 		</div>
 	</div>
 		
 
 	<script>
-		// window.print();
+		window.print();
 	</script>
 </body>
 </html>

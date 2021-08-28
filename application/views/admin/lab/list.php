@@ -30,6 +30,7 @@
               <table class="table table-bordered table-striped" vertical-align="middle">
                 <thead>
                   <tr>
+                    <th class="text-center" rowspan="2" align="top">No. Asal</th>
                     <th class="text-center" rowspan="2" align="top">No. Lab</th>
                     <th class="text-center" rowspan="2" align="top">Kadar Air</th>
                     <th colspan="4" class="text-center">Kemurnian</th>
@@ -51,9 +52,9 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <?php $no = 1; ?>
-                  <?php foreach($lab as $lab_item): ?>
+                  <?php foreach($lab_apbn as $lab_item): ?>
                     <tr>
+                      <td><?php echo 'TKS.'.$lab_item['no_asal']; ?></td>
                       <td><?php echo $lab_item['no_lab']; ?></td>
                       <td><?php echo $lab_item['kadar_air']; ?></td>
                       <!-- <td><?php echo $lab_item['berat_cnth_kerja']; ?></td> -->
@@ -69,17 +70,41 @@
                       <td><?php echo ($lab_item['hasil'] === '1') ? 'Lulus' : 'Tidak Lulus' ?></td>
                       <td>
                         <a href="<?php echo base_url("$class/edit/". $lab_item["$id_lab"]) ?>" class="btn btn-xs btn-primary">EDIT</a>
-                        <!-- <a href="<?php echo base_url("$class/print/". $lab_item["$id_lab"]) ?>" class="btn btn-xs btn-warning">DETAIL</a> -->
-                        <a href="<?php echo base_url("$class/delete/". $lab_item["$id_lab"]) ?>" class="btn btn-xs btn-danger" onclick="return confirm('Apakah anda yakin ?');">DELETE</a>
+                        <?php if($lab_item['posisi'] == '5'): ?>
                         <a href="<?php echo base_url("$class/print/". $lab_item["$id_lab"]) ?>" target="_blank" class="btn btn-xs btn-success">PRINT</a>
+                        <?php endif ?>
                       </td>
                     </tr>
-                    <?php $no++ ?>
+                <?php endforeach; ?>
+                <?php foreach($lab_apbd as $lab_item): ?>
+                    <tr>
+                      <td><?php echo 'TKD.'.$lab_item['no_asal']; ?></td>
+                      <td><?php echo $lab_item['no_lab']; ?></td>
+                      <td><?php echo $lab_item['kadar_air']; ?></td>
+                      <!-- <td><?php echo $lab_item['berat_cnth_kerja']; ?></td> -->
+                      <td><?php echo $lab_item['benih_murni']; ?></td>
+                      <td><?php echo $lab_item['benih_tan_lain']; ?></td>
+                      <td><?php echo $lab_item['kotoran_benih']; ?></td>
+                      <td><?php echo $lab_item['jangka_waktu_pengujian']; ?></td>
+                      <td><?php echo $lab_item['kecambah_normal']; ?></td>
+                      <td><?php echo $lab_item['kecambah_abnormal']; ?></td>
+                      <td><?php echo $lab_item['benih_keras']; ?></td>
+                      <td><?php echo $lab_item['benih_segar']; ?></td>
+                      <td><?php echo $lab_item['benih_mati']; ?></td>
+                      <td><?php echo ($lab_item['hasil'] === '1') ? 'Lulus' : 'Tidak Lulus' ?></td>
+                      <td>
+                        <a href="<?php echo base_url("$class/edit/". $lab_item["$id_lab"]) ?>" class="btn btn-xs btn-primary">EDIT</a>
+                        <?php if($lab_item['posisi'] == '5'): ?>
+                        <a href="<?php echo base_url("$class/print/". $lab_item["$id_lab"]) ?>" target="_blank" class="btn btn-xs btn-success">PRINT</a>
+                        <?php endif ?>
+                      </td>
+                    </tr>
                 <?php endforeach; ?>
                 </tbody>
               </table>   
             </div>
           </div>
+
         </div>
         <!-- /.box-body -->
         <!-- /.box-footer-->

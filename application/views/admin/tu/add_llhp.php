@@ -20,21 +20,21 @@
 
         <p><?php echo validation_errors() ?></p>
 
-        <?php echo form_open("$class/add/") ?>
+        <?php echo form_open("$class/llhp/". $id) ?>
 
         <div class="row">
           <div class="col-md-3">           
             <div class="form-group">
-              <label>Nomor Rekomendasi</label>
-              <input type="text" name="no_rekomendasi" class="form-control" required>
+              <label>Nomor LLHP</label>
+              <input type="text" name="no_llhp" class="form-control" value="<?php echo isset($llhp['no_llhp']) ? $llhp['no_llhp'] : '' ?>" required>
             </div>
           </div>
 
         <div class="row">
           <div class="col-md-3">           
             <div class="form-group">
-              <label>Tanggal Rekomendasi</label>
-              <input type="text" name="tgl_rekomendasi" class="form-control datepicker" required>
+              <label>Tanggal LLHP</label>
+              <input type="text" name="tgl_llhp" class="form-control datepicker" value="<?php echo isset($llhp['tgl_llhp']) ? $llhp['tgl_llhp'] : '' ?>" required>
             </div>
           </div> 
         </div>
@@ -43,7 +43,7 @@
       
       </div>
       <div class="box-footer">
-        <button type="submit" class="btn btn-primary">Tambah</button>
+        <button type="submit" class="btn btn-primary">Simpan</button>
       </div>
       <?php echo form_close() ?>
       <!-- /.box-body -->

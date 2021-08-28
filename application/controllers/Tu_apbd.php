@@ -25,36 +25,35 @@ class Tu_apbd extends MY_Controller {
 		$this->template->load('admin/template/template', 'admin/tu/list', $data);
 	}
 
-	public function add($id_sertifikasi){
-		$cek_no = $this->tu_apbd_model->cek_no($id_sertifikasi);
-
-		if($cek_no){
-			$this->session->set_flashdata('notif', 'SERTIFIKASI SUDAH DIBERI NO TU.');
-			redirect('sertifikasi_apbd/list_sertifikasi');
-		}
-
+	public function add(){
 		if($this->form_validation->run() === FALSE){	
 			$data['class'] = $this->class;
-			$data['id_sertifikasi'] = $id_sertifikasi;
 
 			$this->template->load('admin/template/template', 'admin/tu/add_tu', $data);
 		}else{			
-			$this->tu_apbd_model->add($id_sertifikasi);
-			$this->session->set_flashdata('notif', 'BERHASIL MENAMBAH NO TU.');
-			redirect('tu_apbd/list_tu');		
+			$insert_id = $this->sertifikasi_model->add($this->anggaran);
+			$this->tu_apbd_model->add($insert_id);
+			$this->session->set_flashdata('notif', 'BERHASIL MENAMBAH');
+			redirect('sertifikasi_apbd/list_sertifikasi');		
 		}			
 	}
 
 	public function edit($id){
 		$data['tu'] = $this->tu_apbd_model->get_all($id);
-
 		$data['id_tu'] = $id;
+		$id_sertifikasi = $data['tu']['id_sertifikasi'];
 
 		if($this->form_validation->run() === FALSE){	
 			$data['class'] = $this->class;
 
 			$this->template->load('admin/template/template', 'admin/tu/edit', $data);
-		}else{			
+		}else{	
+			$data = array(
+				'tgl_panen' => $this->input->post('tgl_panen'),
+			);	
+
+			$this->db->where('id_sertifikasi', $id_sertifikasi);
+			$this->db->update('sertifikasi', $data);		
 
 			$this->tu_apbd_model->edit($id);
 			redirect('tu_apbd/list_tu');		
@@ -77,15 +76,20 @@ class Tu_apbd extends MY_Controller {
 
 		// nomor
 		$nomor = $this->tu_apbd_model->get_max_id();
-		$nomor = $nomor['nomor'];
+		$nomor = $nomor['no_asal'] + 1;
 
 		$nomor = sprintf("%02d", $nomor); 
 
 		// no asal
 		$no_asal = sprintf("%02d", $nomor); 
-		$no_asal = "TM. ". $no_asal;
+		$no_asal = $no_asal;
 
 		$this->tu_apbd_model->add_asal($id_tu, $no_asal);
+
+		$insert_id = $this->db->insert_id();
+
+		$this->lab_model->add($insert_id, 2);
+
 		$this->session->set_flashdata('notif', 'BERHASIL MENAMBAH NO ASAL.');
 		redirect('tu_apbd/list_tu');	
 	}
@@ -328,5 +332,117 @@ class Tu_apbd extends MY_Controller {
 
 		$writer->save('php://output');
 
+	}
+
+	public function pemlap1($id){
+		if($this->form_validation->run() === FALSE){	
+			$data['class'] = $this->class;
+			$data['id'] = $id;
+			$data['urutan'] = '1';
+			$data['level'] = $this->session->userdata('level');
+			$data['pemlap'] = $this->db->get_where('tu_apbd', array('id_sertifikasi' => $id))->row_array();
+
+			$this->template->load('admin/template/template', 'admin/tu/add_pemlap', $data);
+		}else{	
+			$data = array(
+				'no_pemlap1' => $this->input->post('no_pemlap'),
+				'tgl_pemlap1' => $this->input->post('tgl_pemlap'),
+				'cvl_pemlap1' => $this->input->post('cvl_pemlap')
+			);	
+
+			$this->db->where('id_sertifikasi', $id);
+			$this->db->update('tu_apbd', $data);	
+
+			$this->session->set_flashdata('notif', 'BERHASIL MENYIMPAN');
+			if($data['level'] == 'sertifikasi'){
+				redirect('sertifikasi_apbd/list_sertifikasi');
+			}else{
+				redirect('tu_apbd/list_tu');
+			}	
+		}	
+	}
+
+	public function pemlap2($id){
+		if($this->form_validation->run() === FALSE){	
+			$data['class'] = $this->class;
+			$data['id'] = $id;
+			$data['urutan'] = '2';
+			$data['level'] = $this->session->userdata('level');
+			$data['pemlap'] = $this->db->get_where('tu_apbd', array('id_sertifikasi' => $id))->row_array();
+
+			$this->template->load('admin/template/template', 'admin/tu/add_pemlap', $data);
+		}else{	
+			$data = array(
+				'no_pemlap2' => $this->input->post('no_pemlap'),
+				'tgl_pemlap2' => $this->input->post('tgl_pemlap'),
+				'cvl_pemlap2' => $this->input->post('cvl_pemlap')
+			);	
+
+			$this->db->where('id_sertifikasi', $id);
+			$this->db->update('tu_apbd', $data);	
+
+			$this->session->set_flashdata('notif', 'BERHASIL MENYIMPAN');
+			if($data['level'] == 'sertifikasi'){
+				redirect('sertifikasi_apbd/list_sertifikasi');
+			}else{
+				redirect('tu_apbd/list_tu');
+			}	
+		}	
+	}
+
+	public function pemlap3($id){
+		if($this->form_validation->run() === FALSE){	
+			$data['class'] = $this->class;
+			$data['id'] = $id;
+			$data['urutan'] = '3';
+			$data['level'] = $this->session->userdata('level');
+			$data['pemlap'] = $this->db->get_where('tu_apbd', array('id_sertifikasi' => $id))->row_array();
+
+			$this->template->load('admin/template/template', 'admin/tu/add_pemlap', $data);
+		}else{	
+			$data = array(
+				'no_pemlap3' => $this->input->post('no_pemlap'),
+				'tgl_pemlap3' => $this->input->post('tgl_pemlap'),
+				'cvl_pemlap3' => $this->input->post('cvl_pemlap')
+			);	
+
+			$this->db->where('id_sertifikasi', $id);
+			$this->db->update('tu_apbd', $data);	
+
+			$this->session->set_flashdata('notif', 'BERHASIL MENYIMPAN');
+			if($data['level'] == 'sertifikasi'){
+				redirect('sertifikasi_apbd/list_sertifikasi');
+			}else{
+				redirect('tu_apbd/list_tu');
+			}		
+		}	
+	}
+
+	public function llhp($id){
+		if($this->form_validation->run() === FALSE){	
+			$data['class'] = $this->class;
+			$data['id'] = $id;
+			$data['urutan'] = '3';
+			$data['level'] = $this->session->userdata('level');
+
+			$this->template->load('admin/template/template', 'admin/tu/add_llhp', $data);
+		}else{	
+			$data = array(
+				'no_llhp' => $this->input->post('no_llhp'),
+				'tgl_llhp' => $this->input->post('tgl_llhp'),
+			);	
+
+			$this->db->where('id_sertifikasi', $id);
+			$this->db->update('tu_apbd', $data);	
+
+			$this->session->set_flashdata('notif', 'BERHASIL MENYIMPAN');
+
+			if($data['level'] == 'sertifikasi'){
+				redirect('sertifikasi_apbd/list_sertifikasi');
+			}else{
+				redirect('tu_apbd/list_tu');
+			}
+					
+		}	
 	}
 }

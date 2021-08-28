@@ -126,7 +126,7 @@
 			<p>UNIT PELAKSANA TEKNIS DINAS</p>
 			<p>PENGAWASAN DAN SERTIFIKASI BENIH</p>
 			<p>TANAMAN PANGAN DAN HORTIKULTURA</p>
-			<p>Jln. P. Muhammad Noor Sempaja Telp (0541) 221212, 221213 Fax. 221212</p>
+			<p style="font-weight: normal;">Jln. P. Muhammad Noor Sempaja Telp (0541) 221212, 221213 Fax. 221212</p>
 			
 		</div>
 		<div style="font-weight: bold;margin-top: 25px">
@@ -140,15 +140,15 @@
 	<div class="content">
 
 	<?php 
-		$tgl_kesimpulan = date_create($sertifikasi['tgl_kesimpulan']);
+		$tgl_kesimpulan = date_create($sertifikasi['tgl_rekomendasi']);
 	?>
 
 	<table class="table table-borderless">
 		<tbody>
 			<tr>
 				<td style="padding-left: 0px;">Nomor</td>
-				<td>: 521.221 / <span style="padding-left: 3em;"></span>/ UPTD PSBTPH / <?php echo date_format($tgl_kesimpulan, "m") ?>.2020</td>
-				<td>Samarinda, <?php echo tgl_indo($sertifikasi['tgl_kesimpulan']) ?></td>
+				<td>: 521.221/<?php echo $sertifikasi['no_rekomendasi'] ?>/UPTD PSBTPH/<?php echo date_format($tgl_kesimpulan, "m") ?>.<?php echo date_format($tgl_kesimpulan, "Y") ?></td>
+				<td>Samarinda, <?php echo tgl_indo($sertifikasi['tgl_rekomendasi']) ?></td>
 			</tr>
 			<tr>
 				<td style="padding-left: 0px;">Lampiran</td>
@@ -172,13 +172,17 @@
 		}
 	?>	
 
-	<p>Yang terhormat</p>
-	<p>Sdr. <span style="font-weight: bold;"><?php echo $sertifikasi['produsen_benih'] ?></span></p>
-	<p>Di - Desa <?php echo $sertifikasi['desa'] ?> Kec. <?php echo $sertifikasi['nama_kecamatan'] ?> </p>
+	<div class="float-right">
+		<p>Yang terhormat</p>
+		<p>Sdr. <span style="font-weight: bold;"><?php echo $sertifikasi['nama_produsen'] ?></span></p>
+		<p>Di -</p>
+		<p style="text-indent: 40px;">Desa <?php echo ucwords($sertifikasi['desa']) ?> Kec. <?php echo $sertifikasi['nama_kecamatan'] ?></p>
+	</div>
+	<div class="clearfix"></div>
 
-	<br>
+	<br><br>
 
-	<p>Sehubungan dengan Permohonan Saudara No. ……………..Tanggal <?php echo tgl_indo($sertifikasi['tgl_kesimpulan']) ?></p>
+	<p>Sehubungan dengan Permohonan Saudara No. ……………..Tanggal <?php echo tgl_indo($sertifikasi['tgl_rekomendasi']) ?></p>
 	<p>Bersama ini kami beritahukan sebagai berikut :</p>
 
 	<table class="table table-borderless pertanaman">
@@ -196,7 +200,7 @@
 		<tr>
 			<td style="padding-left: 0px;">Benih Sumber</td>
 			<td>:</td>
-			<td style="line-height: 1"><?php echo $sertifikasi['pemohon'] ?></td>
+			<td><?php echo $sertifikasi['nomor_sumber'] ?></td>
 			<td>Luas Pertanaman</td>
 			<td>:</td>
 			<td><?php echo $sertifikasi['luas'] ?> Ha</td>
@@ -204,10 +208,10 @@
 		<tr>
 			<td style="padding-left: 0px;">Kelas Benih</td>
 			<td>:</td>
-			<td><?php echo $kelas_benih['singkatan'] ?></td>
+			<td><?php echo $kelas_benih2['singkatan'] ?></td>
 			<td>Tanggal Semai</td>
 			<td>:</td>
-			<td><?php echo $sertifikasi['tgl_semai'] ?></td>
+			<td><?php echo date("d/m/Y", strtotime($sertifikasi['tgl_semai'])); ?></td>
 		</tr>
 		<tr>
 			<td style="padding-left: 0px;">Jumlah Benih</td>
@@ -215,7 +219,7 @@
 			<td><?php echo $sertifikasi['jumlah_benih'] ?></td>
 			<td>Tanggal Tanam</td>
 			<td>:</td>
-			<td><?php echo $sertifikasi['tgl_tanam'] ?></td>
+				<td><?php echo date("d/m/Y", strtotime($sertifikasi['tgl_tanam'])); ?></td>
 		</tr>
 		<tr>
 			<td style="padding-left: 0px;">Jenis Tanaman</td>
@@ -233,7 +237,7 @@
 		<tr>
 			<td width="20%" style="padding-left: 0px;">B l o k</td>
 			<td width="1">:</td>
-			<td width="30%"><?php echo ucwords($sertifikasi['blok']) ?></td>
+			<td width="30%"><?php echo ucwords($sertifikasi['nama_pimpinan']) ?></td>
 			<td width="20%">Desa</td>
 			<td width="1">:</td>
 			<td><?php echo ucwords($sertifikasi['desa']) ?></td>
@@ -316,15 +320,15 @@
 	<div style="margin-left: 700px;margin-top: 70px">
 		<div class="text-center">
 			<p style="margin-bottom: 100px">Kepala UPTD,</p>
-			<p style="text-decoration: underline;">Ir. Erry Erriadi</p>
-			<p>NIP. 196408201998031005</p>
+			<p style="text-decoration: underline;">Ir. Fenty Rubiah Harahap, M.Si</p>
+			<p>NIP. 196706141987092001</p>
 		</div>
 	</div>
 
 	<div>
 		<p>Tembusan kepada Yth.</p>
-		<p>Pengawas Benih <?php echo $kabkot ?> <?php echo ucwords($sertifikasi['nama_kota']) ?></p>
-		<p>Arsip</p>
+		<p>1. Pengawas Benih <?php echo $kabkot ?> <?php echo ucwords($sertifikasi['nama_kota']) ?></p>
+		<p>2. Arsip</p>
 	</div>
 		
 

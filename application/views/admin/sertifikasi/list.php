@@ -24,9 +24,11 @@
             <?php echo $this->session->flashdata('notif'); ?>
           </div>
           <?php endif ?>
-          
-          <a href="<?php echo base_url("$class/add") ?>" class="btn btn-success pull-right">Tambah</a>
-          
+
+          <?php if($this->session->userdata('level') == 'tu' ): ?>
+          <a href="<?php echo base_url("$class_tu/add") ?>" class="btn btn-success pull-right">Tambah</a>
+          <?php endif ?>
+
           <a style="margin-right: 10px" href="<?php echo base_url("$class/export_excel/") ?>" class="btn btn-default pull-right">Export ke Excel</a><br><br>
 
           
@@ -35,55 +37,71 @@
               <table class="table table-bordered table-striped">
                 <thead>
                   <th>No</th>
-                  <th>No. Induk</th>
-                  <th>No. Kelompok Benih</th>
-                  <th>Komoditas</th>
-                  <th>Varietas</th>
-                  <th>Pemohon</th>
-                  <th>Alamat</th>
-                  <th>Luas</th>
+                  <th>No. Rekomendasi</th>
+                  <th>Tgl. Rekomendasi</th>
+                  <th>Status</th>
                   <th>Aksi</th>
                 </thead>
                 <tbody>
                   <?php $no = 1; ?>
+
                   <?php foreach($sertifikasi as $sertifikasi_item): ?>
+                  <?php 
+                    switch ($sertifikasi_item['posisi']) {
+                      case "0":
+                        $status = "Proses rekomendasi";
+                        break;
+                      case "1":
+                        $status = "Proses Pemlap 1";
+                        break;
+                      case "2":
+                        $status = "Proses Pemlap 2";
+                        break;
+                      case "3":
+                        $status = "Proses Pemlap 3";
+                      break;
+                      case "4":
+                        $status = "Pemlap 3";
+                      break;
+                      case "5":
+                        $status = "Proses LLHP";
+                      break;
+                      default:
+                        echo "Your favorite color is neither red, blue, nor green!";
+                    }
+                  ?>
                     <tr>
                       <td><?php echo $no; ?></td>
-                      <td><?php echo $sertifikasi_item['no_induk']; ?></td>
-                      <td><?php echo $sertifikasi_item['no_kelompok_benih']; ?></td>
-                      <td><?php echo ucwords($sertifikasi_item['nama_jenis']); ?></td>
-                      <td><?php echo $sertifikasi_item['nama_varietas']; ?></td>
-                      <td><?php echo $sertifikasi_item['pemohon']; ?></td>
-                      <td><?php echo $sertifikasi_item['alamat']; ?></td>
-                      <td><?php echo $sertifikasi_item['luas']; ?> Ha</td>
+                      <td><?php echo $sertifikasi_item['no_rekomendasi']; ?></td>
+                      <td><?php echo tgl_indo($sertifikasi_item['tgl_rekomendasi']); ?></td>
+                      <td><?php echo $status ?></td>
                       <td>
+                        <a href="<?php echo base_url("sertifikasi_apbn/edit/". $sertifikasi_item['id_sertifikasi']) ?>" class="btn btn-xs btn-primary">REKOMENDASI</a><br>
+
+                        <?php $posisi = $sertifikasi_item['posisi']; ?>
+
+                        <?php if($posisi >= 1 && $posisi <= 5): ?>
                         <a target="_blank" href="<?php echo base_url("sertifikasi_apbn/print/". $sertifikasi_item['id_sertifikasi']) ?>" class="btn btn-xs btn-success">PRINT REKOMENDASI</a><br>
-
-                        <a target="_blank" href="<?php echo base_url("sertifikasi_apbn/print_pemlab1/". $sertifikasi_item['id_sertifikasi']) ?>" class="btn btn-xs btn-success">PRINT PEMLAP 1</a><br>
-
-                        <a target="_blank" href="<?php echo base_url("sertifikasi_apbn/print_pemlab2/". $sertifikasi_item['id_sertifikasi']) ?>" class="btn btn-xs btn-success">PRINT PEMLAP 2</a><br>
-
-                        <a target="_blank" href="<?php echo base_url("sertifikasi_apbn/print_pemlab3/". $sertifikasi_item['id_sertifikasi']) ?>" class="btn btn-xs btn-success">PRINT PEMLAP 3</a><br>
-
-                        <a target="_blank" href="<?php echo base_url("sertifikasi_apbn/print_llhp/". $sertifikasi_item['id_sertifikasi']) ?>" class="btn btn-xs btn-success">PRINT LLHP</a><br>
-
-                        <a target="_blank" href="<?php echo base_url("sertifikasi_apbn/print_sertifikat/". $sertifikasi_item['id_sertifikasi']) ?>" class="btn btn-xs btn-success">PRINT SERTIFIKAT</a><br>
-
-                        <a target="_blank" href="<?php echo base_url("pelabelan_benih/list/". $sertifikasi_item['id_sertifikasi']) ?>" class="btn btn-xs btn-primary">PELABELAN BENIH</a><br>
-
-                        <a target="_blank" href="<?php echo base_url("$class/detail/". $sertifikasi_item['id_sertifikasi']) ?>" class="btn btn-xs btn-warning">DETAIL</a><br>
-                        <a href="<?php echo base_url("$class/edit/". $sertifikasi_item['id_sertifikasi']) ?>" class="btn btn-xs btn-primary">EDIT</a><br>
-                        <a href="<?php echo base_url("$class/delete/". $sertifikasi_item['id_sertifikasi']) ?>" class="btn btn-xs btn-danger" onclick="return confirm('Apakah anda yakin ?');">DELETE</a><br>
+                        <a href="<?php echo base_url("$class_tu/pemlap1/". $sertifikasi_item['id_sertifikasi']) ?>" class="btn btn-xs btn-default">PEMLAP 1</a><br>
                         
-                        <?php if($this->session->userdata('level') == "tu" OR $this->session->userdata('level') == "admin" ): ?>
-
-                          <?php if(!isset($sertifikasi_item['no_tu'])): ?>
-                          <a href="<?php echo base_url("$class_tu/add/". $sertifikasi_item['id_sertifikasi']) ?>" class="btn btn-xs btn-default">BERI NOMOR TU</a>
-
-                          <?php endif ?>
+                        <?php if($posisi >= 2 && $posisi <= 5): ?>
+                        <a target="_blank" href="<?php echo base_url("sertifikasi_apbn/print_pemlab1/". $sertifikasi_item['id_sertifikasi']) ?>" class="btn btn-xs btn-success">PRINT PEMLAP 1</a><br>
+                        <a href="<?php echo base_url("$class_tu/pemlap2/". $sertifikasi_item['id_sertifikasi']) ?>" class="btn btn-xs btn-default">PEMLAP 2</a><br>
+                        <?php endif ?>
+                        <?php if($posisi >= 3 && $posisi <= 5): ?>
+                        <a target="_blank" href="<?php echo base_url("sertifikasi_apbn/print_pemlab2/". $sertifikasi_item['id_sertifikasi']) ?>" class="btn btn-xs btn-success">PRINT PEMLAP 2</a><br>
+                        <a href="<?php echo base_url("$class_tu/pemlap3/". $sertifikasi_item['id_sertifikasi']) ?>" class="btn btn-xs btn-default">PEMLAP 3</a><br>
+                        <?php endif ?>
+                        <?php if($posisi >= 4 && $posisi <= 5): ?>
+                        <a target="_blank" href="<?php echo base_url("sertifikasi_apbn/print_pemlab3/". $sertifikasi_item['id_sertifikasi']) ?>" class="btn btn-xs btn-success">PRINT PEMLAP 3</a><br>
+                        <?php endif ?>
 
                         <?php endif ?>
-                        <br>
+
+                        <?php if($this->session->userdata('level') == "tu"): ?>
+                        <a href="<?php echo base_url("$class/delete/". $sertifikasi_item['id_sertifikasi']) ?>" class="btn btn-xs btn-danger" onclick="return confirm('Apakah anda yakin ?');">DELETE</a><br>
+                        <?php endif ?>
+                        
                       </td>
                     </tr>
                     <?php $no++ ?>

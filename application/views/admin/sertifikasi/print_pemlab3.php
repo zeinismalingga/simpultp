@@ -9,6 +9,8 @@
 	<style>
 		*{
 			line-height: 0.4;
+			font-family: "Times New Roman", Times, serif;
+			font-size: 18px;
 		}
 
 		.pertanaman > tbody > tr > td{
@@ -24,9 +26,6 @@
 			margin-top: 20px;
 		}
 
-		.content{
-			font-family: Arial, Helvetica, sans-serif;
-		}
 
 		br{
 			line-height: 0.5;
@@ -125,7 +124,7 @@
 			<p>UNIT PELAKSANA TEKNIS DINAS</p>
 			<p>PENGAWASAN DAN SERTIFIKASI BENIH</p>
 			<p>TANAMAN PANGAN DAN HORTIKULTURA</p>
-			<p>Jln. P. Muhammad Noor Sempaja Telp (0541) 221212, 221213 Fax. 221212</p>
+			<p style="font-weight: normal;">Jln. P. Muhammad Noor Sempaja Telp (0541) 221212, 221213 Fax. 221212</p>
 			
 		</div>
 		<div style="font-weight: bold;margin-top: 25px">
@@ -149,19 +148,23 @@
 		}
 	?>
 
-	<p>Kepada YTH.</p>
-	<p><span style="font-weight: bold;"><?php echo $sertifikasi['produsen_benih'] ?></span></p>
-	<p>Di - Desa <?php echo ucwords($sertifikasi['desa']) ?> Kec. <?php echo $sertifikasi['nama_kecamatan'] ?> </p>
+	<div class="float-right">
+		<p>Kepada Yth.</p>
+		<p><span><?php echo $sertifikasi['nama_produsen'] ?></span></p>
+		<p>Di -  </p>
+		<p style="text-indent: 40px;">Desa <?php echo ucwords($sertifikasi['desa']) ?> Kec. <?php echo $sertifikasi['nama_kecamatan'] ?></p>
+	</div>
+	<div class="clearfix"></div>
 
 	<br>
 
 	<?php 
-		$tgl_pemlap = date_create($sertifikasi['tgl_pemlap_3']);
+		$tgl_pemlap = date_create($sertifikasi['tgl_pemlap3']);
 	?>
 
 	<div style="margin-top: 20px; text-align: center;">
 		<p style="text-decoration: underline;">SURAT PENGANTAR</p>
-		<p>Nomor : 521.211 / <?php echo $sertifikasi['no_pemlap3'] ?> /PSBTPH/ <?php echo date_format($tgl_pemlap, "m") ?>. <?php echo date_format($tgl_pemlap, "Y") ?></p>
+		<p>Nomor : 521.211/<?php echo $sertifikasi['no_pemlap3'] ?>/PSBTPH/<?php echo date_format($tgl_pemlap, "m") ?>. <?php echo date_format($tgl_pemlap, "Y") ?></p>
 	</div>
 
 	<table class="table table-borderless">
@@ -191,7 +194,7 @@
 		</tr>
 		<tr>
 			<td width="4%"></td>
-			<td><?php echo $sertifikasi['no_induk'] ?> / 4</td>
+			<td><?php echo $sertifikasi['no_induk'] ?>/4</td>
 			<td></td>
 			<td>mana mestinya</td>
 		</tr>
@@ -227,10 +230,10 @@
 		<div class="col-sm-2">
 		</div>
 		<div class="col-sm-4 text-center">
-			<p>Samarinda, <?php echo tgl_indo($sertifikasi['tgl_pemlap_3']) ?></p>
+			<p>Samarinda, <?php echo tgl_indo($sertifikasi['tgl_pemlap3']) ?></p>
 			<p style="margin-bottom: 100px">Kepala UPTD,</p>
-			<p style="text-decoration: underline;">Ir. Erry Erriadi</p>
-			<p>NIP. 196408201998031005</p>
+			<p style="text-decoration: underline;">Ir. Fenty Rubiah Harahap, M.Si</p>
+			<p>NIP. 196706141987092001</p>
 		</div>
 	</div>
 

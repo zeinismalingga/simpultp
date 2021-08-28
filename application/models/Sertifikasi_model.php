@@ -11,7 +11,7 @@ class Sertifikasi_model extends CI_Model {
 			$query = $this->db->query("SELECT * FROM sertifikasi, varietas, jenis_varietas, kota, kecamatan, kelas_benih, kelas_benih2, musim_tanam WHERE sertifikasi.id_jenis_varietas = jenis_varietas.id_jenis_varietas AND sertifikasi.id_varietas = varietas.id_varietas AND sertifikasi.id_kelas_benih = kelas_benih.id_kelas_benih AND sertifikasi.id_kabupaten = kota.id_kota AND sertifikasi.id_kecamatan = kecamatan.id_kecamatan AND sertifikasi.id_kelas_benih2 = kelas_benih2.id_kelas_benih2 AND sertifikasi.id_musim_tanam = musim_tanam.id_musim_tanam AND sertifikasi.jenis_anggaran = $anggaran GROUP BY sertifikasi.id_sertifikasi");		
 			return $query->result_array();	
 		}else{
-			$query = $this->db->query("SELECT * FROM sertifikasi, varietas, jenis_varietas, kota, kecamatan, kelas_benih, kelas_benih2, musim_tanam WHERE id_sertifikasi = $id AND sertifikasi.id_jenis_varietas = jenis_varietas.id_jenis_varietas AND sertifikasi.id_varietas = varietas.id_varietas AND sertifikasi.id_kelas_benih = kelas_benih.id_kelas_benih AND sertifikasi.id_kabupaten = kota.id_kota AND sertifikasi.id_kecamatan = kecamatan.id_kecamatan AND sertifikasi.id_kelas_benih2 = kelas_benih2.id_kelas_benih2 AND sertifikasi.id_musim_tanam = musim_tanam.id_musim_tanam GROUP BY sertifikasi.id_sertifikasi");
+			$query = $this->db->query("SELECT * FROM sertifikasi LEFT JOIN jenis_varietas ON jenis_varietas.id_jenis_varietas = sertifikasi.id_jenis_varietas LEFT JOIN musim_tanam ON musim_tanam.id_musim_tanam = sertifikasi.id_musim_tanam LEFT JOIN varietas ON varietas.id_varietas = sertifikasi.id_varietas LEFT JOIN kelas_benih ON kelas_benih.id_kelas_benih = sertifikasi.id_kelas_benih LEFT JOIN inventaris_produsen ON inventaris_produsen.id_inventaris_pangan = sertifikasi.id_produsen WHERE sertifikasi.id_sertifikasi = $id AND sertifikasi.jenis_anggaran = $anggaran");
 			return $query->row_array();	
 		}		
 	}
@@ -29,59 +29,10 @@ class Sertifikasi_model extends CI_Model {
 
 	public function add($anggaran){
 		$data = array(
-			'id_varietas' => $this->input->post('id_varietas'),
-			'id_musim_tanam' => $this->input->post('id_musim_tanam'),
-			'no_induk' => $this->input->post('no_induk'),
-			'status' => $this->input->post('status'),
-			'nomor_sumber' => $this->input->post('nomor_sumber'),
-			'pemohon' => $this->input->post('pemohon'),
-			'alamat' => $this->input->post('alamat'),
-			'luas' => $this->input->post('luas'),
-			'id_jenis_tanaman' => $this->input->post('id_jenis_tanaman'),
-			'id_jenis_varietas' => $this->input->post('id_jenis_varietas'),
-			'id_kelas_benih' => $this->input->post('id_kelas_benih'),
-			'tgl_tanam' => $this->input->post('tgl_tanam'),
-			'blok' => $this->input->post('blok'),
-			'kampung' => $this->input->post('kampung'),
-			'desa' => $this->input->post('desa'),
-			'id_kecamatan' => $this->input->post('id_kecamatan'),
-			'id_kabupaten' => $this->input->post('id_kabupaten'),
-			'jenis_tanaman' => $this->input->post('jenis_tanaman'),
-			'produsen_benih' => $this->input->post('produsen_benih'),
-			'asal_benih' => $this->input->post('asal_benih'),
-			'id_kelas_benih2' => $this->input->post('id_kelas_benih2'),
-			'jumlah_benih' => $this->input->post('jumlah_benih'),
 			'jenis_anggaran' => $anggaran,
-			'tgl_surat' => $this->input->post('tgl_surat'),
-			'nama_pbt' => $this->input->post('nama_pbt'),
-			'tgl_pemlap_pendahuluan' => $this->input->post('tgl_pemlap_pendahuluan'),
-			'kesimpulan_pemlap_pendahuluan' => $this->input->post('kesimpulan_pemlap_pendahuluan'),
-			'tgl_kesimpulan' => $this->input->post('tgl_kesimpulan'),
-			'no_kelompok_benih' => $this->input->post('no_kelompok_benih'),
-			'tgl_semai' => $this->input->post('tgl_semai'),
-			'tgl_pemlap_1' => $this->input->post('tgl_pemlap_1'),
-			'cvl_pemlap_1' => $this->input->post('cvl_pemlap_1'),
-			'luas_pemlap_1' => $this->input->post('luas_pemlap_1'),
-			'lulus_1' => $this->input->post('lulus_1'),
-			'tgl_pemlap_2' => $this->input->post('tgl_pemlap_2'),
-			'cvl_pemlap_2' => $this->input->post('cvl_pemlap_2'),
-			'luas_pemlap_2' => $this->input->post('luas_pemlap_2'),
-			'lulus_2' => $this->input->post('lulus_2'),
-			'tgl_pemlap_3' => $this->input->post('tgl_pemlap_3'),
-			'cvl_pemlap_3' => $this->input->post('cvl_pemlap_3'),
-			'luas_pemlap_3' => $this->input->post('luas_pemlap_3'),
-			'lulus_3' => $this->input->post('lulus_3'),
-			'tgl_pemeriksaan_alat_panen' => empty($this->input->post('tgl_pemeriksaan_alat_panen')) ? NULL : $this->input->post('tgl_pemeriksaan_alat_panen'),
-			'tgl_panen' => empty($this->input->post('tgl_panen')) ? NULL : $this->input->post('tgl_panen'),
-			'produksi' => $this->input->post('produksi'),
-			'tgl_permohonan_pengambilan_cb' => empty($this->input->post('tgl_permohonan_pengambilan_cb')) ? NULL : $this->input->post('tgl_permohonan_pengambilan_cb'),
-			'tgl_pengambilan_contoh_benih' => empty($this->input->post('tgl_pengambilan_contoh_benih')) ? NULL : $this->input->post('tgl_pengambilan_contoh_benih'),
-			'tgl_pengiriman_contoh_benih' => empty($this->input->post('tgl_pengiriman_contoh_benih')) ? NULL : $this->input->post('tgl_pengiriman_contoh_benih'),
-			'jml_wadah' => $this->input->post('jml_wadah'),
-			'jml_sample' => $this->input->post('jml_sample'),
-
 		);		
-		return $this->db->insert('sertifikasi', $data);
+		$this->db->insert('sertifikasi', $data);
+		return $this->db->insert_id();
 	}
 
 	public function edit($anggaran, $id){
@@ -90,52 +41,17 @@ class Sertifikasi_model extends CI_Model {
 			'id_musim_tanam' => $this->input->post('id_musim_tanam'),
 			'no_induk' => $this->input->post('no_induk'),
 			'status' => $this->input->post('status'),
-			'nomor_sumber' => $this->input->post('nomor_sumber'),
-			'pemohon' => $this->input->post('pemohon'),
+			'id_produsen' => $this->input->post('id_produsen'),
 			'alamat' => $this->input->post('alamat'),
 			'luas' => $this->input->post('luas'),
 			'id_jenis_tanaman' => $this->input->post('id_jenis_tanaman'),
 			'id_jenis_varietas' => $this->input->post('id_jenis_varietas'),
 			'id_kelas_benih' => $this->input->post('id_kelas_benih'),
-			'tgl_tanam' => $this->input->post('tgl_tanam'),
-			'blok' => $this->input->post('blok'),
-			'kampung' => $this->input->post('kampung'),
-			'desa' => $this->input->post('desa'),
-			'id_kecamatan' => $this->input->post('id_kecamatan'),
-			'id_kabupaten' => $this->input->post('id_kabupaten'),
-			'jenis_tanaman' => $this->input->post('jenis_tanaman'),
-			'produsen_benih' => $this->input->post('produsen_benih'),
-			'asal_benih' => $this->input->post('asal_benih'),
 			'id_kelas_benih2' => $this->input->post('id_kelas_benih2'),
-			'jumlah_benih' => $this->input->post('jumlah_benih'),
-			'jenis_anggaran' => $anggaran,
-			'tgl_surat' => $this->input->post('tgl_surat'),
-			'nama_pbt' => $this->input->post('nama_pbt'),
-			'tgl_pemlap_pendahuluan' => $this->input->post('tgl_pemlap_pendahuluan'),
-			'kesimpulan_pemlap_pendahuluan' => $this->input->post('kesimpulan_pemlap_pendahuluan'),
-			'tgl_kesimpulan' => $this->input->post('tgl_kesimpulan'),
-			'no_kelompok_benih' => $this->input->post('no_kelompok_benih'),
+			'nomor_sumber' => $this->input->post('nomor_sumber'),
+			'tgl_tanam' => $this->input->post('tgl_tanam'),
 			'tgl_semai' => $this->input->post('tgl_semai'),
-			'tgl_pemlap_1' => $this->input->post('tgl_pemlap_1'),
-			'cvl_pemlap_1' => $this->input->post('cvl_pemlap_1'),
-			'luas_pemlap_1' => $this->input->post('luas_pemlap_1'),
-			'lulus_1' => $this->input->post('lulus_1'),
-			'tgl_pemlap_2' => $this->input->post('tgl_pemlap_2'),
-			'cvl_pemlap_2' => $this->input->post('cvl_pemlap_2'),
-			'luas_pemlap_2' => $this->input->post('luas_pemlap_2'),
-			'lulus_2' => $this->input->post('lulus_2'),
-			'tgl_pemlap_3' => $this->input->post('tgl_pemlap_3'),
-			'cvl_pemlap_3' => $this->input->post('cvl_pemlap_3'),
-			'luas_pemlap_3' => $this->input->post('luas_pemlap_3'),
-			'lulus_3' => $this->input->post('lulus_3'),
-			'tgl_pemeriksaan_alat_panen' => empty($this->input->post('tgl_pemeriksaan_alat_panen')) ? NULL : $this->input->post('tgl_pemeriksaan_alat_panen'),
-			'tgl_panen' => empty($this->input->post('tgl_panen')) ? NULL : $this->input->post('tgl_panen'),
-			'produksi' => $this->input->post('produksi'),
-			'tgl_permohonan_pengambilan_cb' => empty($this->input->post('tgl_permohonan_pengambilan_cb')) ? NULL : $this->input->post('tgl_permohonan_pengambilan_cb'),
-			'tgl_pengambilan_contoh_benih' => empty($this->input->post('tgl_pengambilan_contoh_benih')) ? NULL : $this->input->post('tgl_pengambilan_contoh_benih'),
-			'tgl_pengiriman_contoh_benih' => empty($this->input->post('tgl_pengiriman_contoh_benih')) ? NULL : $this->input->post('tgl_pengiriman_contoh_benih'),
-			'jml_wadah' => $this->input->post('jml_wadah'),
-			'jml_sample' => $this->input->post('jml_sample'),
+			'jenis_anggaran' => $anggaran,
 		);					
 
 		$this->db->where('id_sertifikasi', $id);
@@ -144,11 +60,11 @@ class Sertifikasi_model extends CI_Model {
 
 	public function get_llhp($id, $anggaran){
 		if($anggaran == 1){
-			$query = $this->db->query("SELECT * FROM sertifikasi, varietas, jenis_varietas, kota, kecamatan, kelas_benih, kelas_benih2, tu_apbn, lab, lab_apbn, musim_tanam WHERE sertifikasi.id_sertifikasi = $id AND sertifikasi.id_jenis_varietas = jenis_varietas.id_jenis_varietas AND sertifikasi.id_varietas = varietas.id_varietas AND sertifikasi.id_kelas_benih = kelas_benih.id_kelas_benih AND sertifikasi.id_kabupaten = kota.id_kota AND sertifikasi.id_kecamatan = kecamatan.id_kecamatan AND sertifikasi.id_kelas_benih2 = kelas_benih2.id_kelas_benih2 AND sertifikasi.id_sertifikasi = tu_apbn.id_sertifikasi AND tu_apbn.id_tu_apbn = lab_apbn.id_tu_apbn AND lab_apbn.id_lab_apbn = lab.id_lab_anggaran AND sertifikasi.id_musim_tanam = musim_tanam.id_musim_tanam");
+			$query = $this->db->query("SELECT * FROM sertifikasi, varietas, jenis_varietas, kota, kecamatan, kelas_benih, kelas_benih2, tu_apbn, lab, input_lab_apbn ,musim_tanam, inventaris_produsen WHERE sertifikasi.id_sertifikasi = $id AND sertifikasi.id_jenis_varietas = jenis_varietas.id_jenis_varietas AND sertifikasi.id_varietas = varietas.id_varietas AND sertifikasi.id_kelas_benih = kelas_benih.id_kelas_benih AND sertifikasi.id_musim_tanam = musim_tanam.id_musim_tanam AND inventaris_produsen.id_kota = kota.id_kota AND inventaris_produsen.id_kecamatan = kecamatan.id_kecamatan AND sertifikasi.id_sertifikasi = tu_apbn.id_sertifikasi AND tu_apbn.id_tu_apbn = input_lab_apbn.id_tu_apbn AND input_lab_apbn.id_input_lab_apbn = lab.id_lab_anggaran GROUP BY sertifikasi.id_sertifikasi");
 		
 			return $query->row_array();
 		}else if($anggaran == 2){
-			$query = $this->db->query("SELECT * FROM sertifikasi, varietas, jenis_varietas, kota, kecamatan, kelas_benih, kelas_benih2, tu_apbd, lab, lab_apbd, musim_tanam WHERE sertifikasi.id_sertifikasi = $id AND sertifikasi.id_jenis_varietas = jenis_varietas.id_jenis_varietas AND sertifikasi.id_varietas = varietas.id_varietas AND sertifikasi.id_kelas_benih = kelas_benih.id_kelas_benih AND sertifikasi.id_kabupaten = kota.id_kota AND sertifikasi.id_kecamatan = kecamatan.id_kecamatan AND sertifikasi.id_kelas_benih2 = kelas_benih2.id_kelas_benih2 AND sertifikasi.id_sertifikasi = tu_apbd.id_sertifikasi AND tu_apbd.id_tu_apbd = lab_apbd.id_tu_apbd AND lab_apbd.id_lab_apbd = lab.id_lab_anggaran AND sertifikasi.id_musim_tanam = musim_tanam.id_musim_tanam");
+			$query = $this->db->query("SELECT * FROM sertifikasi, varietas, jenis_varietas, kota, kecamatan, kelas_benih, kelas_benih2, tu_apbd, lab, input_lab_apbd ,musim_tanam, inventaris_produsen WHERE sertifikasi.id_sertifikasi = $id AND sertifikasi.id_jenis_varietas = jenis_varietas.id_jenis_varietas AND sertifikasi.id_varietas = varietas.id_varietas AND sertifikasi.id_kelas_benih = kelas_benih.id_kelas_benih AND sertifikasi.id_musim_tanam = musim_tanam.id_musim_tanam AND inventaris_produsen.id_kota = kota.id_kota AND inventaris_produsen.id_kecamatan = kecamatan.id_kecamatan AND sertifikasi.id_sertifikasi = tu_apbd.id_sertifikasi AND tu_apbd.id_tu_apbn = input_lab_apbd.id_tu_apbn AND input_lab_apbd.id_input_lab_apbn = lab.id_lab_anggaran GROUP BY sertifikasi.id_sertifikasi");
 		
 			return $query->row_array();
 		}
@@ -168,6 +84,46 @@ class Sertifikasi_model extends CI_Model {
 	function get_varietas2($id){
 		$query = $this->db->query("SELECT * FROM varietas WHERE id_varietas = $id");
 			return $query->row_array();
+	}
+
+	public function rekomendasi($id, $anggaran){
+		$t_anggaran = $anggaran == '1' ? 'tu_apbn' : 'tu_apbd';
+		if($id == NULL){
+			$query = $this->db->query("SELECT * FROM sertifikasi, jenis_varietas, varietas, kelas_benih, inventaris_produsen WHERE sertifikasi.posisi = 0 AND sertifikasi.id_jenis_varietas = jenis_varietas.id_jenis_varietas AND sertifikasi.id_varietas = varietas.id_varietas AND kelas_benih.id_kelas_benih = kelas_benih.id_kelas_benih GROUP BY sertifikasi.id_sertifikasi AND sertifikasi.id_produsen = inventaris_produsen.id_inventaris_pangan");
+			return $query->result_array();
+		}else{
+			$query = $this->db->query("SELECT * FROM sertifikasi, $t_anggaran, inventaris_produsen, kota, kecamatan, musim_tanam, varietas, kelas_benih, jenis_varietas WHERE sertifikasi.id_sertifikasi = $t_anggaran.id_sertifikasi AND sertifikasi.id_produsen = inventaris_produsen.id_inventaris_pangan AND inventaris_produsen.id_kota = kota.id_kota AND inventaris_produsen.id_kecamatan = kecamatan.id_kecamatan AND sertifikasi.id_musim_tanam = musim_tanam.id_musim_tanam AND sertifikasi.id_varietas = varietas.id_varietas AND sertifikasi.id_kelas_benih = kelas_benih.id_kelas_benih AND sertifikasi.id_jenis_varietas = jenis_varietas.id_jenis_varietas");
+			return $query->row_array();
+		}
+		
+	}
+
+	public function pemlap1($id, $anggaran){
+		$t_anggaran = $anggaran == '1' ? 'tu_apbn' : 'tu_apbd';
+		if($id == NULL){
+			$query = $this->db->query("SELECT * FROM sertifikasi, jenis_varietas, varietas, kelas_benih, inventaris_produsen WHERE sertifikasi.posisi = 1 AND sertifikasi.id_jenis_varietas = jenis_varietas.id_jenis_varietas AND sertifikasi.id_varietas = varietas.id_varietas AND kelas_benih.id_kelas_benih = kelas_benih.id_kelas_benih GROUP BY sertifikasi.id_sertifikasi AND sertifikasi.id_produsen = inventaris_produsen.id_inventaris_pangan");
+			return $query->result_array();
+		}else{
+			$query = $this->db->query("SELECT * FROM sertifikasi, $t_anggaran, inventaris_produsen, kota, kecamatan WHERE sertifikasi.id_sertifikasi = $t_anggaran.id_sertifikasi AND sertifikasi.id_produsen = inventaris_produsen.id_inventaris_pangan AND inventaris_produsen.id_kota = kota.id_kota AND inventaris_produsen.id_kecamatan = kecamatan.id_kecamatan");
+			return $query->row_array();
+		}
+		
+	}
+
+	public function pemlap2($id, $anggaran){
+		if($id == NULL){
+			$query = $this->db->query("SELECT * FROM sertifikasi, jenis_varietas, varietas, kelas_benih, inventaris_produsen WHERE sertifikasi.posisi = 2 AND sertifikasi.id_jenis_varietas = jenis_varietas.id_jenis_varietas AND sertifikasi.id_varietas = varietas.id_varietas AND kelas_benih.id_kelas_benih = kelas_benih.id_kelas_benih GROUP BY sertifikasi.id_sertifikasi AND sertifikasi.id_produsen = inventaris_produsen.id_inventaris_pangan");
+			return $query->result_array();
+		}
+		
+	}
+
+	public function pemlap3($id, $anggaran){
+		if($id == NULL){
+			$query = $this->db->query("SELECT * FROM sertifikasi, jenis_varietas, varietas, kelas_benih, inventaris_produsen WHERE sertifikasi.posisi = 3 AND sertifikasi.id_jenis_varietas = jenis_varietas.id_jenis_varietas AND sertifikasi.id_varietas = varietas.id_varietas AND kelas_benih.id_kelas_benih = kelas_benih.id_kelas_benih GROUP BY sertifikasi.id_sertifikasi AND sertifikasi.id_produsen = inventaris_produsen.id_inventaris_pangan");
+			return $query->result_array();
+		}
+		
 	}
 
 }

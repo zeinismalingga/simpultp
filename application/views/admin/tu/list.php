@@ -47,7 +47,7 @@
                       <td><?php echo $no; ?></td>
                       <td><?php echo $sertifikasi_item['no_induk']; ?></td>
                       <td><?php echo $sertifikasi_item['no_tu']; ?></td>
-                      <td><?php echo $sertifikasi_item['produsen_benih']; ?></td>
+                      <td><?php echo $sertifikasi_item['nama_produsen']; ?></td>
                       <td><?php echo $sertifikasi_item['alamat']; ?></td>
                       <td><?php echo $sertifikasi_item['nama_varietas']; ?></td>
                       <td>
@@ -63,9 +63,14 @@
                        ?> 
                        </td>
                       <td>
-                        <a href="<?php echo base_url("$class/edit/". $sertifikasi_item["$id_tu"]) ?>" class="btn btn-xs btn-primary">EDIT</a>
-                        <a target="_blank" href="<?php echo base_url("$class/print/". $sertifikasi_item["$id_tu"]) ?>" class="btn btn-xs btn-success">PRINT</a>
-                        <a href="<?php echo base_url("$class/delete/". $sertifikasi_item["$id_tu"]) ?>" class="btn btn-xs btn-danger" onclick="return confirm('Apakah anda yakin ?');">DELETE</a>
+                        <a href="<?php echo base_url("$class/edit/". $sertifikasi_item["$id_tu"]) ?>" class="btn btn-xs btn-default">NO. TU</a><br>
+                        <a href="<?php echo base_url("$class/pemlap1/". $sertifikasi_item['id_sertifikasi']) ?>" class="btn btn-xs btn-default">NO. PEMLAP 1</a><br>
+                        <a href="<?php echo base_url("$class/pemlap2/". $sertifikasi_item['id_sertifikasi']) ?>" class="btn btn-xs btn-default">NO. PEMLAP 2</a><br>
+                        <a href="<?php echo base_url("$class/pemlap3/". $sertifikasi_item['id_sertifikasi']) ?>" class="btn btn-xs btn-default">NO. PEMLAP 3</a><br>
+                        <a href="<?php echo base_url("$class/llhp/". $sertifikasi_item["id_sertifikasi"]) ?>" class="btn btn-xs btn-default">NO. LLHP</a><br>
+                        <a href="<?php echo base_url("$class/edit/". $sertifikasi_item["$id_tu"]) ?>" class="btn btn-xs btn-default">NO. CEK MUTU BENIH</a><br>
+                        <a target="_blank" href="<?php echo base_url("$class/print/". $sertifikasi_item["$id_tu"]) ?>" class="btn btn-xs btn-success">PRINT</a><br>
+                        <a href="<?php echo base_url("$class/delete/". $sertifikasi_item["$id_tu"]) ?>" class="btn btn-xs btn-danger" onclick="return confirm('Apakah anda yakin ?');">DELETE</a><br>
                         
                         <?php if(!isset($sertifikasi_item["$id_input_lab"])): ?>
                         <a href="<?php echo base_url("$class/add_asal/". $sertifikasi_item["$id_tu"]) ?>" class="btn btn-xs btn-default">BERI NOMOR ASAL</a>

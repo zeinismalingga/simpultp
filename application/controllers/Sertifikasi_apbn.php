@@ -15,7 +15,7 @@ class Sertifikasi_apbn extends MY_Controller {
 	}
 	
 	public function list_sertifikasi(){
-		$data['sertifikasi'] = $this->sertifikasi_model->get_list($this->anggaran);
+		$data['sertifikasi'] = $this->tu_apbn_model->get_rekomendasi();
 		$data['class'] = $this->class;
 		$data['class_tu'] = "tu_apbn";
 		$data['anggaran'] = "APBN";
@@ -44,15 +44,15 @@ class Sertifikasi_apbn extends MY_Controller {
 	}
 
 	public function edit($id){	
-		$data['sertifikasi'] = $this->sertifikasi_model->get_all($id);
-		$data['kotas'] = $this->master_model->get_kota();
-		$data['kecamatans'] = $this->master_model->get_kecamatan();
+		$data['sertifikasi'] = $this->sertifikasi_model->get_all($id, $this->anggaran);
 		$data['kelas_benihs'] = $this->master_model->get_kelas_benih();
 		$data['varietass'] = $this->master_model->get_varietas();
 		$data['jenis_varietass'] = $this->master_model->get_jenis_varietas();
 		$data['musim_tanam'] = $this->master_model->get_musim_tanam();
+		$data['pemohons'] = $this->inventaris_produsen_model->get_all();
 		$data['kelas_benih2'] = $this->master_model->get_kelas_benih2($data['sertifikasi']['id_kelas_benih2']);
 
+		// dd($data['kelas_benih2']);
 		$this->form_validation->set_error_delimiters('<div class="alert alert-danger">', '</div>');
 
 		if($this->form_validation->run() === FALSE){	
@@ -60,7 +60,7 @@ class Sertifikasi_apbn extends MY_Controller {
 			$this->template->load('admin/template/template', 'admin/sertifikasi/edit', $data);
 		}else{	
 			$this->sertifikasi_model->edit($this->anggaran, $id);
-
+			$this->session->set_flashdata('notif', 'Data berhasil disimpan');
 			redirect('sertifikasi_apbn/list_sertifikasi');			
 		}
 	}
@@ -71,14 +71,17 @@ class Sertifikasi_apbn extends MY_Controller {
 	}
 
 	public function print($id){
-		$data['sertifikasi'] = $this->sertifikasi_model->get_all($id);
-		$data['kelas_benih'] = $this->master_model->get_kelas_benih2($data['sertifikasi']['id_kelas_benih2']);
+		$data['sertifikasi'] = $this->sertifikasi_model->rekomendasi($id, $this->anggaran);
+		$data['kelas_benih2'] = $this->master_model->get_kelas_benih2($data['sertifikasi']['id_kelas_benih2']);
+
+		// dd($data['sertifikasi']);
 
 		$this->load->view('admin/sertifikasi/print', $data);
 	}
 
 	public function print_llhp($id){
-		$anggaran = $this->sertifikasi_model->get_all($id)['jenis_anggaran'];
+		$anggaran = $this->db->query("SELECT * FROM sertifikasi WHERE id_sertifikasi = $id")->row_array()['jenis_anggaran'];
+
 		$data['sertifikasi'] = $this->sertifikasi_model->get_llhp($id, $anggaran);
 
 		if($data['sertifikasi']){
@@ -86,34 +89,45 @@ class Sertifikasi_apbn extends MY_Controller {
 		}else{
 			$this->session->set_flashdata('notif', 'Data Lab atau TU Belum diinput');
 
-			if($anggaran == '1'){
-				redirect("sertifikasi_apbn/list_sertifikasi");
-			}else{
-				redirect("sertifikasi_apbd/list_sertifikasi");
-			}
-			
+			redirect("wasar/list");
+		}
+	}
+
+	public function print_llhp2($id){
+		$anggaran = $this->db->query("SELECT * FROM sertifikasi WHERE id_sertifikasi = $id")->row_array()['jenis_anggaran'];
+
+		$data['sertifikasi'] = $this->sertifikasi_model->get_llhp($id, $anggaran);
+
+		if($data['sertifikasi']){
+			$this->load->view('admin/sertifikasi/print_llhp2', $data);
+		}else{
+			$this->session->set_flashdata('notif', 'Data Lab atau TU Belum diinput');
+
+			redirect("wasar/list");
 		}
 	}
 
 	public function print_sertifikat($id){
-		$anggaran = $this->sertifikasi_model->get_all($id)['jenis_anggaran'];
+		$anggaran = $this->db->query("SELECT * FROM sertifikasi WHERE id_sertifikasi = $id")->row_array()['jenis_anggaran'];
+		
 		$data['sertifikasi'] = $this->sertifikasi_model->get_llhp($id, $anggaran);
 			
 		$this->load->view('admin/sertifikasi/print_sertifikat', $data);
 	}
 
 	public function print_pemlab1($id){
-		$data['sertifikasi'] = $this->sertifikasi_model->get_llhp($id, $this->anggaran);
+		$data['sertifikasi'] = $this->sertifikasi_model->pemlap1($id, $this->anggaran);
+		// dd($data['sertifikasi']);
 		$this->load->view('admin/sertifikasi/print_pemlab1', $data);
 	}
 
 	public function print_pemlab2($id){
-		$data['sertifikasi'] = $this->sertifikasi_model->get_llhp($id, $this->anggaran);	
+		$data['sertifikasi'] = $this->sertifikasi_model->pemlap1($id, $this->anggaran);	
 		$this->load->view('admin/sertifikasi/print_pemlab2', $data);
 	}
 
 	public function print_pemlab3($id){
-		$data['sertifikasi'] = $this->sertifikasi_model->get_llhp($id, $this->anggaran);	
+		$data['sertifikasi'] = $this->sertifikasi_model->pemlap1($id, $this->anggaran);	
 		$this->load->view('admin/sertifikasi/print_pemlab3', $data);
 	}
 
@@ -289,6 +303,15 @@ class Sertifikasi_apbn extends MY_Controller {
 		$id = $this->input->post('id');
 		$data = $this->master_model->get_kecamatan($id);
 		echo json_encode($data);
+	}
+
+	public function pemlap($id){
+		$sertifikasi = $this->db->query("SELECT * FROM sertifikasi WHERE id_sertifikasi = $id")->row_array();
+		$posisi = $sertifikasi['posisi'] + 1;
+		// dd($posisi);
+		$this->db->query("UPDATE sertifikasi SET posisi = $posisi WHERE id_sertifikasi = $id");
+		$this->session->set_flashdata('notif', 'Sertifikasi berhasil di-approve');
+		redirect("admin");
 	}
 	
 }

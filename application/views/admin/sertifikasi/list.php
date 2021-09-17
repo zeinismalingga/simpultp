@@ -39,6 +39,8 @@
                   <th>No</th>
                   <th>No. Rekomendasi</th>
                   <th>Tgl. Rekomendasi</th>
+                  <th>KBP</th>
+                  <th>No. Induk</th>
                   <th>Status</th>
                   <th>Aksi</th>
                 </thead>
@@ -70,10 +72,16 @@
                         echo "Your favorite color is neither red, blue, nor green!";
                     }
                   ?>
+
+                  <?php 
+                    $tgl_kesimpulan = date_create($sertifikasi_item['tgl_rekomendasi']);
+                  ?>
                     <tr>
                       <td><?php echo $no; ?></td>
-                      <td><?php echo $sertifikasi_item['no_rekomendasi']; ?></td>
+                      <td>521.221/<?php echo $sertifikasi_item['no_rekomendasi'] ?>/UPTD PSBTPH/<?php echo date_format($tgl_kesimpulan, "m") ?>.<?php echo date_format($tgl_kesimpulan, "Y") ?></td>
                       <td><?php echo tgl_indo($sertifikasi_item['tgl_rekomendasi']); ?></td>
+                      <td><?php echo $sertifikasi_item['nama_produsen']; ?></td>
+                      <td><?php echo $sertifikasi_item['no_induk']; ?></td>
                       <td><?php echo $status ?></td>
                       <td>
                         <a href="<?php echo base_url("sertifikasi_apbn/edit/". $sertifikasi_item['id_sertifikasi']) ?>" class="btn btn-xs btn-primary">REKOMENDASI</a><br>

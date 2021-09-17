@@ -47,7 +47,11 @@
                         <a href="<?php echo base_url("wasar/edit/". $sertifikasi_item['id_sertifikasi']) ?>" class="btn btn-xs btn-primary">EDIT</a><br>
                         <a href="<?php echo base_url("sertifikasi_apbn/print_llhp/". $sertifikasi_item['id_sertifikasi']) ?>" class="btn btn-xs btn-success">PRINT PENGANTAR LLHP</a><br>
                         <a href="<?php echo base_url("sertifikasi_apbn/print_llhp2/". $sertifikasi_item['id_sertifikasi']) ?>" class="btn btn-xs btn-success">PRINT LLLHP</a><br>
+
+                        <?php if($sertifikasi_item['hasil'] == '1'): ?>
                         <a href="<?php echo base_url("sertifikasi_apbn/print_sertifikat/". $sertifikasi_item['id_sertifikasi']) ?>" class="btn btn-xs btn-success">PRINT SERTIFIKAT</a><br>
+                        <?php endif ?>
+
                       </td>
                     </tr>
                     <?php $no++ ?>

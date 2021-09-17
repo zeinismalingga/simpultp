@@ -208,15 +208,29 @@ $config = array(
         ),
         'cek_mutu_pangan/add' => array(
             array(
-                        'field' => 'id_komoditi',
-                        'label' => 'id komoditi',
+                        'field' => 'no_contoh_benih',
+                        'label' => 'no contoh benih',
                         'rules' => 'required'
                 ),
         ),
         'cek_mutu_pangan/edit' => array(
             array(
-                        'field' => 'id_komoditi',
-                        'label' => 'id komoditi',
+                        'field' => 'no_contoh_benih',
+                        'label' => 'no contoh benih',
+                        'rules' => 'required'
+                ),
+        ),
+        'cek_mutu_pangan/edit_lab' => array(
+            array(
+                        'field' => 'tonase',
+                        'label' => 'tonase',
+                        'rules' => 'required'
+                ),
+        ),
+        'cek_mutu_pangan/edit_wasar' => array(
+            array(
+                        'field' => 'no_surat_pengantar',
+                        'label' => 'no surat pengantar',
                         'rules' => 'required'
                 ),
         ),

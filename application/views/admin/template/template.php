@@ -180,6 +180,8 @@
             <li><a href="<?php echo base_url('tu_apbd/list_tu') ?>"><i class="fa fa-circle"></i> APBD</a></li>
           </ul>
         </li>
+
+        <li><a href="<?php echo base_url('cek_mutu_pangan/list') ?>"><i class="fa fa-database"></i> <span>Cek Mutu Benih</span></a></li>
         <?php endif; ?>
 
         <?php if($level == "lab" or $level == "admin"): ?>
@@ -196,6 +198,8 @@
           </ul>
         </li> 
 
+        <li><a href="<?php echo base_url('cek_mutu_pangan/list') ?>"><i class="fa fa-database"></i> <span>Cek Mutu Benih</span></a></li>
+
         <?php endif ?>
     
         <?php if($level == "wasar"): ?>
@@ -207,13 +211,18 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="<?php echo base_url('wasar/list') ?>"><i class="fa fa-circle"></i> Daftar Wasar</a></li>
-            <li><a href="<?php echo base_url('stok_bulanan_pangan/pilih') ?>"><i class="fa fa-circle"></i> Stok Bulanan Pangan</a></li>
+            <li><a href="<?php echo base_url('wasar/list_apbn') ?>"><i class="fa fa-circle"></i> APBN</a></li>
+            <li><a href="<?php echo base_url('wasar/list_apbd') ?>"><i class="fa fa-circle"></i> APBD</a></li>
+            <!-- <li><a href="<?php echo base_url('stok_bulanan_pangan/pilih') ?>"><i class="fa fa-circle"></i> Stok Bulanan Pangan</a></li>
             <li><a href="<?php echo base_url('inventaris_produsen/list') ?>"><i class="fa fa-circle"></i> Inventaris Produsen</a></li>
             <li><a href="<?php echo base_url('inventaris_pengedar/list') ?>"><i class="fa fa-circle"></i> Inventaris Pengedar</a></li>
-            <li><a href="<?php echo base_url('cek_mutu_pangan/pilih') ?>"><i class="fa fa-circle"></i> Cek Mutu Pangan</a></li>
+            <li><a href="<?php echo base_url('cek_mutu_pangan/pilih') ?>"><i class="fa fa-circle"></i> Cek Mutu Pangan</a></li> -->
           </ul>
-        </li> 
+        </li>
+
+        <li><a href="<?php echo base_url('cek_mutu_pangan/list') ?>"><i class="fa fa-database"></i> <span>Cek Mutu Benih</span></a></li>
+
+        <li><a href="<?php echo base_url('inventaris_produsen/list') ?>"><i class="fa fa-database"></i> <span>Daftar Produsen</span></a></li>
 
         <?php endif ?>
 

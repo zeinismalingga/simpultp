@@ -392,8 +392,8 @@
               <label>Lulus / Tidak Lulus</label>
               <select class="form-control" name="lulus_3">
                 <option value="<?php echo $sertifikasi['lulus_3'] ?>" selected>- Pilih -</option>
-                <option value="0">Lulus</option>
-                <option value="1">Tidak Lulus</option>
+                <option value="1">Lulus</option>
+                <option value="0">Tidak Lulus</option>
               </select>
             </div>
           </div>

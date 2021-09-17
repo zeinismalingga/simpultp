@@ -130,7 +130,7 @@
 		</div>
 
 		<div style="clear: both;"></div>
-		<p style="text-align: center;line-height: 1">LAPORAN LENGKAP HASIL PENGUJIAN BENIH PADI NON HIBRIDA <br>UNTUK SERTIFIKASI BENIH TANAMAN PANGAN</p>
+		<p style="text-align: center;line-height: 1">LAPORAN LENGKAP HASIL PENGUJIAN BENIH <?php echo strtoupper($sertifikasi['nama_jenis']) ?> <br>UNTUK SERTIFIKASI BENIH TANAMAN PANGAN</p>
 	</div>
 
 	<hr>

@@ -185,7 +185,7 @@
 		</div>
 
 		<div style="margin-left: 500px; text-align: center;">
-			<p>Samarinda, <?php echo tgl_indo($sertifikasi['tgl_llhp']) ?></p>
+			<p>Samarinda, <?php echo tgl_indo($sertifikasi['tgl_pengantar_llhp']) ?></p>
 			<p style="font-weight: bold">Kepala UPTD PSBTPH,</p>
 			<p style="margin-bottom: 80px; font-weight: bold">Provinsi Kalimantan Timur</p>
 			<p style="text-decoration: underline;font-weight: bold;">Ir. Fenty Rubiah Harahap, M.Si</p>

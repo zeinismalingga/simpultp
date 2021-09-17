@@ -48,9 +48,9 @@
             <div class="form-group">
               <label>Produsen</label>
               <select name="id_produsen" class="form-control select2" required>
-              <option selected value="<?php echo $sertifikasi['id_produsen'] ?>"><?php echo $sertifikasi['nama_produsen'] ?></option>
+              <option selected value="<?php echo $sertifikasi['id_produsen'] ?>"><?php echo $sertifikasi['nama_produsen'] ?> - <?php echo $sertifikasi['nama_pimpinan'] ?></option>
               <?php foreach($pemohons as $pemohon): ?>            
-                <option value="<?php echo $pemohon['id_inventaris_pangan'] ?>"><?php echo $pemohon['nama_produsen'] ?></option>
+                <option value="<?php echo $pemohon['id_inventaris_pangan'] ?>"><?php echo $pemohon['nama_produsen'] ?> - <?php echo $pemohon['nama_pimpinan'] ?></option>
                 <?php endforeach; ?>
               </select>
             </div>

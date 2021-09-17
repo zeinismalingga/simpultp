@@ -2,174 +2,118 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>REALISASI PENGECEKAN MUTU BENIH TANAMAN PANGAN TAHUN 2020</title>
+	<title>PRINT cek_mutu</title>
 	<link rel="stylesheet" href="<?php echo base_url('assets/css/normalize.css') ?>">
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/bootstrap.min.css') ?>">
 
 	<style>
-		*{
-			line-height: 0.4;
-		}
 
 		@page{
-			/*size: 330mm 210mm;*/
-			/*size: 210mm 297mm;*/
-			size: 297mm 210mm;
+
+			/*a5*/
+			/*size: 148mm 210mm;*/
 		}
 
-		.header{
-			margin-top: 10px;
-			font-size: 12px;
+		*{
+			font-size: 20px;
+			line-height: 1.5;
 		}
 
 		.content{
-			font-family: Arial, Helvetica, sans-serif;
+			font-family: Times New Roman, Helvetica, sans-serif;
 		}
 
-		br{
-			line-height: 0.5;
-		}
-
-		table{
-
-			line-height: 0.6;
-			font-size: 10px;
-		}
-
-		tr>td, tr>th{
-			line-height: 1;
-		}
-
-		.table td, .table th {
-			padding: 5px;
-		}
-
-		.detail{
-			position: absolute;
-			left: 200px;
-		}
-
-		.detail2{
-			position: absolute;
-			left: 520px;
-		}
 		.box {
-		  width: 300px;
-		  height: 90px;
-		  border: 2px solid black; 
-		  padding: 15px;
+		  float: left;
+		  height: 30px;
+		  width: 80px;
+		  margin-bottom: 15px;
+		  border: 1px solid black;
+		  clear: both;
+		  margin-right: 5px;
 		}
 
-		.isi{
-			margin-left : 25px;
+		.red {
+		  background-color: transparent;
 		}
 
-		ul{
-			list-style-type: none;
-		}
-		li{
-			line-height: normal;
-		}
-
-		@media print {
-
-.col-sm-1, .col-sm-2, .col-sm-3, .col-sm-4, .col-sm-5, .col-sm-6, .col-sm-7, .col-sm-8, .col-sm-9, .col-sm-10, .col-sm-11, .col-sm-12 {
-  float: left;
-}
-.col-sm-12 {
-  width: 100%;
-}
-.col-sm-11 {
-  width: 91.66666666666666%;
-}
-.col-sm-10 {
-  width: 83.33333333333334%;
-}
-.col-sm-9 {
-  width: 75%;
-}
-.col-sm-8 {
-  width: 66.66666666666666%;
-}
-.col-sm-7 {
-  width: 58.333333333333336%;
-}
-.col-sm-6 {
-  width: 50%;
-}
-.col-sm-5 {
-  width: 41.66666666666667%;
-}
-.col-sm-4 {
-  width: 33.33333333333333%;
- }
- .col-sm-3 {
-   width: 25%;
- }
- .col-sm-2 {
-   width: 16.666666666666664%;
- }
- .col-sm-1 {
-  width: 8.333333333333332%;
- }
-
-  }
 	</style>
 </head>
 <body>
+	
+	<div style="margin-top: 5px"></div>
+	<div class="container">
+		
+	
+	<div style="float: right;">
+		<div class="row">
+			<div class="col-md">
+				<table class="table table-bordered">
+					<th>CMP. <?php echo $cek_mutu['no_contoh_benih'] ?></th>
+				</table>
+			</div>
+		</div>
+	</div>
+
+	<div style="clear: both;"></div>
+
+	<div style="margin-top: 20px">
+		<h4 style="text-decoration: underline;" class="text-center">CONTOH BENIH UNTUK PENGUJIAN DI LABORATORIUM</h4>
+	</div>
+
+	<div style="margin-top: 40px">
+		<p>Pengujian yang diperlukan : </p>
+	</div>
 
 	<?php 
-	    if(isset($cek_mutu['0']['nama_bulan'])){
-	      $nama_bulan = $cek_mutu['0']['nama_bulan'];
-	    }else{
-	      $nama_bulan = '';
-	    }
+	$check = '<span style="padding-left: 30px;font-size: 20px">&#10004;</span>';	
 	?>
-	
-	<div class="header">
-		<p>REALISASI PENGECEKAN MUTU BENIH TANAMAN PANGAN TAHUN 2020</p>
-		<p>BULAN : <?php echo strtoupper($nama_bulan) ?></p>
-	</div>
-	<hr>
 
-	<table class="table table-bordered table-striped" vertical-align="middle" style="overflow-x:scroll;">
-        <thead>
-          <tr>
-            <th rowspan="3">No</th>
-            <th rowspan="3">Komoditi</th>
-            <th rowspan="3">Jumlah Benih Yang Dicek (kg)</th>
-            <th colspan="4" class="text-center">Hasil Pengecekan Mutu</th>
-          </tr>
-          <tr>
-            <th colspan="2">Memenuhi Standar</th>
-            <th colspan="2">Dibawah Standar</th>
-          </tr>
-          <tr>
-            <th colspan="1">(kg)</th>
-            <th colspan="1">%</th>
-            <th colspan="1">(kg)</th>
-            <th colspan="1">%</th>
-          </tr>
-        </thead>
-        <tbody>
-          <?php $no = 1; ?>
-          <?php foreach($cek_mutu as $cek_mutu_item): ?>
-            <tr>
-              <td><?php echo $no; ?></td>
-              <td><?php echo $cek_mutu_item['nama_komoditi']; ?></td>
-              <td><?php echo $cek_mutu_item['jumlah_benih']; ?></td>
-              <td><?php echo $cek_mutu_item['memenuhi_standar_perkilo']; ?></td>
-              <td><?php echo $cek_mutu_item['memenuhi_standar_persen']; ?></td>
-              <td><?php echo $cek_mutu_item['dibawah_standar_perkilo']; ?></td>
-              <td><?php echo $cek_mutu_item['dibawah_standar_persen']; ?></td>
-              
-            </tr>
-            <?php $no++ ?>
-        <?php endforeach; ?>
-        </tbody>
-      </table>  
+	<div class="row">
+		<div class="col-md-4 offset-md-8">
+			<table class="table table-borderless">
+				<tr>
+					<td width="1%"><div class='box red'><?php echo ($cek_mutu['kadar_air'] == 1) ? $check : '' ?></div></td>
+					<td><span style="font-weight: bold;">Kadar Air</span></td>
+				</tr>
+				<tr>
+					<td width="1%"><div class='box red'><?php echo ($cek_mutu['kemurnian'] == 1) ? $check : '' ?></div></td>
+					<td><span style="font-weight: bold;">Kemurnian</span></td>
+				</tr>
+				<tr>
+					<td width="1%"><div class='box red'><?php echo ($cek_mutu['daya_berkecambah'] == 1) ? $check : '' ?></div></td>
+					<td><span style="font-weight: bold;">Daya Berkecambah</span></td>
+				</tr>
+				<tr>
+					<td width="1%"><div class='box red'></div></td>
+					<td><span style="font-weight: bold;">.........................</span></td>
+				</tr>
+			</table>
+		</div>
+	</div>
+	
+
+	<div style="clear: both;"></div>
+
+	<div>
+		<p>Tanggal Pengambilan Contoh <span style="position: absolute;left: 350px">: <?php echo tgl_indo($cek_mutu['tgl_pengambilan_cth']) ?></span></p>		
+		<p>Jenis Tanaman/Varietas <span style="position: absolute;left: 350px">: <?php echo ucwords($cek_mutu['nama_jenis']). ' /'.$cek_mutu['nama_varietas'] ?></span></p>		
+		<p>Tanggal Panen <span style="position: absolute;left: 350px">: <?php echo tgl_indo($cek_mutu['tgl_panen']) ?></span></p>		
+		<p>Kelas Benih <span style="position: absolute;left: 350px">: <?php echo $cek_mutu['singkatan'] ?></span></p>		
+		<p>Berat Contoh Benih <span style="position: absolute;left: 350px">: <?php echo $cek_mutu['berat_contoh_benih'] ?> Gram</span></p>		
+		<p>Catatan <span style="position: absolute;left: 350px">: <?php echo $cek_mutu['catatan'] ?></span></p>		
+	</div>
+
+	<div style="float: right;">
+		<p>Samarinda, <?php echo date("d F Y") ?></p>
+		<p>Pengirim Contoh Benih</p>
+		<p style="margin-top: 90px">..............................................</p>
+	</div>
+
+	</div>
+
 	<script>
-		// window.print();
+		window.print();
 	</script>
 </body>
 </html>

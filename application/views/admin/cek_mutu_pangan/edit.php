@@ -20,75 +20,121 @@
 
         <p><?php echo validation_errors() ?></p>
 
-        <?php echo form_open("$class/edit/$id/$id_bulan") ?>
+        <?php echo form_open("$class/edit/". $cek_mutu['id_cek_mutu_pangan']) ?>
 
         <div class="row">
+          <div class="col-md-3">           
+            <div class="form-group">
+              <label>No. CMP</label>
+              <input type="text" name="no_contoh_benih" class="form-control" value="<?php echo $cek_mutu['no_contoh_benih'] ?>" required>
+            </div>
+          </div>
 
           <div class="col-md-3">           
             <div class="form-group">
-              <label>Komoditi</label>
-              <select name="id_komoditi" class="form-control select2">
-              <option selected value="<?php echo $cek_mutu['id_komoditi'] ?>"><?php echo $cek_mutu['nama_komoditi'] ?></option>
-              <?php foreach($komoditis as $komoditi): ?>            
-                <option value="<?php echo $komoditi['id_komoditi'] ?>"><?php echo ucwords($komoditi['nama_komoditi']) ?></option>
-                <?php endforeach; ?>
+              <label>Kadar Air</label>
+              <select name="kadar_air" class="form-control select2">
+              <option selected value="<?php echo $cek_mutu['kadar_air'] ?>"><?php echo $cek_mutu['kadar_air'] == '1' ? "Ya": "Tidak" ?></option>
+              <option value="1">Ya</option>
+              <option value="0">Tidak</option>
               </select>
             </div>
           </div> 
-
           <div class="col-md-3">           
             <div class="form-group">
-              <label>Jumlah Benih Yang Dicek</label>
-              <input type="text" name="jumlah_benih" class="form-control" value="<?php echo $cek_mutu['jumlah_benih'] ?>" required>
+              <label>Kemurnian</label>
+              <select name="kemurnian" class="form-control select2">
+              <option selected value="<?php echo $cek_mutu['kemurnian'] ?>"><?php echo $cek_mutu['kemurnian'] == '1' ? "Ya": "Tidak" ?></option>
+              <option value="1">Ya</option>
+              <option value="0">Tidak</option>
+              </select>
+            </div>
+          </div> 
+          <div class="col-md-3">           
+            <div class="form-group">
+              <label>Daya Berkecambah</label>
+              <select name="daya_berkecambah" class="form-control select2">
+              <option selected value="<?php echo $cek_mutu['daya_berkecambah'] ?>"><?php echo $cek_mutu['daya_berkecambah'] == '1' ? "Ya": "Tidak" ?></option>
+              <option value="1">Ya</option>
+              <option value="0">Tidak</option>
+              </select>
             </div>
           </div>
-
         </div>
-
-        <h3>Memenuhi Standar</h3>
-        <hr>
 
         <div class="row">
 
           <div class="col-md-3">           
             <div class="form-group">
-              <label>Memenuhi Standar (Kg)</label>
-              <input type="text" name="memenuhi_standar_perkilo" class="form-control" value="<?php echo $cek_mutu['memenuhi_standar_perkilo'] ?>" required>
+              <label>Tgl. Pengambilan Contoh</label>
+              <input type="date" name="tgl_pengambilan_cth" class="form-control" value="<?php echo $cek_mutu['tgl_pengambilan_cth'] ?>" required>
             </div>
           </div> 
 
           <div class="col-md-3">           
             <div class="form-group">
-              <label>Memenuhi Standar (%)</label>
-              <input type="text" name="memenuhi_standar_persen" class="form-control" value="<?php echo $cek_mutu['memenuhi_standar_persen'] ?>"  required>
+              <label>Tgl. Panen</label>
+              <input type="date" name="tgl_panen" class="form-control" value="<?php echo $cek_mutu['tgl_panen'] ?>" required>
+            </div>
+          </div> 
+
+          <div class="col-md-3">           
+            <div class="form-group">
+              <label>Jenis Tanaman</label>
+              <select name="id_jenis_varietas" class="form-control select2">
+              <option selected value="<?php echo $cek_mutu['id_jenis_varietas'] ?>"><?php echo $cek_mutu['nama_jenis'] ?></option>
+              <?php foreach($jenis_varietas as $jns_var): ?>
+                <option value="<?php echo $jns_var['id_jenis_varietas']?>"><?php echo ucwords($jns_var['nama_jenis']) ?></option>
+              <?php endforeach; ?>
+              </select>
             </div>
           </div>
 
-        </div>
-
-        <h3>Dibawah Standar</h3>
-        <hr>
-
-        <div class="row">
-
           <div class="col-md-3">           
             <div class="form-group">
-              <label>Dibawah Standar (Kg)</label>
-              <input type="text" name="dibawah_standar_perkilo" class="form-control" value="<?php echo $cek_mutu['dibawah_standar_perkilo'] ?>"  required>
+              <label>Varietas</label>
+              <select name="id_varietas" class="form-control select2">
+              <option selected value="<?php echo $cek_mutu['id_varietas'] ?>"><?php echo $cek_mutu['nama_varietas'] ?></option>
+              <?php foreach($varietas as $var): ?>
+                <option value="<?php echo $var['id_varietas']?>"><?php echo ucwords($var['nama_varietas']) ?></option>
+              <?php endforeach; ?>
+              </select>
+            </div>
+          </div>
+          
+
+        </div>
+
+        <div class="row">
+          <div class="col-md-3">           
+            <div class="form-group">
+              <label>Kelas Benih</label>
+              <select name="id_kelas_benih" class="form-control select2">
+              <option selected value="<?php echo $cek_mutu['id_kelas_benih'] ?>"><?php echo $cek_mutu['singkatan'] ?></option>
+              <?php foreach($kelas_benih as $kls): ?>
+                <option value="<?php echo $kls['id_kelas_benih']?>"><?php echo ucwords($kls['singkatan']) ?></option>
+              <?php endforeach; ?>
+              </select>
+            </div>
+          </div>
+          <div class="col-md-3">           
+            <div class="form-group">
+              <label>Berat Contoh Benih (Gram)</label>
+              <input type="text" name="berat_contoh_benih" class="form-control" value="<?php echo $cek_mutu['berat_contoh_benih'] ?>" required>
             </div>
           </div> 
 
           <div class="col-md-3">           
             <div class="form-group">
-              <label>Dibawah Standar (%)</label>
-              <input type="text" name="dibawah_standar_persen" class="form-control" value="<?php echo $cek_mutu['dibawah_standar_persen'] ?>"  required>
+              <label>Catatan</label>
+              <textarea name="catatan" class="form-control"><?php echo $cek_mutu['catatan'] ?></textarea>
             </div>
           </div> 
 
         </div>
       </div>
       <div class="box-footer">
-        <button type="submit" class="btn btn-primary">Edit</button>
+        <button type="submit" class="btn btn-primary">EDIT</button>
       </div>
       <?php echo form_close() ?>
       <!-- /.box-body -->

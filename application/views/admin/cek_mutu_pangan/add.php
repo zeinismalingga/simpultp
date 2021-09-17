@@ -20,68 +20,114 @@
 
         <p><?php echo validation_errors() ?></p>
 
-        <?php echo form_open("$class/add/$id_bulan") ?>
+        <?php echo form_open("$class/add/") ?>
 
         <div class="row">
+          <div class="col-md-3">           
+            <div class="form-group">
+              <label>No. CMP</label>
+              <input type="text" name="no_contoh_benih" class="form-control" required>
+            </div>
+          </div>
 
           <div class="col-md-3">           
             <div class="form-group">
-              <label>Komoditi</label>
-              <select name="id_komoditi" class="form-control select2">
+              <label>Kadar Air</label>
+              <select name="kadar_air" class="form-control select2">
               <option disabled selected value>Pilih</option>
-              <?php foreach($komoditis as $komoditi): ?>            
-                <option value="<?php echo $komoditi['id_komoditi'] ?>"><?php echo ucwords($komoditi['nama_komoditi']) ?></option>
-                <?php endforeach; ?>
+              <option value="1">Ya</option>
+              <option value="0">Tidak</option>
               </select>
             </div>
           </div> 
-
           <div class="col-md-3">           
             <div class="form-group">
-              <label>Jumlah Benih Yang Dicek</label>
-              <input type="text" name="jumlah_benih" class="form-control" required>
+              <label>Kemurnian</label>
+              <select name="kemurnian" class="form-control select2">
+              <option disabled selected value>Pilih</option>
+              <option value="1">Ya</option>
+              <option value="0">Tidak</option>
+              </select>
+            </div>
+          </div> 
+          <div class="col-md-3">           
+            <div class="form-group">
+              <label>Daya Berkecambah</label>
+              <select name="daya_berkecambah" class="form-control select2">
+              <option disabled selected value>Pilih</option>
+              <option value="1">Ya</option>
+              <option value="0">Tidak</option>
+              </select>
             </div>
           </div>
-
         </div>
-
-        <h3>Memenuhi Standar</h3>
-        <hr>
 
         <div class="row">
 
           <div class="col-md-3">           
             <div class="form-group">
-              <label>Memenuhi Standar (Kg)</label>
-              <input type="text" name="memenuhi_standar_perkilo" class="form-control" required>
+              <label>Tgl. Pengambilan Contoh</label>
+              <input type="date" name="tgl_pengambilan_cth" class="form-control" required>
             </div>
           </div> 
 
           <div class="col-md-3">           
             <div class="form-group">
-              <label>Memenuhi Standar (%)</label>
-              <input type="text" name="memenuhi_standar_persen" class="form-control" required>
+              <label>Tgl. Panen</label>
+              <input type="date" name="tgl_panen" class="form-control" required>
+            </div>
+          </div> 
+
+          <div class="col-md-3">           
+            <div class="form-group">
+              <label>Jenis Tanaman</label>
+              <select name="id_jenis_varietas" class="form-control select2">
+              <option disabled selected value>Pilih</option>
+              <?php foreach($jenis_varietas as $jns_var): ?>
+                <option value="<?php echo $jns_var['id_jenis_varietas']?>"><?php echo ucwords($jns_var['nama_jenis']) ?></option>
+              <?php endforeach; ?>
+              </select>
             </div>
           </div>
 
-        </div>
-
-        <h3>Dibawah Standar</h3>
-        <hr>
-
-        <div class="row">
-
           <div class="col-md-3">           
             <div class="form-group">
-              <label>Dibawah Standar (Kg)</label>
-              <input type="text" name="dibawah_standar_perkilo" class="form-control" required>
+              <label>Varietas</label>
+              <select name="id_varietas" class="form-control select2">
+              <option disabled selected value>Pilih</option>
+              <?php foreach($varietas as $var): ?>
+                <option value="<?php echo $var['id_varietas']?>"><?php echo ucwords($var['nama_varietas']) ?></option>
+              <?php endforeach; ?>
+              </select>
+            </div>
+          </div>
+          
+
+        </div>
+
+        <div class="row">
+          <div class="col-md-3">           
+            <div class="form-group">
+              <label>Kelas Benih</label>
+              <select name="id_kelas_benih" class="form-control select2">
+              <option disabled selected value>Pilih</option>
+              <?php foreach($kelas_benih as $kls): ?>
+                <option value="<?php echo $kls['id_kelas_benih']?>"><?php echo ucwords($kls['singkatan']) ?></option>
+              <?php endforeach; ?>
+              </select>
+            </div>
+          </div>
+          <div class="col-md-3">           
+            <div class="form-group">
+              <label>Berat Contoh Benih (Gram)</label>
+              <input type="text" name="berat_contoh_benih" class="form-control" required>
             </div>
           </div> 
 
           <div class="col-md-3">           
             <div class="form-group">
-              <label>Dibawah Standar (%)</label>
-              <input type="text" name="dibawah_standar_persen" class="form-control" required>
+              <label>Catatan</label>
+              <textarea name="catatan" class="form-control"></textarea>
             </div>
           </div> 
 

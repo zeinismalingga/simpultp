@@ -25,8 +25,6 @@
             <?php echo $this->session->flashdata('notif'); ?>
           </div>
           <?php endif ?>
-          
-          <a style="margin-left: 5px" href="<?php echo base_url("$class/add/") ?>" class="btn btn-success pull-right">+ Tambah</a> <br><br>
 
           <!-- <a href="<?php echo base_url("$class/print/") ?>" class="btn btn-primary pull-right">Print</a><br><br> -->
           
@@ -39,9 +37,9 @@
                     <th>No. CMP</th>
                     <th>Jenis Tanaman</th>
                     <th>Varietas</th>
-                    <th>Tgl. Panen</th>
                     <th>Kelas Benih</th>
-                    <th>Berat (Gr)</th>
+                    <th>Produsen</th>
+                    <th>No. Surat Pengantar</th>
                     <th>Pilihan</th>
                 </thead>
                 <tbody>
@@ -50,16 +48,19 @@
                     <tr>
                       <td><?php echo $no; ?></td>
                       <td><?php echo $cek_mutu_item['no_contoh_benih']; ?></td>
-                      <td><?php echo $cek_mutu_item['nama_jenis']; ?></td>
+                      <td><?php echo ucwords($cek_mutu_item['nama_jenis']); ?></td>
                       <td><?php echo $cek_mutu_item['nama_varietas']; ?></td>
-                      <td><?php echo tgl_indo($cek_mutu_item['tgl_panen']); ?></td>
                       <td><?php echo $cek_mutu_item['singkatan']; ?></td>
-                      <td><?php echo $cek_mutu_item['berat_contoh_benih']; ?></td>
+                      <td><?php echo $cek_mutu_item['nama_produsen']; ?></td>
+                      
+                      <td><?php echo $cek_mutu_item['no_surat_pengantar']; ?></td>
 
                       <td>
-                        <a href="<?php echo base_url("$class/edit/". $cek_mutu_item['id_cek_mutu_pangan']) ?>" class="btn btn-xs btn-primary">EDIT</a><br>
-                        <a href="<?php echo base_url("$class/print/". $cek_mutu_item['id_cek_mutu_pangan']) ?>" class="btn btn-xs btn-success">PRINT</a><br>
-                        <a href="<?php echo base_url("$class/delete/". $cek_mutu_item['id_cek_mutu_pangan']) ?>" class="btn btn-xs btn-danger" onclick="return confirm('Apakah anda yakin ?');">DELETE</a>
+                        <a href="<?php echo base_url("$class/edit_wasar/". $cek_mutu_item['id_cek_mutu_pangan']) ?>" class="btn btn-xs btn-primary">EDIT</a><br>
+                        <?php if($cek_mutu_item['no_surat_pengantar'] != ''): ?>
+                        <a href="<?php echo base_url("$class/print_pengantar/". $cek_mutu_item['id_cek_mutu_pangan']) ?>" class="btn btn-xs btn-success">PRINT PENGANTAR</a><br>
+                        <a href="<?php echo base_url("$class/print_permohonan/". $cek_mutu_item['id_cek_mutu_pangan']) ?>" class="btn btn-xs btn-success">PRINT PERMOHONAN</a><br>
+                        <?php endif; ?>
                       </td>
                       
                     </tr>

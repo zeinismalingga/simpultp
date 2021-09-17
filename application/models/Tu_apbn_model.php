@@ -2,7 +2,7 @@
 class Tu_apbn_model extends CI_Model {
 
 	public function get_rekomendasi(){ 
-    	$query = $this->db->query("SELECT * FROM sertifikasi, tu_apbn WHERE sertifikasi.id_sertifikasi = tu_apbn.id_sertifikasi");		
+    	$query = $this->db->query("SELECT * FROM sertifikasi LEFT JOIN inventaris_produsen ON sertifikasi.id_produsen = inventaris_produsen.id_inventaris_pangan LEFT JOIN tu_apbn ON sertifikasi.id_sertifikasi = tu_apbn.id_sertifikasi");		
 		return $query->result_array();	
 	}
 

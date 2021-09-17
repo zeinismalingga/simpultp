@@ -31,6 +31,7 @@ class Inventaris_produsen_model extends CI_Model {
 			'produksi_benih' => $this->input->post('produksi_benih'),
 			'ijin_produksi' => $this->input->post('ijin_produksi'),
 			'mendapat_bantuan' => $this->input->post('mendapat_bantuan'),
+			'no_kelompok_benih' => $this->input->post('no_kelompok_benih'),
 		);
 		return $this->db->insert('inventaris_produsen', $data);
 	}
@@ -55,6 +56,7 @@ class Inventaris_produsen_model extends CI_Model {
 			'produksi_benih' => $this->input->post('produksi_benih'),
 			'ijin_produksi' => $this->input->post('ijin_produksi'),
 			'mendapat_bantuan' => $this->input->post('mendapat_bantuan'),
+			'no_kelompok_benih' => $this->input->post('no_kelompok_benih'),
 		);
 
 		$this->db->where('id_inventaris_pangan', $id);

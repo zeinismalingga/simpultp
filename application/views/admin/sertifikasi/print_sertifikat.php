@@ -257,11 +257,11 @@
 		}
 	?>
 
-	<p style="line-height: 1.5">Telah memenuhi standar mutu sebagai <span style="font-weight: bold;">"Benih Unggul Sertifikat"</span>. Dengan demikian dapat diberikan label berwarna: <span style="font-weight: bold;text-decoration: underline;font-style: italic;"><?php echo $warna_label ?></span> pada setiap kemasannya dengan tanggal akhir berlaku label : <span style="font-weight: bold;">03 April 2020</span></p>
+	<p style="line-height: 1.5">Telah memenuhi standar mutu sebagai <span style="font-weight: bold;">"Benih Unggul Sertifikat"</span>. Dengan demikian dapat diberikan label berwarna: <span style="font-weight: bold;text-decoration: underline;font-style: italic;"><?php echo $warna_label ?></span> pada setiap kemasannya dengan tanggal akhir berlaku label : <span style="font-weight: bold;"><?php echo tgl_indo($sertifikasi['tgl_akhir_label']) ?></span></p>
 
 	<div style="margin-left: 700px;">
 		<p>Dikeluarkan di <span style="margin-right: 30px"></span>: Samarinda</p>
-		<p style="margin-bottom: 50px">Tanggal  <span style="margin-right: 75px"></span>: <?php echo tgl_indo($sertifikasi['tgl_llhp']) ?></p>
+		<p style="margin-bottom: 50px">Tanggal  <span style="margin-right: 75px"></span>: <?php echo tgl_indo($sertifikasi['tgl_pengantar_llhp']) ?></p>
 
 		<div class="text-center">
 			<p>Kepala UPTD PSBTPH,</p>

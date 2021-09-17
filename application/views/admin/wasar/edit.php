@@ -96,8 +96,33 @@
 
           <div class="col-md-3">           
             <div class="form-group">
+              <label>Tgl Akhir Label</label>
+              <input type="text" name="tgl_akhir_label" class="form-control datepicker" value="<?php echo $wasar['tgl_akhir_label'] ?>" required>
+            </div>
+          </div>
+
+          <div class="col-md-3">           
+            <div class="form-group">
               <label>No. Sertifikat</label>
               <input type="text" name="no_sertifikat" class="form-control" value="<?php echo $wasar['no_sertifikat'] ?>" required>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="row">
+
+          <div class="col-md-3">           
+            <div class="form-group">
+              <label>Tgl Pengantar LLHP</label>
+              <input type="text" name="tgl_pengantar_llhp" class="form-control datepicker" value="<?php echo $wasar['tgl_pengantar_llhp'] ?>" required>
+            </div>
+          </div>
+
+          <div class="col-md-3">           
+            <div class="form-group">
+              <label>Tgl LLHP</label>
+              <input type="text" name="tgl_llhp" class="form-control datepicker" value="<?php echo $wasar['tgl_llhp'] ?>" required>
             </div>
           </div>
 

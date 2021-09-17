@@ -117,6 +117,13 @@
           </div>
         </div>
 
+        <div class="col-md-3">
+          <div class="form-group">
+            <label>No. Kelompok Benih</label>
+            <input type="text" name="no_kelompok_benih" class="form-control" value="<?php echo $inventaris['no_kelompok_benih'] ?>" required>
+          </div>
+        </div>
+
     </div>
 
     <hr>

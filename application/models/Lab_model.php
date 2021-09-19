@@ -47,6 +47,7 @@ class Lab_model extends CI_Model {
 			'tgl_selesai_pengujian' => $this->input->post('tgl_selesai_pengujian'),
 			'hasil' => $this->input->post('hasil'),
 		);		
+		
 		$this->db->where('id_lab', $id);
 		return $this->db->update('lab', $data);
 	}

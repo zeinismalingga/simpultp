@@ -190,7 +190,7 @@
 					<td><?php echo $lab['benih_mati'] ?></td>
 				</tr>
 				<tr>
-					<td rowspan="6">Metode KA: <?php echo $lab['metode_ka'] ?></td>
+					<td rowspan="6">Metode KA : <?php echo $lab['metode_ka'] ?></td>
 				</tr>
 				<tr>
 					<td colspan="4" rowspan="1">Metode Kemurnian: <?php echo $lab['metode_kemurnian'] ?></td>

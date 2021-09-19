@@ -158,14 +158,21 @@
             </div>  
            </div> 
 
-           <div class="col-md-5">           
+           <div class="col-md-3">           
             <div class="form-group">
               <label>Media/Metode DB</label>
               <input type="text" name="media" class="form-control" value="<?php echo $lab['media'] ?>">
             </div>  
            </div>
 
-           <div class="col-md-4">           
+           <div class="col-md-3">           
+            <div class="form-group">
+              <label>Metode Daya Berkecambah</label>
+              <input type="text" name="metode_daya_berkecambah" class="form-control" value="<?php echo $lab['metode_daya_berkecambah'] ?>">
+            </div>  
+           </div>
+
+           <div class="col-md-3">           
             <div class="form-group">
               <label>Abnormalitas</label>
               <input type="text" name="abnormalis" class="form-control" value="<?php echo $lab['abnormalis'] ?>">

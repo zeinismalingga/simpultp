@@ -37,6 +37,7 @@ class Lab_model extends CI_Model {
 			'benih_keras' => $this->input->post('benih_keras'),
 			'benih_segar' => $this->input->post('benih_segar'),
 			'benih_mati' => $this->input->post('benih_mati'),
+			'metode_daya_berkecambah' => $this->input->post('metode_daya_berkecambah'),
 			'ket' => $this->input->post('ket'),
 			'suhu' => $this->input->post('suhu'),
 			'media' => $this->input->post('media'),

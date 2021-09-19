@@ -190,27 +190,31 @@
 					<td><?php echo $lab['benih_mati'] ?></td>
 				</tr>
 				<tr>
-					<td rowspan="8">Metode KA : <?php echo $lab['metode_ka'] ?></td>
+					<td rowspan="6">Metode KA : <?php echo $lab['metode_ka'] ?></td>
 				</tr>
 				<tr>
-					<td colspan="4" rowspan="2">Metode Kemurnian: <?php echo $lab['metode_kemurnian'] ?></td>
-					<td colspan="1" rowspan="1">Ket</td>
-					<td colspan="5"><p><?php echo $lab['ket'] ?></p>
+					<td colspan="4" rowspan="1">Metode Kemurnian: <?php echo $lab['metode_kemurnian'] ?></td>
+					<td colspan="6" rowspan="1" align="center">Metode Daya Berkecambah : <?php echo $lab['metode_daya_berkecambah'] ?></td>
 				</tr>
 				<tr>
-					<td colspan="1">Suhu</td>
-					<td colspan="5">: <?php echo $lab['suhu'] ?></td>
-				</tr>
-				<tr>
-					<td colspan="4" rowspan="2">Benih Gulma : <?php echo $lab['benih_gulma_gr'] ?> gram : <?php echo $lab['benih_gulma_persen'] ?> %
+					<td colspan="4" rowspan="5">Benih Gulma <br> : <?php echo $lab['benih_gulma_gr'] ?> gram <br>: <?php echo $lab['benih_gulma_persen'] ?> %
 					</td>
-					<td colspan="1">Media/Metode DB</td>
-					<td colspan="5">: <?php echo $lab['media'] ?></td>
+					<td colspan="1" style="border-right: hidden;border-bottom: hidden;">Ket</td>
+					<td colspan="5" style="border-bottom: hidden;">: <?php echo $lab['ket'] ?></td>
+				</tr>
+				<tr style="border-bottom: hidden;">
+					<td colspan="1" style="border-bottom: hidden;border-right: hidden;">Suhu</td>
+					<td colspan="5" style="border-bottom: hidden;">: <?php echo $lab['suhu'] ?></td>
 				</tr>
 				<tr>
-					<td colspan="1">Abnormalis</td>
+					<td colspan="1" style="border-bottom: hidden;border-right: hidden;">Media/Metode DB</td>
+					<td colspan="5" style="border-bottom: hidden;">: <?php echo $lab['media'] ?></td>
+				</tr>
+				<tr>
+					<td colspan="1" style="border-right: hidden;">Abnormalis</td>
 					<td colspan="5">: <?php echo $lab['abnormalis'] ?></td>
 				</tr>
+
 			</table>
 		</div>
 		 <br>
@@ -253,7 +257,7 @@
 
 	</div>	
 	<script>
-		window.print();
+		// window.print();
 	</script>
 </body>
 </html>

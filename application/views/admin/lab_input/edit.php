@@ -189,29 +189,38 @@
             </div>
           </div>
 
-          <div class="col-md-4">
+          <div class="col-md-3">
             <div class="form-group">
               <label>Tanggal Pengujian</label>
               <input type="text" name="tgl_pengujian" class="form-control datepicker" value="<?php echo $lab['tgl_pengujian'] ?>">
             </div>
           </div>
 
-          <div class="col-md-4">
+          <div class="col-md-3">
             <div class="form-group">
               <label>Tanggal Selesai Pengujian</label>
               <input type="text" name="tgl_selesai_pengujian" class="form-control datepicker" value="<?php echo $lab['tgl_selesai_pengujian'] ?>">
             </div>
           </div>
 
-          <div class="row">
-            <div class="col-md-4">           
-              <div class="form-group">
-                <label>Hasil</label>
-                <select name="hasil" class="form-control select2">
-                <option select value="1">Lulus</option>
-                <option select value="0">Tidak Lulus</option>
-                </select>
-              </div>
+          <div class="col-md-3">           
+            <div class="form-group">
+              <label>Hasil</label>
+              <select name="hasil" class="form-control select2">
+              <option select value="1">Lulus</option>
+              <option select value="0">Tidak Lulus</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="col-md-3">           
+            <div class="form-group">
+              <label>Manajer Teknis</label>
+              <select name="id_manajer_teknis" class="form-control select2">
+              <?php foreach($manajer_teknis as $item): ?>
+              <option value="<?php echo $item['id'] ?>"><?php echo $item['nama'] ?></option>
+              <?php endforeach ?>
+              </select>
             </div>
           </div>
 

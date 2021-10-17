@@ -59,7 +59,7 @@
                         <a href="<?php echo base_url("$class/edit_wasar/". $cek_mutu_item['id_cek_mutu_pangan']) ?>" class="btn btn-xs btn-primary">EDIT</a><br>
                         <?php if($cek_mutu_item['no_surat_pengantar'] != ''): ?>
                         <a target="_blank" href="<?php echo base_url("$class/print_pengantar/". $cek_mutu_item['id_cek_mutu_pangan']) ?>" class="btn btn-xs btn-success">PRINT PENGANTAR</a><br>
-                        <a target="_blank" href="<?php echo base_url("$class/print_permohonan/". $cek_mutu_item['id_cek_mutu_pangan']) ?>" class="btn btn-xs btn-success">PRINT PERMOHONAN</a><br>
+                        <a target="_blank" href="<?php echo base_url("$class/print_wasar/". $cek_mutu_item['id_cek_mutu_pangan']) ?>" class="btn btn-xs btn-success">PRINT LLHP</a><br>
                         <?php endif; ?>
                       </td>
                       

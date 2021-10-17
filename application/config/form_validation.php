@@ -222,8 +222,8 @@ $config = array(
         ),
         'cek_mutu_pangan/edit_lab' => array(
             array(
-                        'field' => 'tonase',
-                        'label' => 'tonase',
+                        'field' => 'no_lab',
+                        'label' => 'no lab',
                         'rules' => 'required'
                 ),
         ),

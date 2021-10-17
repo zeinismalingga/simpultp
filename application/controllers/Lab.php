@@ -24,6 +24,7 @@ class Lab extends MY_Controller {
 
 		$data['lab'] = $this->lab_model->get_all($id_lab);
 		$data['id_lab'] = $id_lab;
+		$data['manajer_teknis'] = $this->db->query("SELECT * FROM manajer_teknis")->result_array();
 
 		$this->form_validation->set_error_delimiters('<div class="alert alert-danger">', '</div>');
 

@@ -245,8 +245,8 @@
 					<p>Samarinda, <?php echo ($lab['tgl_selesai_pengujian']) ? tgl_indo($lab['tgl_selesai_pengujian']) : '' ?></p>
 					<p style="margin-bottom: 100px">Manajer Teknis,</p>
 					
-					<p style="text-decoration: underline;">Lilik Dwi Hastuti, SP</p>
-					<p>NIP. 197005192007012007</p>
+					<p style="text-decoration: underline;"><?php echo $lab['nama'] ?></p>
+					<p>NIP. <?php echo $lab['nip'] ?></p>
 				</div>
 				
 			</div>

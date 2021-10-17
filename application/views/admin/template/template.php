@@ -194,11 +194,10 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="<?php echo base_url('lab/list_lab') ?>"><i class="fa fa-circle"></i> Daftar Lab</a></li>
+            <li><a href="<?php echo base_url('lab/list_lab') ?>"><i class="fa fa-circle"></i> Daftar Sertifikasi</a></li>
+            <li><a href="<?php echo base_url('cek_mutu_pangan/list') ?>"><i class="fa fa-circle"></i> Daftar Cek Mutu Benih</a></li>
           </ul>
         </li> 
-
-        <li><a href="<?php echo base_url('cek_mutu_pangan/list') ?>"><i class="fa fa-database"></i> <span>Cek Mutu Benih</span></a></li>
 
         <?php endif ?>
     

@@ -175,14 +175,7 @@
 		<hr>
 		<br><br>
 
-		<div style="float: left;">
-			<p>Tembusan :</p>
-			<p>Kepada Yth</p>
-			<ol>
-				<li>Pengawas Benih Kab. Kukar di- Samarinda</li>
-				<li>Arsip</li>
-			</ol>
-		</div>
+		
 
 		<div style="margin-left: 500px; text-align: center;">
 			<p>Samarinda, <?php echo tgl_indo($sertifikasi['tgl_pengantar_llhp']) ?></p>
@@ -190,6 +183,15 @@
 			<p style="margin-bottom: 80px; font-weight: bold">Provinsi Kalimantan Timur</p>
 			<p style="text-decoration: underline;font-weight: bold;">Ir. Fenty Rubiah Harahap, M.Si</p>
 			<p>NIP. 19670614 198709 2 001</p>
+		</div>
+		<br><br>
+		<div style="float: left;">
+			<p>Tembusan :</p>
+			<p>Kepada Yth</p>
+			<ol>
+				<li>Pengawas Benih Kab. <?php echo ucwords($sertifikasi['nama_kota']) ?></li>
+				<li>Arsip</li>
+			</ol>
 		</div>
 	</div>
 

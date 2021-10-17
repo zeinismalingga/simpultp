@@ -37,6 +37,7 @@
                   <tr>
                     <th>No</th>
                     <th>No. CMP</th>
+                    <th>No. Asal</th>
                     <th>Jenis Tanaman</th>
                     <th>Varietas</th>
                     <th>Tgl. Panen</th>
@@ -50,6 +51,7 @@
                     <tr>
                       <td><?php echo $no; ?></td>
                       <td><?php echo $cek_mutu_item['no_contoh_benih']; ?></td>
+                      <td><?php echo $cek_mutu_item['no_asal']; ?></td>
                       <td><?php echo $cek_mutu_item['nama_jenis']; ?></td>
                       <td><?php echo $cek_mutu_item['nama_varietas']; ?></td>
                       <td><?php echo tgl_indo($cek_mutu_item['tgl_panen']); ?></td>

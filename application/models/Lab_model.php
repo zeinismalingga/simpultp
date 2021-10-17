@@ -6,7 +6,7 @@ class Lab_model extends CI_Model {
 			$query = $this->db->query("SELECT * FROM lab");		
 			return $query->result_array();	
 		}else{
-			$query = $this->db->query("SELECT * FROM sertifikasi,jenis_tanaman, varietas, lab, kelas_benih, jenis_varietas WHERE sertifikasi.id_jenis_tanaman = jenis_tanaman.id_jenis_tanaman AND sertifikasi.id_varietas = varietas.id_varietas AND sertifikasi.id_kelas_benih = kelas_benih.id_kelas_benih AND lab.id_lab = $id_lab");
+			$query = $this->db->query("SELECT * FROM sertifikasi,jenis_tanaman, varietas, lab, kelas_benih, jenis_varietas, manajer_teknis WHERE sertifikasi.id_jenis_tanaman = jenis_tanaman.id_jenis_tanaman AND sertifikasi.id_varietas = varietas.id_varietas AND sertifikasi.id_kelas_benih = kelas_benih.id_kelas_benih AND lab.id_manajer_teknis = manajer_teknis.id AND lab.id_lab = $id_lab");
 			return $query->row_array();	
 		}		
 	}
@@ -46,6 +46,7 @@ class Lab_model extends CI_Model {
 			'tgl_pengujian' => $this->input->post('tgl_pengujian'),
 			'tgl_selesai_pengujian' => $this->input->post('tgl_selesai_pengujian'),
 			'hasil' => $this->input->post('hasil'),
+			'id_manajer_teknis' => $this->input->post('id_manajer_teknis'),
 		);		
 		
 		$this->db->where('id_lab', $id);
@@ -69,10 +70,10 @@ class Lab_model extends CI_Model {
 
 	public function print($id_lab, $anggaran){ 
 		if($anggaran == 1){
-			$query = $this->db->query("SELECT * FROM sertifikasi, tu_apbn, input_lab_apbn,lab, jenis_tanaman, varietas, kelas_benih WHERE sertifikasi.id_jenis_tanaman = jenis_tanaman.id_jenis_tanaman AND sertifikasi.id_varietas = varietas.id_varietas AND sertifikasi.id_kelas_benih = kelas_benih.id_kelas_benih AND sertifikasi.id_sertifikasi = tu_apbn.id_sertifikasi AND tu_apbn.id_tu_apbn = input_lab_apbn.id_tu_apbn AND lab.id_lab = $id_lab");		
+			$query = $this->db->query("SELECT * FROM sertifikasi, tu_apbn, input_lab_apbn,lab, jenis_tanaman, varietas, kelas_benih, manajer_teknis WHERE sertifikasi.id_jenis_tanaman = jenis_tanaman.id_jenis_tanaman AND sertifikasi.id_varietas = varietas.id_varietas AND sertifikasi.id_kelas_benih = kelas_benih.id_kelas_benih AND sertifikasi.id_sertifikasi = tu_apbn.id_sertifikasi AND tu_apbn.id_tu_apbn = input_lab_apbn.id_tu_apbn AND lab.id_manajer_teknis = manajer_teknis.id AND lab.id_lab = $id_lab");		
 			return $query->row_array();	
 		}else{
-			$query = $this->db->query("SELECT * FROM sertifikasi, tu_apbd, input_lab_apbd, lab, jenis_tanaman, varietas, kelas_benih WHERE sertifikasi.id_jenis_tanaman = jenis_tanaman.id_jenis_tanaman AND sertifikasi.id_varietas = varietas.id_varietas AND sertifikasi.id_kelas_benih = kelas_benih.id_kelas_benih AND sertifikasi.id_sertifikasi = tu_apbd.id_sertifikasi AND tu_apbd.id_tu_apbd = input_lab_apbd.id_tu_apbd AND lab.id_lab = $id_lab");
+			$query = $this->db->query("SELECT * FROM sertifikasi, tu_apbd, input_lab_apbd, lab, jenis_tanaman, varietas, kelas_benih, manajer_teknis WHERE sertifikasi.id_jenis_tanaman = jenis_tanaman.id_jenis_tanaman AND sertifikasi.id_varietas = varietas.id_varietas AND sertifikasi.id_kelas_benih = kelas_benih.id_kelas_benih AND sertifikasi.id_sertifikasi = tu_apbd.id_sertifikasi AND tu_apbd.id_tu_apbd = input_lab_apbd.id_tu_apbd AND lab.id_manajer_teknis = manajer_teknis.id AND lab.id_lab = $id_lab");
 			return $query->row_array();	
 		}		
 	}

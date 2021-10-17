@@ -150,8 +150,9 @@
 	<div class="float-right">
 		<p>Kepada Yth.</p>
 		<p><span><?php echo $sertifikasi['nama_produsen'] ?></span></p>
-		<p>Di -  </p>
-		<p style="text-indent: 40px;">Desa <?php echo ucwords($sertifikasi['desa']) ?> Kec. <?php echo $sertifikasi['nama_kecamatan'] ?></p>
+		<p>Desa <?php echo ucwords($sertifikasi['desa']) ?> Kec. <?php echo $sertifikasi['nama_kecamatan'] ?></p>
+		<p>Di -</p>
+		<p style="text-indent: 40px;text-decoration: underline;"><?php echo ucwords($sertifikasi['nama_kota']) ?></p>
 	</div>
 	<div class="clearfix"></div>
 	

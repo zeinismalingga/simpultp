@@ -2,28 +2,15 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>PRINT CEK MUTU</title>
+	<title>PRINT LAB</title>
 	<link rel="stylesheet" href="<?php echo base_url('assets/css/normalize.css') ?>">
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/bootstrap.min.css') ?>">
 
 	<style>
 
-		.table{
-			outline-style: solid;
-			outline-width: 2px;
-		}
-
-		.table td, .table th {
-    	padding: .50rem;
-  	}
-
 		tr td > p:first-of-type {
   			display: inline;
 		}	
-
-		tr, td {
-			padding: 5px;
-		}
 
 		.baris{
 			line-height: 0.4;
@@ -34,7 +21,7 @@
 			/*size: 330mm 210mm;*/
 
 			/*a4*/
-			size: 210mm 297mm;
+			/*size: 210mm 297mm;*/
 		}
 
 		.content{
@@ -106,17 +93,18 @@
 <body>
 	
 	<div class="header baris">
-		<img src="<?php echo base_url('assets/images/ruhui.png') ?>" width="65" style="position: fixed;margin-left: 90px;float: left;">
+		<img src="<?php echo base_url('assets/images/ruhui.png') ?>" width="90" style="position: fixed;margin-left: 90px;float: left;">
 
-
+		<img src="<?php echo base_url('assets/images/logo kan.png') ?>" width="150" style="position: fixed;margin-left: 900px;float: left;">
 
 		<div class="box text-center" style="margin-top: 20px;font-weight: bold;">
 			<p>PEMERINTAH PROVINSI KALIMANTAN TIMUR</p>
-			<p>DINAS PERTANIAN TANA,l.TIFIKASI BENIH</p>
+			<p>DINAS PERTANIAN TANAMAN PANGAN</p>
+			<p>UNIT PELAKSANA TEKNIS DINAS</p>
+			<p>PENGAWASAN DAN SERTIFIKASI BENIH</p>
 			<p>TANAMAN PANGAN DAN HORTIKULTURA</p>
 			<p>Jln. P. Muhammad Noor Sempaja Telp. (0541) 221212, 221213, Fax : 22121212</p>
 			<p>S A M A R I N D A</p>
-			<br>
 		</div>
 		<div class="float-left">
 			KOTAK POS 1161
@@ -130,217 +118,145 @@
 				
 	</div>
 
-	<div>
-		<div class="float-left">
-			<table>
-				<tr>
-					<td width="100px">Nomor</td>
-					<td>:</td>
-					<td><?php echo 'CMP. '. $cek_mutu['no_contoh_benih'] ?></td>
-				
-				</tr>
-				<tr>
-					<td>Lampiran</td>
-					<td>:</td>
-					<td></td>
-				</tr>
-				<tr>
-					<td>Hal</td>
-					<td>:</td>
-					<td>Hasil Pengecekan Mutu</td>
-				</tr>
-			</table>
+	<div class="content baris">
+
+		<div class="text-center" style="font-weight: bold;">
+			<p>Laporan Hasil Pengujian Benih Laboratoris</p>
+			<p style="text-decoration: underline;">CONTOH BENIH PENGAWASAN PEMASARAN</p>
+
+			<br>
+			<br>
+			
 		</div>
 
-		<div class="float-right" style="margin-right: 100px;">
-			<table>
-				<tr>
-					<td>Kepada Yth.</td>
+		<div style="margin-left: 210px">
+			<div style="position: absolute;right: 2px">
+				<table class="table table-bordered">
+					<tr>
+						<th>No. Asal</th>
+						<th>No. Lab</th>
+					</tr>
+					<tr>
+						<td><?php echo $lab['no_asal'] ?></td>
+						<td><?php echo $lab['no_lab'] ?></td>
+					</tr>					
+				</table>
+			</div>
+
+			<p>Kepada Yth. <span style="left: 380px; position: absolute;">: Seksi Pengawasan dan Pemasaran</span></p>
+			<p>Alamat <span style="left: 380px; position: absolute;">: UPTD PSB TPH Kalimantan Timur</span></p>
+			<p>Jenis Tanaman <span style="left: 380px; position: absolute;">: <?php echo ucwords($lab['nama_jenis']) ?></span></p>
+			<p>Varietas <span style="left: 380px; position: absolute;">: <?php echo $lab['nama_varietas'] ?></span></p>
+			<p>Kelas Benih <span style="left: 380px; position: absolute;">: <?php echo $lab['singkatan'] ?></span></p>
+			<p>Berat Contoh Kirim <span style="left: 380px; position: absolute;">: 1000 gram</span></p>
+			<p>Tgl Panen <span style="left: 380px; position: absolute;">: <?php echo tgl_indo($lab['tgl_panen']) ?></span></p>
+			<p>Tgl Penerimaan Lab <span style="left: 380px; position: absolute;">: <?php echo tgl_indo($lab['tgl_pengujian']) ?> </span></p>
+			<p>Tgl Pengujian <span style="left: 380px; position: absolute;">: <?php echo ($lab['tgl_pengujian']) ? tgl_indo($lab['tgl_pengujian']) : '' ?> </span></p>
+			<p>Tgl Selesai Pengujian <span style="left: 380px; position: absolute;">: <?php echo ($lab['tgl_selesai']) ? tgl_indo($lab['tgl_selesai']) : '' ?></span></p>
+		</div>
+
+		<br>
+
+		<div class="table table-bordered">
+			<table style="word-wrap: break-word;">
+				<tr align="center">
+					<th>Kadar Air (%)</th>
+					<th colspan="4">Kemurnian</th>
+					<th colspan="6">Daya Berkecambah</th>
+				</tr>
+				<tr align="center">
+					<td rowspan="2"><?php echo $lab['kadar_air_hu'] ?></td>
+					<th>Berat Contoh Kerja (gram)</th>
+					<th>Benih Murni (%)</th>
+					<th>Benih Tan. Lain (%)</th>
+					<th>Kotoran Benih (%)</th>
+					<th>Jangka Waktu Pengujian (hari)</th>
+					<th>Kecambah Normal (%)</th>
+					<th>Kecambah Abnormal (%)</th>
+					<th>Benih Keras (%)</th>
+					<th>Benih Segar (%)</th>
+					<th>Benih Mati (%)</th>
+				</tr>
+				<tr align="center">
+					<td><?php echo $lab['berat_cnth_kerja_hu'] ?></td>
+					<td><?php echo $lab['benih_murni_hu'] ?></td>
+					<td><?php echo $lab['benih_tanaman_lain_hu'] ?></td>
+					<td><?php echo $lab['kotoran_benih_hu'] ?></td>
+					<td><?php echo $lab['jangka_waktu_pengujian_hu'] ?></td>
+					<td><?php echo $lab['kecambah_normal_hu'] ?></td>
+					<td><?php echo $lab['kecambah_abnormal_hu'] ?></td>
+					<td><?php echo $lab['benih_keras_hu'] ?></td>
+					<td><?php echo $lab['benih_segar_hu'] ?></td>
+					<td><?php echo $lab['benih_mati_hu'] ?></td>
 				</tr>
 				<tr>
-					<td><?php echo $cek_mutu['nama_produsen'] ?></td>
+					<td rowspan="6">Metode KA : <?php echo $lab['metode_ka_hu'] ?></td>
 				</tr>
 				<tr>
-					<td>di-</td>
+					<td colspan="4" rowspan="1">Metode Kemurnian: <?php echo $lab['metode_kemurnian_hu'] ?></td>
+					<td colspan="6" rowspan="1" align="center">Metode Daya Berkecambah : <?php echo $lab['metode_daya_berkecambah_hu'] ?></td>
 				</tr>
 				<tr>
-					<td>&emsp;&emsp; Samarinda</td>
+					<td colspan="4" rowspan="5">Benih Gulma <br> : <?php echo $lab['biji_gulma_gr_hu'] ?> gram <br>: <?php echo $lab['biji_gulma_hu'] ?> %
+					</td>
+					<td colspan="1" style="border-right: hidden;border-bottom: hidden;">Ket</td>
+					<td colspan="5" style="border-bottom: hidden;">: <?php echo $lab['ket_hu'] ?></td>
 				</tr>
+				<tr style="border-bottom: hidden;">
+					<td colspan="1" style="border-bottom: hidden;border-right: hidden;">Suhu</td>
+					<td colspan="5" style="border-bottom: hidden;">: <?php echo $lab['suhu_hu'] ?></td>
+				</tr>
+				<tr>
+					<td colspan="1" style="border-bottom: hidden;border-right: hidden;">Media/Metode DB</td>
+					<td colspan="5" style="border-bottom: hidden;">: <?php echo $lab['media_hu'] ?></td>
+				</tr>
+				<tr>
+					<td colspan="1" style="border-right: hidden;">Abnormalis</td>
+					<td colspan="5">: <?php echo $lab['abnormalis_hu'] ?></td>
+				</tr>
+
 			</table>
 		</div>
-	</div>
+		 <br>
+		 <br>
+		<div class="row">
+			<div class="col-sm-5">
+				<table class="table table-bordered">
+					<th>DAYA BERKECAMBAH : <?php echo $lab['kecambah_normal_hu'] ?> %</th>
+				</table>
 
-	<div style="clear: both;margin-bottom: 10px"></div>
-	<div>
-		<p>Dengan ini disampaikan hasil pengujian/analisis mutu benih untuk pengecekan mutu benih yang contohnya telah diambil oleh staf kami pada tanggal <?php echo tgl_indo($cek_mutu['tgl_pengambilan_cth']) ?> di Samarinda terhadap kelompok benih dengan indentitas sebagai berikut : </p>
-	</div>
+				<div>
+					<p>Diverifikasi Oleh <span style="position: absolute;left: 180px">: Syarifah Inayah A., SP</span></p>
+					<p>Tanggal <span style="position: absolute;left: 180px">: <?php echo ($lab['tgl_selesai']) ? tgl_indo($lab['tgl_selesai']) : '' ?></span></p>
+					<p>Paraf <span style="position: absolute;left: 180px">: </span></p>
 
-	<div>
-		<table>
-			<tr>
-				<td width="200px">Nomor Kelompok Benih</td>
-				<td>:</td>
-				<td><?php echo $cek_mutu['no_kelompok_benih'] ?></td>
-			</tr>
-			<tr>
-				<td width="200px">Nama Produsen Benih</td>
-				<td>:</td>
-				<td><?php echo $cek_mutu['nama_produsen'] ?></td>
-			</tr>
-			<tr>
-				<td width="200px">Alamat Kelompok Benih</td>
-				<td>:</td>
-				<td></td>
-			</tr>
-			<tr>
-				<td width="200px">Jenis Tanaman</td>
-				<td>:</td>
-				<td><?php echo ucwords($cek_mutu['nama_jenis']) ?></td>
-			</tr>
-			<tr>
-				<td width="200px">Varietas</td>
-				<td>:</td>
-				<td><?php echo ucwords($cek_mutu['nama_varietas']) ?></td>
-			</tr>
-			<tr>
-				<td width="200px">Kelas Benih</td>
-				<td>:</td>
-				<td><?php echo $cek_mutu['singkatan'] ?></td>
-			</tr>
-			<tr>
-				<td width="200px">Tanggal Akhir Masa Edar</td>
-				<td>:</td>
-				<td><?php echo tgl_indo($cek_mutu['tgl_akhir']) ?></td>
-			</tr>
-			<tr>
-				<td width="200px">Tonase/Jumlah Wadah</td>
-				<td>:</td>
-				<td><?php echo $cek_mutu['tonase'] ?> ton/ <?php echo $cek_mutu['wadah'] ?> wadah</td>
-			</tr>
-		</table>
-	</div>
-	<br>
-
-	<div>
-		<p>Hasil pengujian/analisis mutu benih sebagai berikut:</p>
-	</div>
-
-	<div>
-		<table class="table table-borderless">
-			<tr>
-				<td>A.</td>
-				<td>Benih Bentuk Biji</td>
-				<td></td>
-				<td></td>
-				<td></td>
-			</tr>
-			<tr>
-				<td></td>
-				<td style="text-align: center;">Parameter</td>
-				<td style="text-align: center;">Data Pada Label</td>
-				<td></td>
-				<td style="text-align: center;">Hasil Uji Analisis</td>
-			</tr>
-			<tr>
-				<td></td>
-				<td>Benih Murni</td>
-				<td>:</td>
-				<td style="text-align: right;"><?php echo $cek_mutu['benih_murni'] ?> %</td>
-				<td style="text-align: right;"><?php echo $cek_mutu['benih_murni_hu'] ?> %</td>
-			</tr>
-			<tr>
-				<td></td>
-				<td>Kotoran Benih</td>
-				<td>:</td>
-				<td style="text-align: right;"><?php echo $cek_mutu['kotoran_benih'] ?> %</td>
-				<td style="text-align: right;"><?php echo $cek_mutu['kotoran_benih_hu'] ?> %</td>
-			</tr>
-			<tr>
-				<td></td>
-				<td>Benih Tanaman Lain</td>
-				<td>:</td>
-				<td style="text-align: right;"><?php echo $cek_mutu['benih_tanaman_lain'] ?> %</td>
-				<td style="text-align: right;"><?php echo $cek_mutu['benih_tanaman_lain_hu'] ?> %</td>
-			</tr>
-			<tr>
-				<td></td>
-				<td>Biji Gulma</td>
-				<td>:</td>
-				<td style="text-align: right;"><?php echo $cek_mutu['biji_gulma'] ?> %</td>
-				<td style="text-align: right;"><?php echo $cek_mutu['biji_gulma_hu'] ?> %</td>
-			</tr>
-			<tr>
-				<td></td>
-				<td>Kadar Air</td>
-				<td>:</td>
-				<td style="text-align: right;"><?php echo $cek_mutu['kadar_air_persen'] ?> %</td>
-				<td style="text-align: right;"><?php echo $cek_mutu['kadar_air_hu'] ?> %</td>
-			</tr>
-			<tr>
-				<td></td>
-				<td>Daya Berkecambah</td>
-				<td>:</td>
-				<td style="text-align: right;"><?php echo $cek_mutu['daya_berkecambah_persen'] ?> %</td>
-				<td style="text-align: right;"><?php echo $cek_mutu['daya_berkecambah_hu'] ?> %</td>
-			</tr>
-			<tr>
-				<td></td>
-				<td>Tanggal Pengujian/Analisis</td>
-				<td>: <?php echo tgl_indo($cek_mutu['tgl_pengujian']) ?></td>
-				<td style="text-align: right;"></td>
-				<td style="text-align: right;"></td>
-			</tr>
-			<tr>
-				<td>B. </td>
-				<td>Hasil Pengecekan di Gudang</td>
-				<td>:</td>
-				<td style="text-align: right;"></td>
-				<td style="text-align: right;"></td>
-			</tr>
-
-		</table>
-	</div>
-
-	<div>
-		<p>Catatan: Laboratorium hanya bertanggungjawab terhadap sampel yang diujikan di laboratorium.</p>
-		<p>Berdasarkan data di atas maka isi label <strong>masih sesuai/tidak sesuai</strong> dengan persyaratan mutu benih yang berlaku, dan <strong>masih dapat disalurkan/supaya ditarik dari peredaran/supaya diganti label *)</strong></p>
-	</div>
-
-	<br>
-
-	<div class="baris" style="margin-left: 500px">
-			<div class="col-sm-9">
+					
+					<p style="margin-top: 50px">Keterangan :</p>
+					<p>*) : Perlakuan</p>
+					<p>PA = Pemanasan dengan oven pada suhu 50 &#8451</p>
+					<p>PE = Perendaman dengan larutan KN03 3%</p>
+					<p>**) = Penaburan dilakukan setelah benih dilakukan perlakuan</p>
+				</div>
+			</div>
+			
+			<div class="col-sm-7">
 				<div class="text-center">
-					<p>Samarinda, <?php echo tgl_indo($cek_mutu['tgl_hasil']) ?></p>
-					<p>Kelapa UPTD PSBTPH</p>
-					<p style="margin-bottom: 100px">Provinsi Kalimantan Timur,</p>
-					<p style="text-decoration: underline;">Ir. Fenty Rubiah Harahap, M. Si</p>
-					<p>NIP. 19670614 198709 2 001</p>
+					<p>Samarinda, <?php echo ($lab['tgl_selesai']) ? tgl_indo($lab['tgl_selesai']) : '' ?></p>
+					<p style="margin-bottom: 100px">Manajer Teknis,</p>
+					
+					<p style="text-decoration: underline;"><?php echo $lab['nama'] ?></p>
+					<p>NIP. <?php echo $lab['nip'] ?></p>
 				</div>
 				
 			</div>
+
+		</div>
+
+
+
 	</div>	
-	<div style="clear: both;"></div>
-	
-	<div>
-		<span>Tembusan Yth :</span>
-		<table>
-			<tr>
-				<td>1. </td>
-			  <td>Kepala Dinas Pangan TPH Provinsi Kalimantan Timur</td>
-			</tr>
-			<tr>
-				<td>2. </td>
-			  <td>Kepala Dinas Kabupaten/Kota</td>
-			</tr>
-			<tr>
-				<td>*) </td>
-			  <td>Coret yang tidak sesuai</td>
-			</tr>	
-		</table>
-	</div>
 	<script>
-		window.print();
+		// window.print();
 	</script>
 </body>
 </html>

@@ -150,6 +150,7 @@
 	<div class="float-right">
 		<p>Kepada Yth.</p>
 		<p><strong><?php echo $cek_mutu['nama_produsen'] ?></strong></p>
+		<p><?php echo $cek_mutu['alamat'] ?></p>
 		<p>Di -  </p>
 		<p style="text-indent: 40px;text-decoration: underline;"><?php echo ucwords($cek_mutu['nama_kota']) ?></p>
 	</div>
@@ -229,7 +230,7 @@
 				</tr>
 				<tr>
 					<td></td>
-					<td>di- <?php echo ucwords($cek_mutu['nama_kota']) ?></td>
+					<td>di- <span style="text-decoration: underline;"><?php echo ucwords($cek_mutu['nama_kota']) ?></span></td>
 				</tr>
 				<tr>
 					<td>2.</td>

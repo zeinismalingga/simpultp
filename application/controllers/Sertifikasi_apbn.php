@@ -142,7 +142,9 @@ class Sertifikasi_apbn extends MY_Controller {
 	}
 
 	public function export_excel(){
-		$sertifikasi = $this->sertifikasi_model->get_all(NULL, $this->anggaran);
+		$sertifikasi = $this->db->query("SELECT * FROM sertifikasi LEFT JOIN inventaris_produsen ON sertifikasi.id_produsen = inventaris_produsen.id_inventaris_pangan LEFT JOIN kelas_benih ON sertifikasi.id_kelas_benih = kelas_benih.id_kelas_benih LEFT JOIN varietas ON sertifikasi.id_varietas = varietas.id_varietas LEFT JOIN kota ON inventaris_produsen.id_kota = kota.id_kota LEFT JOIN kecamatan ON inventaris_produsen.id_kecamatan = kecamatan.id_kecamatan LEFT JOIN tu_apbn ON sertifikasi.id_sertifikasi = tu_apbn.id_sertifikasi LEFT JOIN input_lab_apbn ON tu_apbn.id_tu_apbn = input_lab_apbn.id_tu_apbn LEFT JOIN lab ON lab.id_lab_anggaran = input_lab_apbn.id_input_lab_apbn")->result_array();
+
+		// dd($sertifikasi);
 
 		$styleCol = [
 		    'font' => [
@@ -198,6 +200,7 @@ class Sertifikasi_apbn extends MY_Controller {
 		$sheet->setCellValue('AA2', 'Luas Ha');
 		$sheet->setCellValue('AB2', 'CVL %');
 		$sheet->setCellValue('AC1', 'Tanggal Panen');
+		$sheet->setCellValue('AD1', 'Taksiran Hasil');
 
 		//load data
 		$i = 3;
@@ -207,7 +210,7 @@ class Sertifikasi_apbn extends MY_Controller {
 			$kelas_benih2 = $this->master_model->get_kelas_benih2($sertifikasi_item['id_kelas_benih2']);
 
 			$sheet->setCellValue('A'.$i, $no++);
-			$sheet->setCellValue('B'.$i, $sertifikasi_item['pemohon']);
+			$sheet->setCellValue('B'.$i, $sertifikasi_item['nama_produsen']);
 			$sheet->setCellValue('C'.$i, $sertifikasi_item['blok']);
 			$sheet->setCellValue('D'.$i, $sertifikasi_item['alamat']);
 			$sheet->setCellValue('E'.$i, $sertifikasi_item['kampung']);
@@ -220,33 +223,34 @@ class Sertifikasi_apbn extends MY_Controller {
 
 			$sheet->setCellValue('L'.$i, $sertifikasi_item['asal_benih']);
 			$sheet->setCellValue('M'.$i, $sertifikasi_item['no_kelompok_benih']);
-			$sheet->setCellValue('N'.$i, $kelas_benih2['singkatan']);
+			$sheet->setCellValue('N'.$i, isset($kelas_benih2['singkatan']) ? $kelas_benih2['singkatan'] : '');
 			$sheet->setCellValue('O'.$i, $sertifikasi_item['nama_varietas']);
 			$sheet->setCellValue('P'.$i, $sertifikasi_item['singkatan']);
-			$sheet->setCellValue('Q'.$i, tgl_indo($sertifikasi_item['tgl_pemlap_pendahuluan']));
-			$sheet->setCellValue('R'.$i, tgl_indo($sertifikasi_item['tgl_semai']));
-			$sheet->setCellValue('S'.$i, tgl_indo($sertifikasi_item['tgl_tanam']));
-			$sheet->setCellValue('T'.$i, tgl_indo($sertifikasi_item['tgl_pemlap_1']));
+			$sheet->setCellValue('Q'.$i, tgl_indo($sertifikasi_item['tgl_rekomendasi']));
+			$sheet->setCellValue('R'.$i, '');
+			$sheet->setCellValue('S'.$i, isset($sertifikasi_item['tgl_tanam']) ? tgl_indo($sertifikasi_item['tgl_tanam']) : '' );
+			$sheet->setCellValue('T'.$i, isset($sertifikasi_item['tgl_pemlap1']) ? tgl_indo($sertifikasi_item['tgl_pemlap1']) : '' );
 			$sheet->setCellValue('U'.$i, $sertifikasi_item['luas_pemlap_1']);
-			$sheet->setCellValue('V'.$i, $sertifikasi_item['cvl_pemlap_1']);
-			$sheet->setCellValue('W'.$i, tgl_indo($sertifikasi_item['tgl_pemlap_2']));
+			$sheet->setCellValue('V'.$i, $sertifikasi_item['cvl_pemlap1']);
+			$sheet->setCellValue('W'.$i, isset($sertifikasi_item['tgl_pemlap2']) ? tgl_indo($sertifikasi_item['tgl_pemlap2']) : '' );
 			$sheet->setCellValue('X'.$i, $sertifikasi_item['luas_pemlap_2']);
-			$sheet->setCellValue('Y'.$i, $sertifikasi_item['cvl_pemlap_2']);
-			$sheet->setCellValue('Z'.$i, tgl_indo($sertifikasi_item['tgl_pemlap_3']));
+			$sheet->setCellValue('Y'.$i, $sertifikasi_item['cvl_pemlap2']);
+			$sheet->setCellValue('Z'.$i, isset($sertifikasi_item['tgl_pemlap3']) ? tgl_indo($sertifikasi_item['tgl_pemlap3']) : '' );
 			$sheet->setCellValue('AA'.$i, $sertifikasi_item['luas_pemlap_3']);
-			$sheet->setCellValue('AB'.$i, $sertifikasi_item['cvl_pemlap_3']);
-			$sheet->setCellValue('AC'.$i, tgl_indo($sertifikasi_item['tgl_panen']));
+			$sheet->setCellValue('AB'.$i, $sertifikasi_item['cvl_pemlap3']);
+			$sheet->setCellValue('AC'.$i, isset($sertifikasi_item['tgl_panen']) ? tgl_indo($sertifikasi_item['tgl_panen']) : '' );
+			$sheet->setCellValue('AD'.$i, isset($sertifikasi_item['produksi']) ? $sertifikasi_item['produksi'] : '' );
 
 			$i++;
 			$array++;
 		}
 
 		// apply style colloum
-		$spreadsheet->getActiveSheet()->getStyle('A1:AC2')->applyFromArray($styleCol);
+		$spreadsheet->getActiveSheet()->getStyle('A1:AD2')->applyFromArray($styleCol);
 
 		// apply style default
 		$i--;
-		$spreadsheet->getActiveSheet()->getStyle('A1:AC'. $i)->applyFromArray($styleRow);
+		$spreadsheet->getActiveSheet()->getStyle('A1:AD'. $i)->applyFromArray($styleRow);
 
 		// merge cell
 		$spreadsheet->getActiveSheet()->mergeCells('A1:A2');
@@ -271,6 +275,7 @@ class Sertifikasi_apbn extends MY_Controller {
 		$spreadsheet->getActiveSheet()->mergeCells('W1:Y1');
 		$spreadsheet->getActiveSheet()->mergeCells('Z1:AB1');
 		$spreadsheet->getActiveSheet()->mergeCells('AC1:AC2');
+		$spreadsheet->getActiveSheet()->mergeCells('AD1:AD2');
 
 		// Auto size columns for each worksheet
 		foreach ($spreadsheet->getWorksheetIterator() as $worksheet) {

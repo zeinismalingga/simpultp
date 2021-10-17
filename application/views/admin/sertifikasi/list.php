@@ -84,12 +84,16 @@
                       <td><?php echo $sertifikasi_item['no_induk']; ?></td>
                       <td><?php echo $status ?></td>
                       <td>
+                        <?php if($this->session->userdata('level') != "tu"): ?>
                         <a href="<?php echo base_url("sertifikasi_apbn/edit/". $sertifikasi_item['id_sertifikasi']) ?>" class="btn btn-xs btn-primary">REKOMENDASI</a><br>
+                        <?php endif ?>
 
                         <?php $posisi = $sertifikasi_item['posisi']; ?>
 
                         <?php if($posisi >= 1 && $posisi <= 5): ?>
+                        <?php if($this->session->userdata('level') != "tu"): ?>
                         <a target="_blank" href="<?php echo base_url("sertifikasi_apbn/print/". $sertifikasi_item['id_sertifikasi']) ?>" class="btn btn-xs btn-success">PRINT REKOMENDASI</a><br>
+                        <?php endif ?>
                         <a href="<?php echo base_url("$class_tu/pemlap1/". $sertifikasi_item['id_sertifikasi']) ?>" class="btn btn-xs btn-default">PEMLAP 1</a><br>
                         
                         <?php if($posisi >= 2 && $posisi <= 5): ?>

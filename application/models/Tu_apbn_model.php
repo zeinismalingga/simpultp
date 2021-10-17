@@ -63,7 +63,7 @@ class Tu_apbn_model extends CI_Model {
 	}
 
 	public function get_list(){ 
-    	$query = $this->db->query("SELECT *, sertifikasi.id_sertifikasi AS id_sertifikasi FROM sertifikasi LEFT JOIN tu_apbn ON sertifikasi.id_sertifikasi = tu_apbn.id_sertifikasi LEFT JOIN jenis_varietas ON sertifikasi.id_jenis_varietas LEFT JOIN varietas ON sertifikasi.id_varietas = varietas.id_varietas LEFT JOIN inventaris_produsen ON sertifikasi.id_produsen = inventaris_produsen.id_inventaris_pangan WHERE sertifikasi.jenis_anggaran = 1 AND sertifikasi.posisi >= 4 GROUP BY sertifikasi.id_sertifikasi");		
+    	$query = $this->db->query("SELECT *, sertifikasi.id_sertifikasi AS id_sertifikasi FROM sertifikasi LEFT JOIN tu_apbn ON sertifikasi.id_sertifikasi = tu_apbn.id_sertifikasi LEFT JOIN jenis_varietas ON sertifikasi.id_jenis_varietas LEFT JOIN varietas ON sertifikasi.id_varietas = varietas.id_varietas LEFT JOIN inventaris_produsen ON sertifikasi.id_produsen = inventaris_produsen.id_inventaris_pangan LEFT JOIN input_lab_apbn ON tu_apbn.id_tu_apbn = input_lab_apbn.id_tu_apbn LEFT JOIN lab ON input_lab_apbn.id_input_lab_apbn = lab.id_lab_anggaran WHERE sertifikasi.jenis_anggaran = 1 AND sertifikasi.posisi >= 4 GROUP BY sertifikasi.id_sertifikasi");		
 		return $query->result_array();	
 	}
 

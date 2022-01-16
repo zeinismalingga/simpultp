@@ -170,6 +170,14 @@
               <input type="text" name="tgl_semai" class="form-control datepicker" value="<?php echo $sertifikasi['tgl_semai'] ?>" required>
             </div>
            </div>
+
+           <div class="col-md-4">           
+            <div class="form-group">
+              <label>Jumlah Benih (Kg) </label>
+              <input type="text" name="jumlah_benih" class="form-control" value="<?php echo $sertifikasi['jumlah_benih'] ?>" required>
+            </div>
+           </div>
+
         </div>
 
 

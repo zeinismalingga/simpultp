@@ -51,6 +51,7 @@ class Sertifikasi_model extends CI_Model {
 			'nomor_sumber' => $this->input->post('nomor_sumber'),
 			'tgl_tanam' => $this->input->post('tgl_tanam'),
 			'tgl_semai' => $this->input->post('tgl_semai'),
+			'jumlah_benih' => $this->input->post('jumlah_benih'),
 			'jenis_anggaran' => $anggaran,
 		);					
 

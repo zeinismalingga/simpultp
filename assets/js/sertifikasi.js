@@ -1,6 +1,6 @@
 $(document).ready(function(){
 
-   var base_url = window.location.origin + "/simpultp";
+   var base_url = window.location.origin + "/simpultp2021";
 
     $('#pilih_komoditas').change(function(){
         var id= $('#pilih_komoditas').val();

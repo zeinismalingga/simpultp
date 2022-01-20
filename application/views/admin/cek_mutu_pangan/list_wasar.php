@@ -51,7 +51,7 @@
                       <td><?php echo ucwords($cek_mutu_item['nama_jenis']); ?></td>
                       <td><?php echo $cek_mutu_item['nama_varietas']; ?></td>
                       <td><?php echo $cek_mutu_item['singkatan']; ?></td>
-                      <td><?php echo $cek_mutu_item['nama_produsen']; ?></td>
+                      <td><?php echo $cek_mutu_item['nama_produsen2']; ?></td>
                       
                       <td><?php echo $cek_mutu_item['no_surat_pengantar']; ?></td>
 

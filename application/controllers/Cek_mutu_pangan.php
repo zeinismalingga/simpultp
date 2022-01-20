@@ -12,7 +12,7 @@ class Cek_mutu_pangan extends MY_Controller {
 
 	public function list(){
 		$data['class'] = $this->class;
-		$data['cek_mutu'] = $this->db->query("SELECT * FROM cek_mutu_pangan LEFT JOIN inventaris_produsen ON cek_mutu_pangan.id_produsen = inventaris_produsen.id_inventaris_pangan LEFT JOIN jenis_varietas ON cek_mutu_pangan.id_jenis_varietas = jenis_varietas.id_jenis_varietas LEFT JOIN varietas ON cek_mutu_pangan.id_varietas = varietas.id_varietas LEFT JOIN kelas_benih ON cek_mutu_pangan.id_kelas_benih = kelas_benih.id_kelas_benih")->result_array();
+		$data['cek_mutu'] = $this->db->query("SELECT *, cek_mutu_pangan.nama_produsen AS nama_produsen2 FROM cek_mutu_pangan LEFT JOIN inventaris_produsen ON cek_mutu_pangan.id_produsen = inventaris_produsen.id_inventaris_pangan LEFT JOIN jenis_varietas ON cek_mutu_pangan.id_jenis_varietas = jenis_varietas.id_jenis_varietas LEFT JOIN varietas ON cek_mutu_pangan.id_varietas = varietas.id_varietas LEFT JOIN kelas_benih ON cek_mutu_pangan.id_kelas_benih = kelas_benih.id_kelas_benih")->result_array();
 
 		// dd($data['cek_mutu']);	
 		$level = $this->session->userdata('level');

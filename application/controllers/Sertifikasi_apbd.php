@@ -46,13 +46,12 @@ class Sertifikasi_apbd extends MY_Controller {
 	}
 
 	public function edit($id){	
-		$data['sertifikasi'] = $this->sertifikasi_model->get_all($id);
-		$data['kotas'] = $this->master_model->get_kota();
-		$data['kecamatans'] = $this->master_model->get_kecamatan();
+		$data['sertifikasi'] = $this->sertifikasi_model->get_all($id, $this->anggaran);
 		$data['kelas_benihs'] = $this->master_model->get_kelas_benih();
 		$data['varietass'] = $this->master_model->get_varietas();
 		$data['jenis_varietass'] = $this->master_model->get_jenis_varietas();
 		$data['musim_tanam'] = $this->master_model->get_musim_tanam();
+		$data['pemohons'] = $this->inventaris_produsen_model->get_all();
 		$data['kelas_benih2'] = $this->master_model->get_kelas_benih2($data['sertifikasi']['id_kelas_benih2']);
 
 		$this->form_validation->set_error_delimiters('<div class="alert alert-danger">', '</div>');
@@ -62,7 +61,7 @@ class Sertifikasi_apbd extends MY_Controller {
 			$this->template->load('admin/template/template', 'admin/sertifikasi/edit', $data);
 		}else{	
 			$this->sertifikasi_model->edit($this->anggaran, $id);
-
+			$this->session->set_flashdata('notif', 'Data berhasil disimpan');
 			redirect('sertifikasi_apbd/list_sertifikasi');			
 		}
 	}
@@ -88,6 +87,22 @@ class Sertifikasi_apbd extends MY_Controller {
 		$id = $this->input->post('id');
 		$data = $this->master_model->get_kecamatan($id);
 		echo json_encode($data);
+	}
+
+	public function print_pemlab1($id){
+		$data['sertifikasi'] = $this->sertifikasi_model->pemlap1($id, $this->anggaran);
+		// dd($data['sertifikasi']);
+		$this->load->view('admin/sertifikasi/print_pemlab1', $data);
+	}
+
+	public function print_pemlab2($id){
+		$data['sertifikasi'] = $this->sertifikasi_model->pemlap1($id, $this->anggaran);	
+		$this->load->view('admin/sertifikasi/print_pemlab2', $data);
+	}
+
+	public function print_pemlab3($id){
+		$data['sertifikasi'] = $this->sertifikasi_model->pemlap1($id, $this->anggaran);	
+		$this->load->view('admin/sertifikasi/print_pemlab3', $data);
 	}
 
 	public function export_excel(){

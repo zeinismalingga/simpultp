@@ -84,8 +84,6 @@ class Sertifikasi_apbn extends MY_Controller {
 
 		$data['sertifikasi'] = $this->sertifikasi_model->get_llhp($id, $anggaran);
 
-		// dd($data['sertifikasi']);
-
 		if($data['sertifikasi']){
 			$this->load->view('admin/sertifikasi/print_llhp', $data);
 		}else{
@@ -99,8 +97,6 @@ class Sertifikasi_apbn extends MY_Controller {
 		$anggaran = $this->db->query("SELECT * FROM sertifikasi WHERE id_sertifikasi = $id")->row_array()['jenis_anggaran'];
 
 		$data['sertifikasi'] = $this->sertifikasi_model->get_llhp($id, $anggaran);
-
-		// dd($data['sertifikasi']);
 		
 		if($data['sertifikasi']){
 			$this->load->view('admin/sertifikasi/print_llhp2', $data);

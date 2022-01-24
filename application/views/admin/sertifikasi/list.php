@@ -85,7 +85,7 @@
                       <td><?php echo $status ?></td>
                       <td>
                         <?php if($this->session->userdata('level') != "tu"): ?>
-                        <a href="<?php echo base_url("sertifikasi_apbn/edit/". $sertifikasi_item['id_sertifikasi']) ?>" class="btn btn-xs btn-primary">REKOMENDASI</a><br>
+                        <a href="<?php echo base_url("$class/edit/". $sertifikasi_item['id_sertifikasi']) ?>" class="btn btn-xs btn-primary">REKOMENDASI</a><br>
                         <?php endif ?>
 
                         <?php $posisi = $sertifikasi_item['posisi']; ?>

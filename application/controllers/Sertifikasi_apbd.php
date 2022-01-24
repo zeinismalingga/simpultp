@@ -15,8 +15,7 @@ class Sertifikasi_apbd extends MY_Controller {
 	}
 	
 	public function list_sertifikasi(){
-		$data['sertifikasi'] = $this->sertifikasi_model->get_list($this->anggaran);
-
+		$data['sertifikasi'] = $this->tu_apbd_model->get_rekomendasi();
 		// dd($data['sertifikasi']);
 
 		$data['class'] = $this->class;

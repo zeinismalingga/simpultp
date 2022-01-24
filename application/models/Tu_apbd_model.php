@@ -1,14 +1,16 @@
 <?php 
 class Tu_apbd_model extends CI_Model {
 
+	public function get_rekomendasi(){ 
+    	$query = $this->db->query("SELECT * FROM sertifikasi LEFT JOIN inventaris_produsen ON sertifikasi.id_produsen = inventaris_produsen.id_inventaris_pangan INNER JOIN tu_apbd ON sertifikasi.id_sertifikasi = tu_apbd.id_sertifikasi");		
+		return $query->result_array();	
+	}
+	
 	public function add($id_sertifikasi){
 		$data = array(
 			'id_sertifikasi' => $id_sertifikasi,
-			'no_tu' => $this->input->post('no_tu'),
-			'kadar_air' => $this->input->post('kadar_air'),
-			'kemurnian' => $this->input->post('kemurnian'),
-			'daya_berkecambah' => $this->input->post('daya_berkecambah'),
-			'tgl_tu' => $this->input->post('tgl_tu'),
+			'no_rekomendasi' => $this->input->post('no_rekomendasi'),
+			'tgl_rekomendasi' => $this->input->post('tgl_rekomendasi'),
 		);		
 		return $this->db->insert('tu_apbd', $data);
 	}
@@ -20,10 +22,6 @@ class Tu_apbd_model extends CI_Model {
 			'kemurnian' => $this->input->post('kemurnian'),
 			'daya_berkecambah' => $this->input->post('daya_berkecambah'),
 			'tgl_tu' => $this->input->post('tgl_tu'),
-			'no_pemlap1' => $this->input->post('no_pemlap1'),
-			'no_pemlap2' => $this->input->post('no_pemlap2'),
-			'no_pemlap3' => $this->input->post('no_pemlap3'),
-			'no_llhp' => $this->input->post('no_llhp'),
 		);		
 		$this->db->where('id_tu_apbd', $id);
 		return $this->db->update('tu_apbd', $data);

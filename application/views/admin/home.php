@@ -75,7 +75,7 @@
                     <tbody>
                       <?php $no = 1; ?>
 
-                      <?php foreach($pemlap1 as $pemlap1_item): ?>
+                      <?php foreach($rekomendasi as $pemlap1_item): ?>
                         <tr>
                           <td><?php echo $no; ?></td>
                           <td><?php echo $pemlap1_item['no_induk'] ?></td>

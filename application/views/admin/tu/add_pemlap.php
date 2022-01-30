@@ -16,7 +16,14 @@
       </div>
       <div class="box-body">
 
-        <a href='<?php echo base_url("$class/list_sertifikasi") ?>' class="btn btn-danger pull-right">Kembali</a><br><br>
+        <?php if($class == "sertifikasi_apbn" || $class == "tu_apbn" ): ?>
+          <a href='<?php echo base_url("sertifikasi_apbn/list_sertifikasi") ?>' class="btn btn-danger pull-right">Kembali</a><br><br>
+        <?php endif ?>
+
+        <?php if($class == "sertifikasi_apbd" || $class == "tu_apbd" ): ?>
+          <a href='<?php echo base_url("sertifikasi_apbd/list_sertifikasi") ?>' class="btn btn-danger pull-right">Kembali</a><br><br>
+        <?php endif ?>
+        
 
         <p><?php echo validation_errors() ?></p>
 

@@ -354,7 +354,7 @@ class Tu_apbd extends MY_Controller {
 			$this->db->update('tu_apbd', $data);	
 
 			$this->session->set_flashdata('notif', 'BERHASIL MENYIMPAN');
-			if($data['level'] == 'sertifikasi'){
+			if($this->session->userdata('level') == 'sertifikasi'){
 				redirect('sertifikasi_apbd/list_sertifikasi');
 			}else{
 				redirect('tu_apbd/list_tu');
@@ -382,7 +382,7 @@ class Tu_apbd extends MY_Controller {
 			$this->db->update('tu_apbd', $data);	
 
 			$this->session->set_flashdata('notif', 'BERHASIL MENYIMPAN');
-			if($data['level'] == 'sertifikasi'){
+			if($this->session->userdata('level') == 'sertifikasi'){
 				redirect('sertifikasi_apbd/list_sertifikasi');
 			}else{
 				redirect('tu_apbd/list_tu');
@@ -410,7 +410,7 @@ class Tu_apbd extends MY_Controller {
 			$this->db->update('tu_apbd', $data);	
 
 			$this->session->set_flashdata('notif', 'BERHASIL MENYIMPAN');
-			if($data['level'] == 'sertifikasi'){
+			if($this->session->userdata('level') == 'sertifikasi'){
 				redirect('sertifikasi_apbd/list_sertifikasi');
 			}else{
 				redirect('tu_apbd/list_tu');

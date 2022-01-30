@@ -362,7 +362,7 @@ class Tu_apbn extends MY_Controller {
 			$this->db->update('tu_apbn', $data);	
 
 			$this->session->set_flashdata('notif', 'BERHASIL MENYIMPAN');
-			if($data['level'] == 'sertifikasi'){
+			if($this->session->userdata('level') == 'sertifikasi'){
 				redirect('sertifikasi_apbn/list_sertifikasi');
 			}else{
 				redirect('tu_apbn/list_tu');
@@ -390,7 +390,7 @@ class Tu_apbn extends MY_Controller {
 			$this->db->update('tu_apbn', $data);	
 
 			$this->session->set_flashdata('notif', 'BERHASIL MENYIMPAN');
-			if($data['level'] == 'sertifikasi'){
+			if($this->session->userdata('level') == 'sertifikasi'){
 				redirect('sertifikasi_apbn/list_sertifikasi');
 			}else{
 				redirect('tu_apbn/list_tu');
@@ -418,7 +418,7 @@ class Tu_apbn extends MY_Controller {
 			$this->db->update('tu_apbn', $data);	
 
 			$this->session->set_flashdata('notif', 'BERHASIL MENYIMPAN');
-			if($data['level'] == 'sertifikasi'){
+			if($this->session->userdata('level') == 'sertifikasi'){
 				redirect('sertifikasi_apbn/list_sertifikasi');
 			}else{
 				redirect('tu_apbn/list_tu');

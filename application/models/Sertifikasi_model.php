@@ -65,7 +65,7 @@ class Sertifikasi_model extends CI_Model {
 		
 			return $query->row_array();
 		}else if($anggaran == 2){
-			$query = $this->db->query("SELECT * FROM sertifikasi, varietas, jenis_varietas, kota, kecamatan, kelas_benih, kelas_benih2, tu_apbd, lab, input_lab_apbd ,musim_tanam, inventaris_produsen WHERE sertifikasi.id_sertifikasi = $id AND sertifikasi.id_jenis_varietas = jenis_varietas.id_jenis_varietas AND sertifikasi.id_varietas = varietas.id_varietas AND sertifikasi.id_kelas_benih = kelas_benih.id_kelas_benih AND sertifikasi.id_musim_tanam = musim_tanam.id_musim_tanam AND inventaris_produsen.id_kota = kota.id_kota AND inventaris_produsen.id_kecamatan = kecamatan.id_kecamatan AND sertifikasi.id_sertifikasi = tu_apbd.id_sertifikasi AND tu_apbd.id_tu_apbn = input_lab_apbd.id_tu_apbn AND input_lab_apbd.id_input_lab_apbn = lab.id_lab_anggaran GROUP BY sertifikasi.id_sertifikasi");
+			$query = $this->db->query("SELECT * FROM sertifikasi, varietas, jenis_varietas, kota, kecamatan, kelas_benih, kelas_benih2, tu_apbd, lab, input_lab_apbd ,musim_tanam, inventaris_produsen WHERE sertifikasi.id_sertifikasi = $id AND sertifikasi.id_jenis_varietas = jenis_varietas.id_jenis_varietas AND sertifikasi.id_varietas = varietas.id_varietas AND sertifikasi.id_kelas_benih = kelas_benih.id_kelas_benih AND sertifikasi.id_musim_tanam = musim_tanam.id_musim_tanam AND inventaris_produsen.id_kota = kota.id_kota AND inventaris_produsen.id_kecamatan = kecamatan.id_kecamatan AND sertifikasi.id_sertifikasi = tu_apbd.id_sertifikasi AND tu_apbd.id_tu_apbd = input_lab_apbd.id_tu_apbd AND input_lab_apbd.id_input_lab_apbd = lab.id_lab_anggaran GROUP BY sertifikasi.id_sertifikasi");
 		
 			return $query->row_array();
 		}
@@ -101,12 +101,14 @@ class Sertifikasi_model extends CI_Model {
 
 	public function pemlap1($id, $anggaran){
 		$t_anggaran = $anggaran == '1' ? 'tu_apbn' : 'tu_apbd';
+
 		if($id == NULL){
 			$query = $this->db->query("SELECT * FROM sertifikasi, jenis_varietas, varietas, kelas_benih, inventaris_produsen WHERE sertifikasi.posisi = 1 AND sertifikasi.id_jenis_varietas = jenis_varietas.id_jenis_varietas AND sertifikasi.id_varietas = varietas.id_varietas AND kelas_benih.id_kelas_benih = kelas_benih.id_kelas_benih GROUP BY sertifikasi.id_sertifikasi AND sertifikasi.id_produsen = inventaris_produsen.id_inventaris_pangan");
 			return $query->result_array();
 		}else{
-			$query = $this->db->query("SELECT * FROM sertifikasi, $t_anggaran, inventaris_produsen, kota, kecamatan WHERE sertifikasi.id_sertifikasi = $t_anggaran.id_sertifikasi AND sertifikasi.id_produsen = inventaris_produsen.id_inventaris_pangan AND inventaris_produsen.id_kota = kota.id_kota AND inventaris_produsen.id_kecamatan = kecamatan.id_kecamatan");
+			$query = $this->db->query("SELECT * FROM sertifikasi, $t_anggaran, inventaris_produsen, kota, kecamatan WHERE sertifikasi.id_sertifikasi = $t_anggaran.id_sertifikasi AND sertifikasi.id_produsen = inventaris_produsen.id_inventaris_pangan AND inventaris_produsen.id_kota = kota.id_kota AND inventaris_produsen.id_kecamatan = kecamatan.id_kecamatan AND sertifikasi.id_sertifikasi = $id");
 			return $query->row_array();
+
 		}
 		
 	}

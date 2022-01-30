@@ -71,6 +71,15 @@ class Sertifikasi_apbd extends MY_Controller {
 		redirect('sertifikasi_apbd/list_sertifikasi');			
 	}
 
+	public function print($id){
+		$data['sertifikasi'] = $this->sertifikasi_model->rekomendasi($id, $this->anggaran);
+		$data['kelas_benih2'] = $this->master_model->get_kelas_benih2($data['sertifikasi']['id_kelas_benih2']);
+
+		// dd($data['sertifikasi']);
+
+		$this->load->view('admin/sertifikasi/print', $data);
+	}
+
 	public function detail($id){
 		$data['sertifikasi'] = $this->sertifikasi_model->get_all($id);	
 

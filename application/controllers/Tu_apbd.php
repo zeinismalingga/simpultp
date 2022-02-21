@@ -335,15 +335,18 @@ class Tu_apbd extends MY_Controller {
 	}
 
 	public function pemlap1($id){
+		$data['class'] = $this->class;
+		$data['id'] = $id;
+		$data['urutan'] = '1';
+		$data['level'] = $this->session->userdata('level');
+		$data['pemlap'] = $this->db->get_where('tu_apbd', array('id_sertifikasi' => $id))->row_array();
+
 		if($this->form_validation->run() === FALSE){	
-			$data['class'] = $this->class;
-			$data['id'] = $id;
-			$data['urutan'] = '1';
-			$data['level'] = $this->session->userdata('level');
-			$data['pemlap'] = $this->db->get_where('tu_apbd', array('id_sertifikasi' => $id))->row_array();
+			
 
 			$this->template->load('admin/template/template', 'admin/tu/add_pemlap', $data);
 		}else{	
+
 			$data = array(
 				'no_pemlap1' => $this->input->post('no_pemlap'),
 				'tgl_pemlap1' => $this->input->post('tgl_pemlap'),

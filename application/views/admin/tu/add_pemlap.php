@@ -44,13 +44,22 @@
             </div>
           </div> 
 
-          <div class="col-md-3">           
+          <?php 
+            if($level == 'sertifikasi'){
+              $display = 'none';
+            }else{
+              $display = 'hidden';
+            } 
+          ?>
+
+          <div class="col-md-3" style="visibility: <?php echo $display ?>;">           
             <div class="form-group">
               <label>CVL</label>
               <input type="text" name="cvl_pemlap" class="form-control" value="<?php echo $pemlap['cvl_pemlap'. $urutan] ?>" <?php echo ($level == 'tu') ? 'readonly' : '' ?> required>
             </div>
           </div>
 
+          
         </div>
       
       </div>

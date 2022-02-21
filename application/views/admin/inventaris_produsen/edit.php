@@ -124,6 +124,13 @@
           </div>
         </div>
 
+        <div class="col-md-12">
+          <div class="form-group">
+            <label>Alamat</label>
+            <input type="text" name="alamat" class="form-control" value="<?php echo $inventaris['alamat'] ?>" required>
+          </div>
+        </div>
+
     </div>
 
     <hr>

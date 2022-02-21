@@ -287,7 +287,7 @@
                     <tbody>
                       <?php $no = 1; ?>
 
-                      <?php foreach($pemlap3 as $pemlap1_item): ?>
+                      <?php foreach($pemlap3_apbn as $pemlap1_item): ?>
                         <tr>
                           <td><?php echo $no; ?></td>
                           <td><?php echo $pemlap1_item['no_induk'] ?></td>
@@ -301,6 +301,22 @@
                         </tr>
                       <?php $no++ ?>
                       <?php endforeach ?>
+
+                      <?php foreach($pemlap3_apbd as $pemlap1_item): ?>
+                        <tr>
+                          <td><?php echo $no; ?></td>
+                          <td><?php echo $pemlap1_item['no_induk'] ?></td>
+                          <td><?php echo $pemlap1_item['nama_produsen'] ?></td>
+                          <td><?php echo ucwords($pemlap1_item['nama_jenis']) ?></td>
+                          <td><?php echo $pemlap1_item['nama_varietas'] ?></td>
+                          <td><?php echo $pemlap1_item['singkatan'] ?></td>
+                          <td>
+                            <a href="<?php echo base_url("sertifikasi_apbn/pemlap/". $pemlap1_item['id_sertifikasi']) ?>" class="btn btn-xs btn-primary" onclick="return confirm('Apakah anda yakin?')">APPROVE</a><br>
+                          </td>
+                        </tr>
+                      <?php $no++ ?>
+                      <?php endforeach ?>
+
                     </tbody>
                   </table>    
                 </div>

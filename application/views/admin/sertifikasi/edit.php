@@ -70,14 +70,8 @@
         </div>
 
         <div class="row">  
-            <div class="col-md-8">           
-            <div class="form-group">
-              <label>Alamat</label>
-              <input type="text" name="alamat" class="form-control" value="<?php echo $sertifikasi['alamat'] ?>" required>
-            </div>
-           </div>
 
-           <div class="col-md-4">           
+           <div class="col-md-3">           
             <div class="form-group">
               <label>Jenis Tanaman</label>
               <select class="form-control" name="id_jenis_tanaman">
@@ -87,10 +81,8 @@
               </select>
             </div>
            </div>
-        </div>
 
-        <div class="row">
-           <div class="col-md-4">           
+           <div class="col-md-3">           
             <div class="form-group">
               <label>Status</label>
               <select class="form-control" name="status" required>
@@ -101,7 +93,7 @@
             </div>
            </div>
 
-           <div class="col-md-4">           
+           <div class="col-md-3">           
             <div class="form-group">
               <label>Kelas Benih</label>
               <select name="id_kelas_benih" class="form-control select2">
@@ -113,13 +105,13 @@
             </div>
            </div>
 
-           <div class="col-md-4">           
+           <div class="col-md-3">           
             <div class="form-group">
               <label>Benih Sumber</label>
               <input type="text" name="nomor_sumber" class="form-control" value="<?php echo $sertifikasi['nomor_sumber'] ?>" required>
             </div>
            </div>
-        </div>      
+        </div>    
 
         <h4 style="font-weight: bold;">SERTIFIKASI BENIH</h4>
         <hr>  

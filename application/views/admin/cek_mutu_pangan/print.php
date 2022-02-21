@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>PRINT cek_mutu</title>
+	<title>PRINT CEK MUTU</title>
 	<link rel="stylesheet" href="<?php echo base_url('assets/css/normalize.css') ?>">
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/bootstrap.min.css') ?>">
 
@@ -49,7 +49,7 @@
 		<div class="row">
 			<div class="col-md">
 				<table class="table table-bordered">
-					<th>CMP. <?php echo $cek_mutu['no_contoh_benih'] ?></th>
+					<th>Nomor : <?php echo $cek_mutu['no_contoh_benih'] ?></th>
 				</table>
 			</div>
 		</div>

@@ -56,14 +56,14 @@ class Tu_apbn_model extends CI_Model {
     		$query = $this->db->query("SELECT * FROM sertifikasi INNER JOIN tu_apbn ON sertifikasi.id_sertifikasi = tu_apbn.id_sertifikasi INNER JOIN input_lab_apbn ON tu_apbn.id_tu_apbn = input_lab_apbn.id_tu_apbn INNER JOIN lab_apbn ON input_lab_apbn.id_tu_apbn = lab_apbn.id_tu_apbn INNER JOIN lab ON lab.id_lab_anggaran = lab_apbn.id_lab_apbn INNER JOIN varietas ON sertifikasi.id_varietas = varietas.id_varietas");		
 			return $query->result_array();
     	}else{
-    		$query = $this->db->query("SELECT * FROM sertifikasi, tu_apbn, varietas, jenis_tanaman, kelas_benih WHERE sertifikasi.id_sertifikasi = tu_apbn.id_sertifikasi AND varietas.id_varietas = sertifikasi.id_varietas AND sertifikasi.id_jenis_tanaman = jenis_tanaman.id_jenis_tanaman AND sertifikasi.id_kelas_benih = kelas_benih.id_kelas_benih AND tu_apbn.id_tu_apbn = $id");		
+    		$query = $this->db->query("SELECT * FROM sertifikasi, tu_apbn, varietas, jenis_tanaman, kelas_benih WHERE sertifikasi.id_sertifikasi = tu_apbn.id_sertifikasi AND varietas.id_varietas = sertifikasi.id_varietas AND sertifikasi.id_kelas_benih = kelas_benih.id_kelas_benih AND tu_apbn.id_tu_apbn = $id");		
 			return $query->row_array();
     	}
 				
 	}
 
 	public function get_list(){ 
-    	$query = $this->db->query("SELECT *, sertifikasi.id_sertifikasi AS id_sertifikasi FROM sertifikasi LEFT JOIN tu_apbn ON sertifikasi.id_sertifikasi = tu_apbn.id_sertifikasi LEFT JOIN jenis_varietas ON sertifikasi.id_jenis_varietas LEFT JOIN varietas ON sertifikasi.id_varietas = varietas.id_varietas LEFT JOIN inventaris_produsen ON sertifikasi.id_produsen = inventaris_produsen.id_inventaris_pangan LEFT JOIN input_lab_apbn ON tu_apbn.id_tu_apbn = input_lab_apbn.id_tu_apbn LEFT JOIN lab ON input_lab_apbn.id_input_lab_apbn = lab.id_lab_anggaran WHERE sertifikasi.jenis_anggaran = 1 AND sertifikasi.posisi >= 1 GROUP BY sertifikasi.id_sertifikasi");		
+    	$query = $this->db->query("SELECT *, sertifikasi.id_sertifikasi AS id_sertifikasi, tu_apbn.id_tu_apbn AS id_tu_apbn FROM sertifikasi LEFT JOIN tu_apbn ON sertifikasi.id_sertifikasi = tu_apbn.id_sertifikasi LEFT JOIN jenis_varietas ON sertifikasi.id_jenis_varietas LEFT JOIN varietas ON sertifikasi.id_varietas = varietas.id_varietas LEFT JOIN inventaris_produsen ON sertifikasi.id_produsen = inventaris_produsen.id_inventaris_pangan LEFT JOIN input_lab_apbn ON tu_apbn.id_tu_apbn = input_lab_apbn.id_tu_apbn LEFT JOIN lab ON input_lab_apbn.id_input_lab_apbn = lab.id_lab_anggaran WHERE sertifikasi.jenis_anggaran = 1 AND sertifikasi.posisi >= 1 GROUP BY sertifikasi.id_sertifikasi");		
 		return $query->result_array();	
 	}
 

@@ -341,6 +341,26 @@ class Tu_apbn extends MY_Controller {
 
 	}
 
+	public function edit_rekomendasi($id){
+		if($this->form_validation->run() === FALSE){	
+			$data['class'] = $this->class;
+			$data['id'] = $id;
+			$data['tu'] = $this->db->get_where('tu_apbn', array('id_sertifikasi' => $id))->row_array();
+
+			$this->template->load('admin/template/template', 'admin/tu/edit_rekomendasi', $data);
+		}else{	
+			$data = array(
+				'no_rekomendasi' => $this->input->post('no_rekomendasi'),
+				'tgl_rekomendasi' => $this->input->post('tgl_rekomendasi'),
+			);	
+
+			$this->db->where('id_sertifikasi', $id);
+			$this->db->update('tu_apbn', $data);	
+
+			$this->session->set_flashdata('notif', 'BERHASIL MENYIMPAN');
+			redirect('sertifikasi_apbn/list_sertifikasi');	
+		}	
+	}
 
 	public function pemlap1($id){
 		if($this->form_validation->run() === FALSE){	

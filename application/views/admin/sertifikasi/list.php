@@ -84,6 +84,10 @@
                       <td><?php echo $sertifikasi_item['no_induk']; ?></td>
                       <td><?php echo $status ?></td>
                       <td>
+                        <?php if($this->session->userdata('level') == "tu"): ?>
+                        <a href="<?php echo base_url("$class_tu/edit_rekomendasi/". $sertifikasi_item['id_sertifikasi']) ?>" class="btn btn-xs btn-primary">EDIT REKOMENDASI</a><br>
+                        <?php endif ?>
+
                         <?php if($this->session->userdata('level') != "tu"): ?>
                         <a href="<?php echo base_url("$class/edit/". $sertifikasi_item['id_sertifikasi']) ?>" class="btn btn-xs btn-primary">REKOMENDASI</a><br>
                         <?php endif ?>

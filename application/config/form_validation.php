@@ -297,6 +297,20 @@ $config = array(
                         'rules' => 'required'
                 ),
         ),
+        'tu_apbn/edit_rekomendasi' => array(
+                array(
+                            'field' => 'no_rekomendasi',
+                            'label' => 'no_rekomendasi',
+                            'rules' => 'required'
+                    ),
+        ),
+        'tu_apbd/edit_rekomendasi' => array(
+                array(
+                            'field' => 'no_rekomendasi',
+                            'label' => 'no_rekomendasi',
+                            'rules' => 'required'
+                    ),
+        ),
 
 
 

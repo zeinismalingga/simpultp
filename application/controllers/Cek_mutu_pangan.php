@@ -40,6 +40,7 @@ class Cek_mutu_pangan extends MY_Controller {
 
 			$data = array(
 				'no_contoh_benih' => $this->input->post('no_contoh_benih'),
+				'no_asal' => $this->input->post('no_asal'),
 				'kadar_air' => $this->input->post('kadar_air'),
 				'kemurnian' => $this->input->post('kemurnian'),
 				'daya_berkecambah' => $this->input->post('daya_berkecambah'),

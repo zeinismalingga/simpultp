@@ -131,6 +131,13 @@
             </div>
           </div> 
 
+          <div class="col-md-3">           
+            <div class="form-group">
+              <label>No. Asal</label>
+              <input type="text" name="no_asal" class="form-control">
+            </div>
+          </div>
+
         </div>
       </div>
       <div class="box-footer">

@@ -26,16 +26,44 @@
                 <div class="box-body">
                   <div class="form-group">
                     <label for="exampleInputEmail1">Username</label>
-                    <input type="text" name="username" class="form-control" id="exampleInputEmail1" placeholder="Username" value="<?php echo $users['username'] ?>" disabled>
+                    <input type="text" name="username" class="form-control" id="exampleInputEmail1" placeholder="Username" value="<?php echo $users['username'] ?>" readonly>
                   </div>
+
+                  <div class="form-group">
+                    <label>NIP</label>
+                    <input type="text" name="nip" class="form-control" placeholder="NIP" value="<?php echo $users['nip'] ?>">
+                    
+                  </div>
+
+                  <div class="form-group">
+                    <label>Nama</label>
+                    <input type="text" name="nama" class="form-control" placeholder="Nama" value="<?php echo $users['nama'] ?>">
+                  </div>
+
+                  <div class="form-group">
+                    <label>Level</label>
+                    <select name="level" class="form-control" required>
+                      <option value="<?php echo $users['level'] ?>"><?php echo $users['level'] ?></option>
+                      <option value="tu">TU</option>
+                      <option value="sertifikasi">Sertifikasi</option>
+                      <option value="lab">Lab</option>
+                      <option value="wasar">Wasar</option>
+                      <option value="kasi">Kasi</option>
+                      <option value="kepala">Kepala UPTD</option>
+                      <option value="pjlab">Penanggung Jawab Lab</option>
+                    </select>
+                  </div>
+
                   <div class="form-group">
                     <label for="exampleInputPassword1">Password</label>
                     <input type="password" name="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                    <small>* Kosongkan jika tidak merubah password</small>
                   </div>
 
                   <div class="form-group">
                     <label for="exampleInputPassword1">Confirm Password</label>
                     <input type="password" name="confirm-password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                    <small>* Kosongkan jika tidak merubah password</small>
                   </div>
                 </div>
                 <!-- /.box-body -->

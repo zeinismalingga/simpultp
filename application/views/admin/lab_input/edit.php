@@ -211,18 +211,7 @@
               <option select value="0">Tidak Lulus</option>
               </select>
             </div>
-          </div>
-
-          <div class="col-md-3">           
-            <div class="form-group">
-              <label>Manajer Teknis</label>
-              <select name="id_manajer_teknis" class="form-control select2">
-              <?php foreach($manajer_teknis as $item): ?>
-              <option value="<?php echo $item['id'] ?>"><?php echo $item['nama'] ?></option>
-              <?php endforeach ?>
-              </select>
-            </div>
-          </div>
+          </div>  
 
         </div>
 

@@ -50,7 +50,7 @@ class Auth extends MY_Controller {
 
 	public function edit($id)
 	{
-		$this->isAdmin();
+		// $this->isAdmin();
 
 		$data['users'] = $this->auth_model->get_users($id);
 

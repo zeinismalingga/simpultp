@@ -8,21 +8,34 @@ class Auth_model extends CI_Model {
 		$data = array(
 			'username' => $username,
 			'password' => $password,
-			'level' => $this->input->post('level')
+			'level' => $this->input->post('level'),
+			'nip' => $this->input->post('nip'),
+			'nama' => $this->input->post('nama'),
 		);
 
 		return $this->db->insert('users', $data);
 	}
 
 	public function edit_user($id){
-		$username = $this->input->post('username');
-		$password = $this->input->post('password');
-		$password = password_hash($password, PASSWORD_DEFAULT);
+		if(!empty($this->input->post('password'))){
 
-		$data = array(
-			'level' => $this->input->post('level'),
-			'password' => $password,
-		);
+			$password = $this->input->post('password');
+			$password = password_hash($password, PASSWORD_DEFAULT);
+
+			$data = array(
+				'level' => $this->input->post('level'),
+				'password' => $password,
+				'nip' => $this->input->post('nip'),
+				'nama' => $this->input->post('nama'),
+			);
+		}else{
+			$data = array(
+				'level' => $this->input->post('level'),
+				'nip' => $this->input->post('nip'),
+				'nama' => $this->input->post('nama'),
+			);
+		}
+		
 
 		$this->db->where('id_user', $id);
 		return $this->db->update('users', $data);

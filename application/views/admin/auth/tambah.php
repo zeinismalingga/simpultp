@@ -30,6 +30,16 @@
                   </div>
 
                   <div class="form-group">
+                    <label>NIP</label>
+                    <input type="text" name="nip" class="form-control" placeholder="NIP">
+                  </div>
+
+                  <div class="form-group">
+                    <label>Nama</label>
+                    <input type="text" name="nama" class="form-control" placeholder="Nama">
+                  </div>
+
+                  <div class="form-group">
                     <label>Level</label>
                     <select name="level" class="form-control" required>
                       <option value="">- Pilih Level -</option>

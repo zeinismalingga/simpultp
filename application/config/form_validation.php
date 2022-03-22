@@ -32,15 +32,10 @@ $config = array(
         ),
         'auth/edit' => array(
                 array(
-                        'field' => 'password',
-                        'label' => 'Password',
+                        'field' => 'username',
+                        'label' => 'username',
                         'rules' => 'required'
                 ),
-                array(
-                        'field' => 'confirm-password',
-                        'label' => 'confirm password',
-                        'rules' => 'required|matches[password]'
-                )
         ),
         'varietas/add' => array(
             array(
@@ -308,6 +303,20 @@ $config = array(
                 array(
                             'field' => 'no_rekomendasi',
                             'label' => 'no_rekomendasi',
+                            'rules' => 'required'
+                    ),
+        ),
+        'tu_apbn/add_asal' => array(
+                array(
+                            'field' => 'no_asal',
+                            'label' => 'no asal',
+                            'rules' => 'required'
+                    ),
+        ),
+        'tu_apbd/add_asal' => array(
+                array(
+                            'field' => 'no_asal',
+                            'label' => 'no asal',
                             'rules' => 'required'
                     ),
         ),

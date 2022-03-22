@@ -70,33 +70,29 @@ class Tu_apbn extends MY_Controller {
 		redirect('tu_apbn/list_tu');			
 	}
 
-
-
 	public function add_asal($id_tu){
-		$cek_no = $this->tu_apbn_model->cek_asal($id_tu);
+		// die('ok');
+		$data['id'] = $id_tu;
 
-		if($cek_no){
-			$this->session->set_flashdata('notif', 'SERTIFIKASI SUDAH DIBERI NO ASAL.');
-			redirect('tu_apbn/list_tu');
+		if($this->form_validation->run() === FALSE){	
+			$data['class'] = $this->class;
+
+			$this->template->load('admin/template/template', 'admin/tu/add_asal', $data);
+		}else{			
+			$data = array(
+				'id_tu_apbn' => $id_tu,
+				'no_asal' => $this->input->post('no_asal'),
+			);	
+
+			$this->db->insert('input_lab_apbn', $data);
+
+			// add id lab anggaran
+			$insert_id = $this->db->insert_id();
+			$this->lab_model->add($insert_id, 1);
+
+			$this->session->set_flashdata('notif', 'BERHASIL MENAMBAH NO ASAL.');
+			redirect('tu_apbn/list_tu');		
 		}
-
-		// nomor
-		$nomor = $this->tu_apbn_model->get_max_id();
-		$nomor = $nomor['no_asal'] + 1;
-
-		$nomor = sprintf("%02d", $nomor); 
-
-		// no asal
-		$no_asal = sprintf("%02d", $nomor); 
-		$no_asal = $no_asal;
-
-		$this->tu_apbn_model->add_asal($id_tu, $no_asal);
-
-		$insert_id = $this->db->insert_id();
-
-		$this->lab_model->add($insert_id, 1);
-		$this->session->set_flashdata('notif', 'BERHASIL MENAMBAH NO ASAL.');
-		redirect('tu_apbn/list_tu');	
 	}
 
 	public function print($id){
